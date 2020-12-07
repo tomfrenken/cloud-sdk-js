@@ -142,3 +142,11 @@ if (arg === 'openapi' || arg === 'rest' || arg === 'all') {
     clearOutputDir: true
   });
 }
+
+if (arg === 'workflow' || arg === 'rest' || arg === 'all') {
+  generateOpenApi({
+    inputDir: path.resolve('test-resources', 'workflow-specs'),
+    outputDir: path.resolve('test-packages', 'test-services', 'workflow'),
+    clearOutputDir: true
+  });
+}
