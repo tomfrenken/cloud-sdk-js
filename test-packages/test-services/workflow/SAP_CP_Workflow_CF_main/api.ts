@@ -5,6 +5,7 @@
  */
 import { OpenApiRequestBuilder } from '@sap-cloud-sdk/core';
 import { DefaultApi } from './openapi/api';
+import { WorkflowInstanceStartPayload } from './openapi/model';
 
 
 export const SAPCPWorkflowCFMainApi = {
@@ -90,7 +91,7 @@ export const SAPCPWorkflowCFMainApi = {
     parentInstanceId,
     attributesExampleCustomAttribute
   ),
-  startInstance: (body: object) => new OpenApiRequestBuilder<DefaultApi, 'startInstance'>(
+  startInstance: (body: WorkflowInstanceStartPayload) => new OpenApiRequestBuilder<DefaultApi, 'startInstance'>(
     DefaultApi,
     'startInstance',
     body
@@ -200,7 +201,7 @@ export const SAPCPWorkflowCFMainApi = {
     'getJob',
     jobId
   ),
-  sendMessage: (body: object) => new OpenApiRequestBuilder<DefaultApi, 'sendMessage'>(
+  sendMessage: (body: WorkflowInstanceStartPayload) => new OpenApiRequestBuilder<DefaultApi, 'sendMessage'>(
     DefaultApi,
     'sendMessage',
     body
