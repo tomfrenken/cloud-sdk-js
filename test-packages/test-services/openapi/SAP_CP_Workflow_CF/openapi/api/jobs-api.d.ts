@@ -25,7 +25,7 @@ export declare const JobsApiAxiosParamCreator: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1JobsByJobId: (jobId: string, options?: any) => Promise<RequestArgs>;
+    v1JobsJobIdGet: (jobId: string, options?: any) => Promise<RequestArgs>;
 };
 /**
  * JobsApi - functional programming interface
@@ -39,7 +39,7 @@ export declare const JobsApiFp: (configuration?: Configuration | undefined) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1JobsByJobId(jobId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Job>>;
+    v1JobsJobIdGet(jobId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Job>>;
 };
 /**
  * JobsApi - factory interface
@@ -53,7 +53,7 @@ export declare const JobsApiFactory: (configuration?: Configuration | undefined,
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1JobsByJobId(jobId: string, options?: any): AxiosPromise<Job>;
+    v1JobsJobIdGet(jobId: string, options?: any): AxiosPromise<Job>;
 };
 /**
  * JobsApi - object-oriented interface
@@ -70,6 +70,6 @@ export declare class JobsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof JobsApi
      */
-    getV1JobsByJobId(jobId: string, options?: any): Promise<import("axios").AxiosResponse<Job>>;
+    v1JobsJobIdGet(jobId: string, options?: any): Promise<import("axios").AxiosResponse<Job>>;
 }
 //# sourceMappingURL=jobs-api.d.ts.map

@@ -28,14 +28,6 @@ import { WorkflowInstancesUpdatePayload } from '../model';
  */
 export declare const WorkflowInstancesApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
     /**
-     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
-     * @summary Start a new instance
-     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createV1WorkflowInstances: (workflowInstanceStartPayload: WorkflowInstanceStartPayload, options?: any) => Promise<RequestArgs>;
-    /**
      * Retrieves the workflow instance with the specified workflow instance ID.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve workflow instance by ID
      * @param {string} workflowInstanceId The ID of the workflow instance, which should be retrieved. The workflow instance ID is 36 characters long.
@@ -43,7 +35,7 @@ export declare const WorkflowInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance1: (workflowInstanceId: string, $expand?: "attributes" | undefined, options?: any) => Promise<RequestArgs>;
+    getInstance: (workflowInstanceId: string, $expand?: "attributes" | undefined, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves workflow instances by parameters. If no parameters are specified, all RUNNING, or ERRONEOUS instances are returned. Parameters for different attributes of the instance are evaluated using the logical \'and\' operator. If multiple parameters are specified for the same attribute or a parameter is specified multiple times, results are matched using the logical \'or\' operator, unless noted otherwise. Empty parameters are treated as if they were not given.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve all instances by query parameters
@@ -72,55 +64,7 @@ export declare const WorkflowInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowInstances: ($orderby?: "completedAt asc" | "completedAt desc" | "subject asc" | "subject desc" | "id asc" | "id desc" | "definitionId asc" | "definitionId desc" | "definitionVersion asc" | "definitionVersion desc" | "startedAt asc" | "startedAt desc" | "startedBy asc" | "startedBy desc" | "businessKey asc" | "businessKey desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, id?: string | undefined, definitionId?: string | undefined, definitionVersion?: string | undefined, status?: "COMPLETED" | "CANCELED" | "RUNNING" | "ERRONEOUS" | "SUSPENDED" | undefined, startedAt?: string | undefined, startedFrom?: string | undefined, startedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, startedBy?: string | undefined, subject?: string | undefined, containsText?: string | undefined, businessKey?: string | undefined, rootInstanceId?: string | undefined, parentInstanceId?: string | undefined, attributesExampleCustomAttribute?: string | undefined, options?: any) => Promise<RequestArgs>;
-    /**
-     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
-     * @summary Retrieve instance attachments
-     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesAttachmentsByWorkflowInstanceId: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
-    /**
-     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
-     * @summary Retrieve custom workflow attributes by workflow instance ID
-     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesAttributesByWorkflowInstanceId: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
-    /**
-     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
-     * @summary Retrieve instance context
-     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesContextByWorkflowInstanceId: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
-    /**
-     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
-     * @summary Retrieve error messages
-     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
-    /**
-     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
-     * @summary Retrieve execution logs
-     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
-    /**
-     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
-     * @summary Retrieve instance roles
-     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesRolesByWorkflowInstanceId: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
+    v1WorkflowInstancesGet: ($orderby?: "completedAt asc" | "completedAt desc" | "subject asc" | "subject desc" | "id asc" | "id desc" | "definitionId asc" | "definitionId desc" | "definitionVersion asc" | "definitionVersion desc" | "startedAt asc" | "startedAt desc" | "startedBy asc" | "startedBy desc" | "businessKey asc" | "businessKey desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, id?: string | undefined, definitionId?: string | undefined, definitionVersion?: string | undefined, status?: "COMPLETED" | "CANCELED" | "RUNNING" | "ERRONEOUS" | "SUSPENDED" | undefined, startedAt?: string | undefined, startedFrom?: string | undefined, startedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, startedBy?: string | undefined, subject?: string | undefined, containsText?: string | undefined, businessKey?: string | undefined, rootInstanceId?: string | undefined, parentInstanceId?: string | undefined, attributesExampleCustomAttribute?: string | undefined, options?: any) => Promise<RequestArgs>;
     /**
      * Modifies the given workflow instances according to the specified operations. Currently, the only operation supported is the deletion of workflow instances. You can at most specify 10000 instances to delete in one API call.  Roles permitted to execute this operation: - Global roles: WorkflowTenantOperator - Scope: WORKFLOW_INSTANCES_UPDATE
      * @summary Delete instance by ID
@@ -128,7 +72,23 @@ export declare const WorkflowInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstances: (workflowInstancesUpdatePayload: Array<WorkflowInstancesUpdatePayload>, options?: any) => Promise<RequestArgs>;
+    v1WorkflowInstancesPatch: (workflowInstancesUpdatePayload: Array<WorkflowInstancesUpdatePayload>, options?: any) => Promise<RequestArgs>;
+    /**
+     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
+     * @summary Start a new instance
+     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesPost: (workflowInstanceStartPayload: WorkflowInstanceStartPayload, options?: any) => Promise<RequestArgs>;
+    /**
+     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
+     * @summary Retrieve instance attachments
+     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Overrides the attachments information for a workflow instance independent of its status.  Take special care when using this API, because it will override the workflow attachments, that is, it might change the workflow   in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ATTACHMENTS
      * @summary Overwrite instance attachments
@@ -137,25 +97,23 @@ export declare const WorkflowInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId: (workflowInstanceId: string, attachmentsContext: AttachmentsContext, options?: any) => Promise<RequestArgs>;
+    v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut: (workflowInstanceId: string, attachmentsContext: AttachmentsContext, options?: any) => Promise<RequestArgs>;
     /**
-     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
-     * @summary Update instance
-     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
-     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
+     * @summary Retrieve custom workflow attributes by workflow instance ID
+     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesByWorkflowInstanceId: (workflowInstanceId: string, workflowInstanceUpdatePayload: WorkflowInstanceUpdatePayload, options?: any) => Promise<RequestArgs>;
+    v1WorkflowInstancesWorkflowInstanceIdAttributesGet: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
-     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-     * @summary Overwrite instance context
-     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
-     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
+     * @summary Retrieve instance context
+     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesContextByWorkflowInstanceId: (workflowInstanceId: string, body: object, options?: any) => Promise<RequestArgs>;
+    v1WorkflowInstancesWorkflowInstanceIdContextGet: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Modifies parts of the context for a workflow instance independent of its status.  Take special care when using this API, because it might change the workflow context in ways that are incompatible with the expectations  of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and make sure that  the execution has come to a halt, that is, that no further steps are being added to the execution log. Refer to PATCH on the parent resource  and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
      * @summary Update instance context
@@ -164,7 +122,49 @@ export declare const WorkflowInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesContextByWorkflowInstanceId1: (workflowInstanceId: string, body: object, options?: any) => Promise<RequestArgs>;
+    v1WorkflowInstancesWorkflowInstanceIdContextPatch: (workflowInstanceId: string, body: object, options?: any) => Promise<RequestArgs>;
+    /**
+     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+     * @summary Overwrite instance context
+     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
+     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdContextPut: (workflowInstanceId: string, body: object, options?: any) => Promise<RequestArgs>;
+    /**
+     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
+     * @summary Retrieve error messages
+     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
+    /**
+     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
+     * @summary Retrieve execution logs
+     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
+    /**
+     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
+     * @summary Update instance
+     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
+     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdPatch: (workflowInstanceId: string, workflowInstanceUpdatePayload: WorkflowInstanceUpdatePayload, options?: any) => Promise<RequestArgs>;
+    /**
+     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
+     * @summary Retrieve instance roles
+     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdRolesGet: (workflowInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Updates the instance-specific role assignments of the given workflow instance.  Any of the role assignment properties that is present in the request body will overwrite the existing assignments with the new assignments. Any properties that are either null or not present at all in the request body will leave the corresponding role assignments unchanged.  The maximum number of users and groups that can be assigned to each role is limited to 100.  The use of expressions as part of the role assignments (e.g. ${context.variable}) is only allowed for workflow instances that are not yet COMPLETED or CANCELED.  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ROLES  Examples: - Setting **viewerUsers: \"UserId1, UserId8\"** will remove all existing user assignments of the viewer role and then assign   only the two specified users to the role. - Setting **viewerUsers: \"\"** will remove all existing user assignments of the viewer role. - Specifying any non-null **viewerUsers** in the request body and leaving out **viewerGroups** will update the user   assignments and leave the group assignments unchanged.
      * @summary Update instance roles
@@ -173,7 +173,7 @@ export declare const WorkflowInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesRolesByWorkflowInstanceId: (workflowInstanceId: string, workflowInstanceRolesUpdatePayload: WorkflowInstanceRolesUpdatePayload, options?: any) => Promise<RequestArgs>;
+    v1WorkflowInstancesWorkflowInstanceIdRolesPatch: (workflowInstanceId: string, workflowInstanceRolesUpdatePayload: WorkflowInstanceRolesUpdatePayload, options?: any) => Promise<RequestArgs>;
 };
 /**
  * WorkflowInstancesApi - functional programming interface
@@ -181,14 +181,6 @@ export declare const WorkflowInstancesApiAxiosParamCreator: (configuration?: Con
  */
 export declare const WorkflowInstancesApiFp: (configuration?: Configuration | undefined) => {
     /**
-     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
-     * @summary Start a new instance
-     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createV1WorkflowInstances(workflowInstanceStartPayload: WorkflowInstanceStartPayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowInstance>>;
-    /**
      * Retrieves the workflow instance with the specified workflow instance ID.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve workflow instance by ID
      * @param {string} workflowInstanceId The ID of the workflow instance, which should be retrieved. The workflow instance ID is 36 characters long.
@@ -196,7 +188,7 @@ export declare const WorkflowInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance1(workflowInstanceId: string, $expand?: "attributes" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowInstance>>;
+    getInstance(workflowInstanceId: string, $expand?: "attributes" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowInstance>>;
     /**
      * Retrieves workflow instances by parameters. If no parameters are specified, all RUNNING, or ERRONEOUS instances are returned. Parameters for different attributes of the instance are evaluated using the logical \'and\' operator. If multiple parameters are specified for the same attribute or a parameter is specified multiple times, results are matched using the logical \'or\' operator, unless noted otherwise. Empty parameters are treated as if they were not given.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve all instances by query parameters
@@ -225,55 +217,7 @@ export declare const WorkflowInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowInstances($orderby?: "completedAt asc" | "completedAt desc" | "subject asc" | "subject desc" | "id asc" | "id desc" | "definitionId asc" | "definitionId desc" | "definitionVersion asc" | "definitionVersion desc" | "startedAt asc" | "startedAt desc" | "startedBy asc" | "startedBy desc" | "businessKey asc" | "businessKey desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, id?: string | undefined, definitionId?: string | undefined, definitionVersion?: string | undefined, status?: "COMPLETED" | "CANCELED" | "RUNNING" | "ERRONEOUS" | "SUSPENDED" | undefined, startedAt?: string | undefined, startedFrom?: string | undefined, startedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, startedBy?: string | undefined, subject?: string | undefined, containsText?: string | undefined, businessKey?: string | undefined, rootInstanceId?: string | undefined, parentInstanceId?: string | undefined, attributesExampleCustomAttribute?: string | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowInstance>>>;
-    /**
-     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
-     * @summary Retrieve instance attachments
-     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<AttachmentsContext>>;
-    /**
-     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
-     * @summary Retrieve custom workflow attributes by workflow instance ID
-     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesAttributesByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<CustomAttribute>>>;
-    /**
-     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
-     * @summary Retrieve instance context
-     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<object>>;
-    /**
-     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
-     * @summary Retrieve error messages
-     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowInstanceErrorMessage>>>;
-    /**
-     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
-     * @summary Retrieve execution logs
-     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowInstanceExecutionLog>>>;
-    /**
-     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
-     * @summary Retrieve instance roles
-     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowInstanceRoles>>;
+    v1WorkflowInstancesGet($orderby?: "completedAt asc" | "completedAt desc" | "subject asc" | "subject desc" | "id asc" | "id desc" | "definitionId asc" | "definitionId desc" | "definitionVersion asc" | "definitionVersion desc" | "startedAt asc" | "startedAt desc" | "startedBy asc" | "startedBy desc" | "businessKey asc" | "businessKey desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, id?: string | undefined, definitionId?: string | undefined, definitionVersion?: string | undefined, status?: "COMPLETED" | "CANCELED" | "RUNNING" | "ERRONEOUS" | "SUSPENDED" | undefined, startedAt?: string | undefined, startedFrom?: string | undefined, startedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, startedBy?: string | undefined, subject?: string | undefined, containsText?: string | undefined, businessKey?: string | undefined, rootInstanceId?: string | undefined, parentInstanceId?: string | undefined, attributesExampleCustomAttribute?: string | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowInstance>>>;
     /**
      * Modifies the given workflow instances according to the specified operations. Currently, the only operation supported is the deletion of workflow instances. You can at most specify 10000 instances to delete in one API call.  Roles permitted to execute this operation: - Global roles: WorkflowTenantOperator - Scope: WORKFLOW_INSTANCES_UPDATE
      * @summary Delete instance by ID
@@ -281,7 +225,23 @@ export declare const WorkflowInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstances(workflowInstancesUpdatePayload: Array<WorkflowInstancesUpdatePayload>, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1WorkflowInstancesPatch(workflowInstancesUpdatePayload: Array<WorkflowInstancesUpdatePayload>, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    /**
+     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
+     * @summary Start a new instance
+     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesPost(workflowInstanceStartPayload: WorkflowInstanceStartPayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowInstance>>;
+    /**
+     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
+     * @summary Retrieve instance attachments
+     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<AttachmentsContext>>;
     /**
      * Overrides the attachments information for a workflow instance independent of its status.  Take special care when using this API, because it will override the workflow attachments, that is, it might change the workflow   in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ATTACHMENTS
      * @summary Overwrite instance attachments
@@ -290,25 +250,23 @@ export declare const WorkflowInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId: string, attachmentsContext: AttachmentsContext, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut(workflowInstanceId: string, attachmentsContext: AttachmentsContext, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
     /**
-     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
-     * @summary Update instance
-     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
-     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
+     * @summary Retrieve custom workflow attributes by workflow instance ID
+     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesByWorkflowInstanceId(workflowInstanceId: string, workflowInstanceUpdatePayload: WorkflowInstanceUpdatePayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdAttributesGet(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<CustomAttribute>>>;
     /**
-     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-     * @summary Overwrite instance context
-     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
-     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
+     * @summary Retrieve instance context
+     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId: string, body: object, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdContextGet(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<object>>;
     /**
      * Modifies parts of the context for a workflow instance independent of its status.  Take special care when using this API, because it might change the workflow context in ways that are incompatible with the expectations  of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and make sure that  the execution has come to a halt, that is, that no further steps are being added to the execution log. Refer to PATCH on the parent resource  and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
      * @summary Update instance context
@@ -317,7 +275,49 @@ export declare const WorkflowInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesContextByWorkflowInstanceId1(workflowInstanceId: string, body: object, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdContextPatch(workflowInstanceId: string, body: object, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    /**
+     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+     * @summary Overwrite instance context
+     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
+     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdContextPut(workflowInstanceId: string, body: object, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    /**
+     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
+     * @summary Retrieve error messages
+     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowInstanceErrorMessage>>>;
+    /**
+     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
+     * @summary Retrieve execution logs
+     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowInstanceExecutionLog>>>;
+    /**
+     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
+     * @summary Update instance
+     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
+     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdPatch(workflowInstanceId: string, workflowInstanceUpdatePayload: WorkflowInstanceUpdatePayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    /**
+     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
+     * @summary Retrieve instance roles
+     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdRolesGet(workflowInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowInstanceRoles>>;
     /**
      * Updates the instance-specific role assignments of the given workflow instance.  Any of the role assignment properties that is present in the request body will overwrite the existing assignments with the new assignments. Any properties that are either null or not present at all in the request body will leave the corresponding role assignments unchanged.  The maximum number of users and groups that can be assigned to each role is limited to 100.  The use of expressions as part of the role assignments (e.g. ${context.variable}) is only allowed for workflow instances that are not yet COMPLETED or CANCELED.  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ROLES  Examples: - Setting **viewerUsers: \"UserId1, UserId8\"** will remove all existing user assignments of the viewer role and then assign   only the two specified users to the role. - Setting **viewerUsers: \"\"** will remove all existing user assignments of the viewer role. - Specifying any non-null **viewerUsers** in the request body and leaving out **viewerGroups** will update the user   assignments and leave the group assignments unchanged.
      * @summary Update instance roles
@@ -326,7 +326,7 @@ export declare const WorkflowInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId: string, workflowInstanceRolesUpdatePayload: WorkflowInstanceRolesUpdatePayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdRolesPatch(workflowInstanceId: string, workflowInstanceRolesUpdatePayload: WorkflowInstanceRolesUpdatePayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
 };
 /**
  * WorkflowInstancesApi - factory interface
@@ -334,14 +334,6 @@ export declare const WorkflowInstancesApiFp: (configuration?: Configuration | un
  */
 export declare const WorkflowInstancesApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
     /**
-     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
-     * @summary Start a new instance
-     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createV1WorkflowInstances(workflowInstanceStartPayload: WorkflowInstanceStartPayload, options?: any): AxiosPromise<WorkflowInstance>;
-    /**
      * Retrieves the workflow instance with the specified workflow instance ID.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve workflow instance by ID
      * @param {string} workflowInstanceId The ID of the workflow instance, which should be retrieved. The workflow instance ID is 36 characters long.
@@ -349,7 +341,7 @@ export declare const WorkflowInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance1(workflowInstanceId: string, $expand?: "attributes" | undefined, options?: any): AxiosPromise<WorkflowInstance>;
+    getInstance(workflowInstanceId: string, $expand?: "attributes" | undefined, options?: any): AxiosPromise<WorkflowInstance>;
     /**
      * Retrieves workflow instances by parameters. If no parameters are specified, all RUNNING, or ERRONEOUS instances are returned. Parameters for different attributes of the instance are evaluated using the logical \'and\' operator. If multiple parameters are specified for the same attribute or a parameter is specified multiple times, results are matched using the logical \'or\' operator, unless noted otherwise. Empty parameters are treated as if they were not given.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve all instances by query parameters
@@ -378,55 +370,7 @@ export declare const WorkflowInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowInstances($orderby?: "completedAt asc" | "completedAt desc" | "subject asc" | "subject desc" | "id asc" | "id desc" | "definitionId asc" | "definitionId desc" | "definitionVersion asc" | "definitionVersion desc" | "startedAt asc" | "startedAt desc" | "startedBy asc" | "startedBy desc" | "businessKey asc" | "businessKey desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, id?: string | undefined, definitionId?: string | undefined, definitionVersion?: string | undefined, status?: "COMPLETED" | "CANCELED" | "RUNNING" | "ERRONEOUS" | "SUSPENDED" | undefined, startedAt?: string | undefined, startedFrom?: string | undefined, startedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, startedBy?: string | undefined, subject?: string | undefined, containsText?: string | undefined, businessKey?: string | undefined, rootInstanceId?: string | undefined, parentInstanceId?: string | undefined, attributesExampleCustomAttribute?: string | undefined, options?: any): AxiosPromise<Array<WorkflowInstance>>;
-    /**
-     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
-     * @summary Retrieve instance attachments
-     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId: string, options?: any): AxiosPromise<AttachmentsContext>;
-    /**
-     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
-     * @summary Retrieve custom workflow attributes by workflow instance ID
-     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesAttributesByWorkflowInstanceId(workflowInstanceId: string, options?: any): AxiosPromise<Array<CustomAttribute>>;
-    /**
-     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
-     * @summary Retrieve instance context
-     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId: string, options?: any): AxiosPromise<object>;
-    /**
-     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
-     * @summary Retrieve error messages
-     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId(workflowInstanceId: string, options?: any): AxiosPromise<Array<WorkflowInstanceErrorMessage>>;
-    /**
-     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
-     * @summary Retrieve execution logs
-     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId(workflowInstanceId: string, options?: any): AxiosPromise<Array<WorkflowInstanceExecutionLog>>;
-    /**
-     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
-     * @summary Retrieve instance roles
-     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId: string, options?: any): AxiosPromise<WorkflowInstanceRoles>;
+    v1WorkflowInstancesGet($orderby?: "completedAt asc" | "completedAt desc" | "subject asc" | "subject desc" | "id asc" | "id desc" | "definitionId asc" | "definitionId desc" | "definitionVersion asc" | "definitionVersion desc" | "startedAt asc" | "startedAt desc" | "startedBy asc" | "startedBy desc" | "businessKey asc" | "businessKey desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, id?: string | undefined, definitionId?: string | undefined, definitionVersion?: string | undefined, status?: "COMPLETED" | "CANCELED" | "RUNNING" | "ERRONEOUS" | "SUSPENDED" | undefined, startedAt?: string | undefined, startedFrom?: string | undefined, startedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, startedBy?: string | undefined, subject?: string | undefined, containsText?: string | undefined, businessKey?: string | undefined, rootInstanceId?: string | undefined, parentInstanceId?: string | undefined, attributesExampleCustomAttribute?: string | undefined, options?: any): AxiosPromise<Array<WorkflowInstance>>;
     /**
      * Modifies the given workflow instances according to the specified operations. Currently, the only operation supported is the deletion of workflow instances. You can at most specify 10000 instances to delete in one API call.  Roles permitted to execute this operation: - Global roles: WorkflowTenantOperator - Scope: WORKFLOW_INSTANCES_UPDATE
      * @summary Delete instance by ID
@@ -434,7 +378,23 @@ export declare const WorkflowInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstances(workflowInstancesUpdatePayload: Array<WorkflowInstancesUpdatePayload>, options?: any): AxiosPromise<void>;
+    v1WorkflowInstancesPatch(workflowInstancesUpdatePayload: Array<WorkflowInstancesUpdatePayload>, options?: any): AxiosPromise<void>;
+    /**
+     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
+     * @summary Start a new instance
+     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesPost(workflowInstanceStartPayload: WorkflowInstanceStartPayload, options?: any): AxiosPromise<WorkflowInstance>;
+    /**
+     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
+     * @summary Retrieve instance attachments
+     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet(workflowInstanceId: string, options?: any): AxiosPromise<AttachmentsContext>;
     /**
      * Overrides the attachments information for a workflow instance independent of its status.  Take special care when using this API, because it will override the workflow attachments, that is, it might change the workflow   in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ATTACHMENTS
      * @summary Overwrite instance attachments
@@ -443,25 +403,23 @@ export declare const WorkflowInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId: string, attachmentsContext: AttachmentsContext, options?: any): AxiosPromise<void>;
+    v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut(workflowInstanceId: string, attachmentsContext: AttachmentsContext, options?: any): AxiosPromise<void>;
     /**
-     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
-     * @summary Update instance
-     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
-     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
+     * @summary Retrieve custom workflow attributes by workflow instance ID
+     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesByWorkflowInstanceId(workflowInstanceId: string, workflowInstanceUpdatePayload: WorkflowInstanceUpdatePayload, options?: any): AxiosPromise<void>;
+    v1WorkflowInstancesWorkflowInstanceIdAttributesGet(workflowInstanceId: string, options?: any): AxiosPromise<Array<CustomAttribute>>;
     /**
-     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-     * @summary Overwrite instance context
-     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
-     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
+     * @summary Retrieve instance context
+     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId: string, body: object, options?: any): AxiosPromise<void>;
+    v1WorkflowInstancesWorkflowInstanceIdContextGet(workflowInstanceId: string, options?: any): AxiosPromise<object>;
     /**
      * Modifies parts of the context for a workflow instance independent of its status.  Take special care when using this API, because it might change the workflow context in ways that are incompatible with the expectations  of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and make sure that  the execution has come to a halt, that is, that no further steps are being added to the execution log. Refer to PATCH on the parent resource  and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
      * @summary Update instance context
@@ -470,7 +428,49 @@ export declare const WorkflowInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesContextByWorkflowInstanceId1(workflowInstanceId: string, body: object, options?: any): AxiosPromise<void>;
+    v1WorkflowInstancesWorkflowInstanceIdContextPatch(workflowInstanceId: string, body: object, options?: any): AxiosPromise<void>;
+    /**
+     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+     * @summary Overwrite instance context
+     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
+     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdContextPut(workflowInstanceId: string, body: object, options?: any): AxiosPromise<void>;
+    /**
+     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
+     * @summary Retrieve error messages
+     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet(workflowInstanceId: string, options?: any): AxiosPromise<Array<WorkflowInstanceErrorMessage>>;
+    /**
+     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
+     * @summary Retrieve execution logs
+     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet(workflowInstanceId: string, options?: any): AxiosPromise<Array<WorkflowInstanceExecutionLog>>;
+    /**
+     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
+     * @summary Update instance
+     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
+     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdPatch(workflowInstanceId: string, workflowInstanceUpdatePayload: WorkflowInstanceUpdatePayload, options?: any): AxiosPromise<void>;
+    /**
+     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
+     * @summary Retrieve instance roles
+     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowInstancesWorkflowInstanceIdRolesGet(workflowInstanceId: string, options?: any): AxiosPromise<WorkflowInstanceRoles>;
     /**
      * Updates the instance-specific role assignments of the given workflow instance.  Any of the role assignment properties that is present in the request body will overwrite the existing assignments with the new assignments. Any properties that are either null or not present at all in the request body will leave the corresponding role assignments unchanged.  The maximum number of users and groups that can be assigned to each role is limited to 100.  The use of expressions as part of the role assignments (e.g. ${context.variable}) is only allowed for workflow instances that are not yet COMPLETED or CANCELED.  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ROLES  Examples: - Setting **viewerUsers: \"UserId1, UserId8\"** will remove all existing user assignments of the viewer role and then assign   only the two specified users to the role. - Setting **viewerUsers: \"\"** will remove all existing user assignments of the viewer role. - Specifying any non-null **viewerUsers** in the request body and leaving out **viewerGroups** will update the user   assignments and leave the group assignments unchanged.
      * @summary Update instance roles
@@ -479,7 +479,7 @@ export declare const WorkflowInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId: string, workflowInstanceRolesUpdatePayload: WorkflowInstanceRolesUpdatePayload, options?: any): AxiosPromise<void>;
+    v1WorkflowInstancesWorkflowInstanceIdRolesPatch(workflowInstanceId: string, workflowInstanceRolesUpdatePayload: WorkflowInstanceRolesUpdatePayload, options?: any): AxiosPromise<void>;
 };
 /**
  * WorkflowInstancesApi - object-oriented interface
@@ -489,15 +489,6 @@ export declare const WorkflowInstancesApiFactory: (configuration?: Configuration
  */
 export declare class WorkflowInstancesApi extends BaseAPI {
     /**
-     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
-     * @summary Start a new instance
-     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    createV1WorkflowInstances(workflowInstanceStartPayload: WorkflowInstanceStartPayload, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstance>>;
-    /**
      * Retrieves the workflow instance with the specified workflow instance ID.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve workflow instance by ID
      * @param {string} workflowInstanceId The ID of the workflow instance, which should be retrieved. The workflow instance ID is 36 characters long.
@@ -506,7 +497,7 @@ export declare class WorkflowInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    getInstance1(workflowInstanceId: string, $expand?: 'attributes', options?: any): Promise<import("axios").AxiosResponse<WorkflowInstance>>;
+    getInstance(workflowInstanceId: string, $expand?: 'attributes', options?: any): Promise<import("axios").AxiosResponse<WorkflowInstance>>;
     /**
      * Retrieves workflow instances by parameters. If no parameters are specified, all RUNNING, or ERRONEOUS instances are returned. Parameters for different attributes of the instance are evaluated using the logical \'and\' operator. If multiple parameters are specified for the same attribute or a parameter is specified multiple times, results are matched using the logical \'or\' operator, unless noted otherwise. Empty parameters are treated as if they were not given.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve all instances by query parameters
@@ -536,61 +527,7 @@ export declare class WorkflowInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    getV1WorkflowInstances($orderby?: 'id asc' | 'id desc' | 'definitionId asc' | 'definitionId desc' | 'definitionVersion asc' | 'definitionVersion desc' | 'startedAt asc' | 'startedAt desc' | 'completedAt asc' | 'completedAt desc' | 'startedBy asc' | 'startedBy desc' | 'subject asc' | 'subject desc' | 'businessKey asc' | 'businessKey desc', $skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', id?: string, definitionId?: string, definitionVersion?: string, status?: 'RUNNING' | 'ERRONEOUS' | 'SUSPENDED' | 'CANCELED' | 'COMPLETED', startedAt?: string, startedFrom?: string, startedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, startedBy?: string, subject?: string, containsText?: string, businessKey?: string, rootInstanceId?: string, parentInstanceId?: string, attributesExampleCustomAttribute?: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstance[]>>;
-    /**
-     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
-     * @summary Retrieve instance attachments
-     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    getV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<AttachmentsContext>>;
-    /**
-     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
-     * @summary Retrieve custom workflow attributes by workflow instance ID
-     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    getV1WorkflowInstancesAttributesByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<CustomAttribute[]>>;
-    /**
-     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
-     * @summary Retrieve instance context
-     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    getV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<object>>;
-    /**
-     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
-     * @summary Retrieve error messages
-     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstanceErrorMessage[]>>;
-    /**
-     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
-     * @summary Retrieve execution logs
-     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstanceExecutionLog[]>>;
-    /**
-     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
-     * @summary Retrieve instance roles
-     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    getV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstanceRoles>>;
+    v1WorkflowInstancesGet($orderby?: 'id asc' | 'id desc' | 'definitionId asc' | 'definitionId desc' | 'definitionVersion asc' | 'definitionVersion desc' | 'startedAt asc' | 'startedAt desc' | 'completedAt asc' | 'completedAt desc' | 'startedBy asc' | 'startedBy desc' | 'subject asc' | 'subject desc' | 'businessKey asc' | 'businessKey desc', $skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', id?: string, definitionId?: string, definitionVersion?: string, status?: 'RUNNING' | 'ERRONEOUS' | 'SUSPENDED' | 'CANCELED' | 'COMPLETED', startedAt?: string, startedFrom?: string, startedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, startedBy?: string, subject?: string, containsText?: string, businessKey?: string, rootInstanceId?: string, parentInstanceId?: string, attributesExampleCustomAttribute?: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstance[]>>;
     /**
      * Modifies the given workflow instances according to the specified operations. Currently, the only operation supported is the deletion of workflow instances. You can at most specify 10000 instances to delete in one API call.  Roles permitted to execute this operation: - Global roles: WorkflowTenantOperator - Scope: WORKFLOW_INSTANCES_UPDATE
      * @summary Delete instance by ID
@@ -599,7 +536,25 @@ export declare class WorkflowInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    updateV1WorkflowInstances(workflowInstancesUpdatePayload: Array<WorkflowInstancesUpdatePayload>, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1WorkflowInstancesPatch(workflowInstancesUpdatePayload: Array<WorkflowInstancesUpdatePayload>, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    /**
+     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
+     * @summary Start a new instance
+     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    v1WorkflowInstancesPost(workflowInstanceStartPayload: WorkflowInstanceStartPayload, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstance>>;
+    /**
+     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
+     * @summary Retrieve instance attachments
+     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<AttachmentsContext>>;
     /**
      * Overrides the attachments information for a workflow instance independent of its status.  Take special care when using this API, because it will override the workflow attachments, that is, it might change the workflow   in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ATTACHMENTS
      * @summary Overwrite instance attachments
@@ -609,27 +564,25 @@ export declare class WorkflowInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId: string, attachmentsContext: AttachmentsContext, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut(workflowInstanceId: string, attachmentsContext: AttachmentsContext, options?: any): Promise<import("axios").AxiosResponse<void>>;
     /**
-     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
-     * @summary Update instance
-     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
-     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
+     * @summary Retrieve custom workflow attributes by workflow instance ID
+     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    updateV1WorkflowInstancesByWorkflowInstanceId(workflowInstanceId: string, workflowInstanceUpdatePayload: WorkflowInstanceUpdatePayload, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdAttributesGet(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<CustomAttribute[]>>;
     /**
-     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-     * @summary Overwrite instance context
-     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
-     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
+     * @summary Retrieve instance context
+     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    updateV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId: string, body: object, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdContextGet(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<object>>;
     /**
      * Modifies parts of the context for a workflow instance independent of its status.  Take special care when using this API, because it might change the workflow context in ways that are incompatible with the expectations  of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and make sure that  the execution has come to a halt, that is, that no further steps are being added to the execution log. Refer to PATCH on the parent resource  and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
      * @summary Update instance context
@@ -639,7 +592,54 @@ export declare class WorkflowInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    updateV1WorkflowInstancesContextByWorkflowInstanceId1(workflowInstanceId: string, body: object, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdContextPatch(workflowInstanceId: string, body: object, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    /**
+     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+     * @summary Overwrite instance context
+     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
+     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    v1WorkflowInstancesWorkflowInstanceIdContextPut(workflowInstanceId: string, body: object, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    /**
+     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
+     * @summary Retrieve error messages
+     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstanceErrorMessage[]>>;
+    /**
+     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
+     * @summary Retrieve execution logs
+     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstanceExecutionLog[]>>;
+    /**
+     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
+     * @summary Update instance
+     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
+     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    v1WorkflowInstancesWorkflowInstanceIdPatch(workflowInstanceId: string, workflowInstanceUpdatePayload: WorkflowInstanceUpdatePayload, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    /**
+     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
+     * @summary Retrieve instance roles
+     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    v1WorkflowInstancesWorkflowInstanceIdRolesGet(workflowInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowInstanceRoles>>;
     /**
      * Updates the instance-specific role assignments of the given workflow instance.  Any of the role assignment properties that is present in the request body will overwrite the existing assignments with the new assignments. Any properties that are either null or not present at all in the request body will leave the corresponding role assignments unchanged.  The maximum number of users and groups that can be assigned to each role is limited to 100.  The use of expressions as part of the role assignments (e.g. ${context.variable}) is only allowed for workflow instances that are not yet COMPLETED or CANCELED.  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ROLES  Examples: - Setting **viewerUsers: \"UserId1, UserId8\"** will remove all existing user assignments of the viewer role and then assign   only the two specified users to the role. - Setting **viewerUsers: \"\"** will remove all existing user assignments of the viewer role. - Specifying any non-null **viewerUsers** in the request body and leaving out **viewerGroups** will update the user   assignments and leave the group assignments unchanged.
      * @summary Update instance roles
@@ -649,6 +649,6 @@ export declare class WorkflowInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    updateV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId: string, workflowInstanceRolesUpdatePayload: WorkflowInstanceRolesUpdatePayload, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1WorkflowInstancesWorkflowInstanceIdRolesPatch(workflowInstanceId: string, workflowInstanceRolesUpdatePayload: WorkflowInstanceRolesUpdatePayload, options?: any): Promise<import("axios").AxiosResponse<void>>;
 }
 //# sourceMappingURL=workflow-instances-api.d.ts.map

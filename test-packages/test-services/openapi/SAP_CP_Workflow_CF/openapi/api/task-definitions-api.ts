@@ -38,7 +38,7 @@ export const TaskDefinitionsApiAxiosParamCreator = function (configuration?: Con
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskDefinitions: async ($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options: any = {}): Promise<RequestArgs> => {
+        v1TaskDefinitionsGet: async ($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/task-definitions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -121,8 +121,8 @@ export const TaskDefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1TaskDefinitions($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<object>>> {
-            const localVarAxiosArgs = await TaskDefinitionsApiAxiosParamCreator(configuration).getV1TaskDefinitions($skip, $top, $inlinecount, $expand, options);
+        async v1TaskDefinitionsGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<object>>> {
+            const localVarAxiosArgs = await TaskDefinitionsApiAxiosParamCreator(configuration).v1TaskDefinitionsGet($skip, $top, $inlinecount, $expand, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -147,8 +147,8 @@ export const TaskDefinitionsApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskDefinitions($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options?: any): AxiosPromise<Array<object>> {
-            return TaskDefinitionsApiFp(configuration).getV1TaskDefinitions($skip, $top, $inlinecount, $expand, options).then((request) => request(axios, basePath));
+        v1TaskDefinitionsGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options?: any): AxiosPromise<Array<object>> {
+            return TaskDefinitionsApiFp(configuration).v1TaskDefinitionsGet($skip, $top, $inlinecount, $expand, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -171,7 +171,7 @@ export class TaskDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TaskDefinitionsApi
      */
-    public getV1TaskDefinitions($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options?: any) {
-        return TaskDefinitionsApiFp(this.configuration).getV1TaskDefinitions($skip, $top, $inlinecount, $expand, options).then((request) => request(this.axios, this.basePath));
+    public v1TaskDefinitionsGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options?: any) {
+        return TaskDefinitionsApiFp(this.configuration).v1TaskDefinitionsGet($skip, $top, $inlinecount, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }

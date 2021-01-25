@@ -94,7 +94,7 @@ var DataExportApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Export: function (options) {
+        v1ExportGet: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -172,12 +172,12 @@ var DataExportApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Export: function (options) {
+        v1ExportGet: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.DataExportApiAxiosParamCreator(configuration).getV1Export(options)];
+                        case 0: return [4 /*yield*/, exports.DataExportApiAxiosParamCreator(configuration).v1ExportGet(options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -205,8 +205,8 @@ var DataExportApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Export: function (options) {
-            return exports.DataExportApiFp(configuration).getV1Export(options).then(function (request) { return request(axios, basePath); });
+        v1ExportGet: function (options) {
+            return exports.DataExportApiFp(configuration).v1ExportGet(options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -229,9 +229,9 @@ var DataExportApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof DataExportApi
      */
-    DataExportApi.prototype.getV1Export = function (options) {
+    DataExportApi.prototype.v1ExportGet = function (options) {
         var _this = this;
-        return exports.DataExportApiFp(this.configuration).getV1Export(options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.DataExportApiFp(this.configuration).v1ExportGet(options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return DataExportApi;
 }(base_1.BaseAPI));

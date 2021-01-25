@@ -72,7 +72,7 @@ export declare const UserTaskInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstances: ($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, $orderby?: "claimedAt asc" | "claimedAt desc" | "completedAt asc" | "completedAt desc" | "createdAt asc" | "createdAt desc" | "lastChangedAt asc" | "lastChangedAt desc" | "dueDate asc" | "dueDate desc" | "subject asc" | "subject desc" | "description asc" | "description desc" | "activityId asc" | "activityId desc" | "id asc" | "id desc" | "processor asc" | "processor desc" | "workflowDefinitionId asc" | "workflowDefinitionId desc" | "workflowInstanceId asc" | "workflowInstanceId desc" | "priority asc" | "priority desc" | undefined, workflowInstanceId?: string | undefined, workflowDefinitionId?: string | undefined, processor?: string | undefined, id?: string | undefined, activityId?: string | undefined, description?: string | undefined, subject?: string | undefined, createdAt?: string | undefined, createdFrom?: string | undefined, createdUpTo?: string | undefined, claimedAt?: string | undefined, claimedFrom?: string | undefined, claimedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, lastChangedAt?: string | undefined, lastChangedFrom?: string | undefined, lastChangedUpTo?: string | undefined, dueDate?: string | undefined, dueDateFrom?: string | undefined, dueDateUpTo?: string | undefined, priority?: "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH" | undefined, status?: "READY" | "RESERVED" | "COMPLETED" | "CANCELED" | undefined, recipientUsers?: string | undefined, recipientGroups?: string | undefined, containsText?: string | undefined, attributesExampleCustomAttribute?: string | undefined, definitionId?: string | undefined, options?: any) => Promise<RequestArgs>;
+    v1TaskInstancesGet: ($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, $orderby?: "claimedAt asc" | "claimedAt desc" | "completedAt asc" | "completedAt desc" | "createdAt asc" | "createdAt desc" | "lastChangedAt asc" | "lastChangedAt desc" | "dueDate asc" | "dueDate desc" | "subject asc" | "subject desc" | "description asc" | "description desc" | "activityId asc" | "activityId desc" | "id asc" | "id desc" | "processor asc" | "processor desc" | "workflowDefinitionId asc" | "workflowDefinitionId desc" | "workflowInstanceId asc" | "workflowInstanceId desc" | "priority asc" | "priority desc" | undefined, workflowInstanceId?: string | undefined, workflowDefinitionId?: string | undefined, processor?: string | undefined, id?: string | undefined, activityId?: string | undefined, description?: string | undefined, subject?: string | undefined, createdAt?: string | undefined, createdFrom?: string | undefined, createdUpTo?: string | undefined, claimedAt?: string | undefined, claimedFrom?: string | undefined, claimedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, lastChangedAt?: string | undefined, lastChangedFrom?: string | undefined, lastChangedUpTo?: string | undefined, dueDate?: string | undefined, dueDateFrom?: string | undefined, dueDateUpTo?: string | undefined, priority?: "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH" | undefined, status?: "READY" | "RESERVED" | "COMPLETED" | "CANCELED" | undefined, recipientUsers?: string | undefined, recipientGroups?: string | undefined, containsText?: string | undefined, attributesExampleCustomAttribute?: string | undefined, definitionId?: string | undefined, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the attachments information of a workflow instance via the given user task.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_ATTACHMENTS
      * @summary Retrieve task instance attachments
@@ -80,7 +80,7 @@ export declare const UserTaskInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesAttachmentsByTaskInstanceId: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
+    v1TaskInstancesTaskInstanceIdAttachmentsGet: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves custom task attributes of a user task. Labels as well as the order of the custom task attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: TASK_GET_ATTRIBUTES
      * @summary Retrieve custom task attributes by task instance ID
@@ -88,7 +88,7 @@ export declare const UserTaskInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesAttributesByTaskInstanceId: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
+    v1TaskInstancesTaskInstanceIdAttributesGet: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
      * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the task context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context of a user task.  Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_CONTEXT
      * @summary Retrieve task context by ID
@@ -96,7 +96,7 @@ export declare const UserTaskInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesContextByTaskInstanceId: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
+    v1TaskInstancesTaskInstanceIdContextGet: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the form metadata of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM
      * @summary Retrieve form metadata of the given task instance.
@@ -104,7 +104,7 @@ export declare const UserTaskInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesFormByTaskInstanceId: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
+    v1TaskInstancesTaskInstanceIdFormGet: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the form model of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM_MODEL
      * @summary Retrieve form model of the given task instance.
@@ -112,7 +112,7 @@ export declare const UserTaskInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesFormModelByTaskInstanceId: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
+    v1TaskInstancesTaskInstanceIdFormModelGet: (taskInstanceId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Updates a user task\'s status, its properties (for example, subject), and its context with the attributes provided in the request body.    For more information, see SAP Cloud Platform Workflow Service documentation on the  [SAP Help Portal](https://help.sap.com/viewer/e157c391253b4ecd93647bf232d18a83/Cloud/en-US/fe41c54d61fa4710b34f2afe11b5d00e.html).  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: TASK_COMPLETE, TASK_UPDATE
      * @summary Update task by ID
@@ -121,7 +121,7 @@ export declare const UserTaskInstancesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1TaskInstancesByTaskInstanceId: (taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any) => Promise<RequestArgs>;
+    v1TaskInstancesTaskInstanceIdPatch: (taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any) => Promise<RequestArgs>;
 };
 /**
  * UserTaskInstancesApi - functional programming interface
@@ -177,7 +177,7 @@ export declare const UserTaskInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstances($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, $orderby?: "claimedAt asc" | "claimedAt desc" | "completedAt asc" | "completedAt desc" | "createdAt asc" | "createdAt desc" | "lastChangedAt asc" | "lastChangedAt desc" | "dueDate asc" | "dueDate desc" | "subject asc" | "subject desc" | "description asc" | "description desc" | "activityId asc" | "activityId desc" | "id asc" | "id desc" | "processor asc" | "processor desc" | "workflowDefinitionId asc" | "workflowDefinitionId desc" | "workflowInstanceId asc" | "workflowInstanceId desc" | "priority asc" | "priority desc" | undefined, workflowInstanceId?: string | undefined, workflowDefinitionId?: string | undefined, processor?: string | undefined, id?: string | undefined, activityId?: string | undefined, description?: string | undefined, subject?: string | undefined, createdAt?: string | undefined, createdFrom?: string | undefined, createdUpTo?: string | undefined, claimedAt?: string | undefined, claimedFrom?: string | undefined, claimedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, lastChangedAt?: string | undefined, lastChangedFrom?: string | undefined, lastChangedUpTo?: string | undefined, dueDate?: string | undefined, dueDateFrom?: string | undefined, dueDateUpTo?: string | undefined, priority?: "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH" | undefined, status?: "READY" | "RESERVED" | "COMPLETED" | "CANCELED" | undefined, recipientUsers?: string | undefined, recipientGroups?: string | undefined, containsText?: string | undefined, attributesExampleCustomAttribute?: string | undefined, definitionId?: string | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<TaskInstance>>>;
+    v1TaskInstancesGet($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, $orderby?: "claimedAt asc" | "claimedAt desc" | "completedAt asc" | "completedAt desc" | "createdAt asc" | "createdAt desc" | "lastChangedAt asc" | "lastChangedAt desc" | "dueDate asc" | "dueDate desc" | "subject asc" | "subject desc" | "description asc" | "description desc" | "activityId asc" | "activityId desc" | "id asc" | "id desc" | "processor asc" | "processor desc" | "workflowDefinitionId asc" | "workflowDefinitionId desc" | "workflowInstanceId asc" | "workflowInstanceId desc" | "priority asc" | "priority desc" | undefined, workflowInstanceId?: string | undefined, workflowDefinitionId?: string | undefined, processor?: string | undefined, id?: string | undefined, activityId?: string | undefined, description?: string | undefined, subject?: string | undefined, createdAt?: string | undefined, createdFrom?: string | undefined, createdUpTo?: string | undefined, claimedAt?: string | undefined, claimedFrom?: string | undefined, claimedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, lastChangedAt?: string | undefined, lastChangedFrom?: string | undefined, lastChangedUpTo?: string | undefined, dueDate?: string | undefined, dueDateFrom?: string | undefined, dueDateUpTo?: string | undefined, priority?: "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH" | undefined, status?: "READY" | "RESERVED" | "COMPLETED" | "CANCELED" | undefined, recipientUsers?: string | undefined, recipientGroups?: string | undefined, containsText?: string | undefined, attributesExampleCustomAttribute?: string | undefined, definitionId?: string | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<TaskInstance>>>;
     /**
      * Retrieves the attachments information of a workflow instance via the given user task.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_ATTACHMENTS
      * @summary Retrieve task instance attachments
@@ -185,7 +185,7 @@ export declare const UserTaskInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<AttachmentsContext>>;
+    v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<AttachmentsContext>>;
     /**
      * Retrieves custom task attributes of a user task. Labels as well as the order of the custom task attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: TASK_GET_ATTRIBUTES
      * @summary Retrieve custom task attributes by task instance ID
@@ -193,7 +193,7 @@ export declare const UserTaskInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<CustomAttribute>>>;
+    v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<CustomAttribute>>>;
     /**
      * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the task context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context of a user task.  Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_CONTEXT
      * @summary Retrieve task context by ID
@@ -201,7 +201,7 @@ export declare const UserTaskInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesContextByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<object>>;
+    v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<object>>;
     /**
      * Retrieves the form metadata of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM
      * @summary Retrieve form metadata of the given task instance.
@@ -209,7 +209,7 @@ export declare const UserTaskInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesFormByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FormMetadata>>;
+    v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FormMetadata>>;
     /**
      * Retrieves the form model of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM_MODEL
      * @summary Retrieve form model of the given task instance.
@@ -217,7 +217,7 @@ export declare const UserTaskInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FormModel>>;
+    v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FormModel>>;
     /**
      * Updates a user task\'s status, its properties (for example, subject), and its context with the attributes provided in the request body.    For more information, see SAP Cloud Platform Workflow Service documentation on the  [SAP Help Portal](https://help.sap.com/viewer/e157c391253b4ecd93647bf232d18a83/Cloud/en-US/fe41c54d61fa4710b34f2afe11b5d00e.html).  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: TASK_COMPLETE, TASK_UPDATE
      * @summary Update task by ID
@@ -226,7 +226,7 @@ export declare const UserTaskInstancesApiFp: (configuration?: Configuration | un
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1TaskInstancesByTaskInstanceId(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1TaskInstancesTaskInstanceIdPatch(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
 };
 /**
  * UserTaskInstancesApi - factory interface
@@ -282,7 +282,7 @@ export declare const UserTaskInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstances($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, $orderby?: "claimedAt asc" | "claimedAt desc" | "completedAt asc" | "completedAt desc" | "createdAt asc" | "createdAt desc" | "lastChangedAt asc" | "lastChangedAt desc" | "dueDate asc" | "dueDate desc" | "subject asc" | "subject desc" | "description asc" | "description desc" | "activityId asc" | "activityId desc" | "id asc" | "id desc" | "processor asc" | "processor desc" | "workflowDefinitionId asc" | "workflowDefinitionId desc" | "workflowInstanceId asc" | "workflowInstanceId desc" | "priority asc" | "priority desc" | undefined, workflowInstanceId?: string | undefined, workflowDefinitionId?: string | undefined, processor?: string | undefined, id?: string | undefined, activityId?: string | undefined, description?: string | undefined, subject?: string | undefined, createdAt?: string | undefined, createdFrom?: string | undefined, createdUpTo?: string | undefined, claimedAt?: string | undefined, claimedFrom?: string | undefined, claimedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, lastChangedAt?: string | undefined, lastChangedFrom?: string | undefined, lastChangedUpTo?: string | undefined, dueDate?: string | undefined, dueDateFrom?: string | undefined, dueDateUpTo?: string | undefined, priority?: "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH" | undefined, status?: "READY" | "RESERVED" | "COMPLETED" | "CANCELED" | undefined, recipientUsers?: string | undefined, recipientGroups?: string | undefined, containsText?: string | undefined, attributesExampleCustomAttribute?: string | undefined, definitionId?: string | undefined, options?: any): AxiosPromise<Array<TaskInstance>>;
+    v1TaskInstancesGet($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributes" | undefined, $orderby?: "claimedAt asc" | "claimedAt desc" | "completedAt asc" | "completedAt desc" | "createdAt asc" | "createdAt desc" | "lastChangedAt asc" | "lastChangedAt desc" | "dueDate asc" | "dueDate desc" | "subject asc" | "subject desc" | "description asc" | "description desc" | "activityId asc" | "activityId desc" | "id asc" | "id desc" | "processor asc" | "processor desc" | "workflowDefinitionId asc" | "workflowDefinitionId desc" | "workflowInstanceId asc" | "workflowInstanceId desc" | "priority asc" | "priority desc" | undefined, workflowInstanceId?: string | undefined, workflowDefinitionId?: string | undefined, processor?: string | undefined, id?: string | undefined, activityId?: string | undefined, description?: string | undefined, subject?: string | undefined, createdAt?: string | undefined, createdFrom?: string | undefined, createdUpTo?: string | undefined, claimedAt?: string | undefined, claimedFrom?: string | undefined, claimedUpTo?: string | undefined, completedAt?: string | undefined, completedFrom?: string | undefined, completedUpTo?: string | undefined, lastChangedAt?: string | undefined, lastChangedFrom?: string | undefined, lastChangedUpTo?: string | undefined, dueDate?: string | undefined, dueDateFrom?: string | undefined, dueDateUpTo?: string | undefined, priority?: "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH" | undefined, status?: "READY" | "RESERVED" | "COMPLETED" | "CANCELED" | undefined, recipientUsers?: string | undefined, recipientGroups?: string | undefined, containsText?: string | undefined, attributesExampleCustomAttribute?: string | undefined, definitionId?: string | undefined, options?: any): AxiosPromise<Array<TaskInstance>>;
     /**
      * Retrieves the attachments information of a workflow instance via the given user task.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_ATTACHMENTS
      * @summary Retrieve task instance attachments
@@ -290,7 +290,7 @@ export declare const UserTaskInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<AttachmentsContext>;
+    v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId: string, options?: any): AxiosPromise<AttachmentsContext>;
     /**
      * Retrieves custom task attributes of a user task. Labels as well as the order of the custom task attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: TASK_GET_ATTRIBUTES
      * @summary Retrieve custom task attributes by task instance ID
@@ -298,7 +298,7 @@ export declare const UserTaskInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<Array<CustomAttribute>>;
+    v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId: string, options?: any): AxiosPromise<Array<CustomAttribute>>;
     /**
      * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the task context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context of a user task.  Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_CONTEXT
      * @summary Retrieve task context by ID
@@ -306,7 +306,7 @@ export declare const UserTaskInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesContextByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<object>;
+    v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId: string, options?: any): AxiosPromise<object>;
     /**
      * Retrieves the form metadata of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM
      * @summary Retrieve form metadata of the given task instance.
@@ -314,7 +314,7 @@ export declare const UserTaskInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesFormByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<FormMetadata>;
+    v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId: string, options?: any): AxiosPromise<FormMetadata>;
     /**
      * Retrieves the form model of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM_MODEL
      * @summary Retrieve form model of the given task instance.
@@ -322,7 +322,7 @@ export declare const UserTaskInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<FormModel>;
+    v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId: string, options?: any): AxiosPromise<FormModel>;
     /**
      * Updates a user task\'s status, its properties (for example, subject), and its context with the attributes provided in the request body.    For more information, see SAP Cloud Platform Workflow Service documentation on the  [SAP Help Portal](https://help.sap.com/viewer/e157c391253b4ecd93647bf232d18a83/Cloud/en-US/fe41c54d61fa4710b34f2afe11b5d00e.html).  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: TASK_COMPLETE, TASK_UPDATE
      * @summary Update task by ID
@@ -331,7 +331,7 @@ export declare const UserTaskInstancesApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateV1TaskInstancesByTaskInstanceId(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): AxiosPromise<void>;
+    v1TaskInstancesTaskInstanceIdPatch(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): AxiosPromise<void>;
 };
 /**
  * UserTaskInstancesApi - object-oriented interface
@@ -391,7 +391,7 @@ export declare class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    getV1TaskInstances($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any): Promise<import("axios").AxiosResponse<TaskInstance[]>>;
+    v1TaskInstancesGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any): Promise<import("axios").AxiosResponse<TaskInstance[]>>;
     /**
      * Retrieves the attachments information of a workflow instance via the given user task.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_ATTACHMENTS
      * @summary Retrieve task instance attachments
@@ -400,7 +400,7 @@ export declare class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<AttachmentsContext>>;
+    v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<AttachmentsContext>>;
     /**
      * Retrieves custom task attributes of a user task. Labels as well as the order of the custom task attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: TASK_GET_ATTRIBUTES
      * @summary Retrieve custom task attributes by task instance ID
@@ -409,7 +409,7 @@ export declare class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<CustomAttribute[]>>;
+    v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<CustomAttribute[]>>;
     /**
      * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the task context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context of a user task.  Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_CONTEXT
      * @summary Retrieve task context by ID
@@ -418,7 +418,7 @@ export declare class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    getV1TaskInstancesContextByTaskInstanceId(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<object>>;
+    v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<object>>;
     /**
      * Retrieves the form metadata of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM
      * @summary Retrieve form metadata of the given task instance.
@@ -427,7 +427,7 @@ export declare class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    getV1TaskInstancesFormByTaskInstanceId(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<FormMetadata>>;
+    v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<FormMetadata>>;
     /**
      * Retrieves the form model of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM_MODEL
      * @summary Retrieve form model of the given task instance.
@@ -436,7 +436,7 @@ export declare class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<FormModel>>;
+    v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId: string, options?: any): Promise<import("axios").AxiosResponse<FormModel>>;
     /**
      * Updates a user task\'s status, its properties (for example, subject), and its context with the attributes provided in the request body.    For more information, see SAP Cloud Platform Workflow Service documentation on the  [SAP Help Portal](https://help.sap.com/viewer/e157c391253b4ecd93647bf232d18a83/Cloud/en-US/fe41c54d61fa4710b34f2afe11b5d00e.html).  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: TASK_COMPLETE, TASK_UPDATE
      * @summary Update task by ID
@@ -446,6 +446,6 @@ export declare class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    updateV1TaskInstancesByTaskInstanceId(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1TaskInstancesTaskInstanceIdPatch(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): Promise<import("axios").AxiosResponse<void>>;
 }
 //# sourceMappingURL=user-task-instances-api.d.ts.map

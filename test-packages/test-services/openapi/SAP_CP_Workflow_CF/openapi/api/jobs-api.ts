@@ -37,10 +37,10 @@ export const JobsApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1JobsByJobId: async (jobId: string, options: any = {}): Promise<RequestArgs> => {
+        v1JobsJobIdGet: async (jobId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'jobId' is not null or undefined
             if (jobId === null || jobId === undefined) {
-                throw new RequiredError('jobId','Required parameter jobId was null or undefined when calling getV1JobsByJobId.');
+                throw new RequiredError('jobId','Required parameter jobId was null or undefined when calling v1JobsJobIdGet.');
             }
             const localVarPath = `/v1/jobs/{jobId}`
                 .replace(`{${"jobId"}}`, encodeURIComponent(String(jobId)));
@@ -106,8 +106,8 @@ export const JobsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1JobsByJobId(jobId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Job>> {
-            const localVarAxiosArgs = await JobsApiAxiosParamCreator(configuration).getV1JobsByJobId(jobId, options);
+        async v1JobsJobIdGet(jobId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Job>> {
+            const localVarAxiosArgs = await JobsApiAxiosParamCreator(configuration).v1JobsJobIdGet(jobId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -129,8 +129,8 @@ export const JobsApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1JobsByJobId(jobId: string, options?: any): AxiosPromise<Job> {
-            return JobsApiFp(configuration).getV1JobsByJobId(jobId, options).then((request) => request(axios, basePath));
+        v1JobsJobIdGet(jobId: string, options?: any): AxiosPromise<Job> {
+            return JobsApiFp(configuration).v1JobsJobIdGet(jobId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -150,7 +150,7 @@ export class JobsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof JobsApi
      */
-    public getV1JobsByJobId(jobId: string, options?: any) {
-        return JobsApiFp(this.configuration).getV1JobsByJobId(jobId, options).then((request) => request(this.axios, this.basePath));
+    public v1JobsJobIdGet(jobId: string, options?: any) {
+        return JobsApiFp(this.configuration).v1JobsJobIdGet(jobId, options).then((request) => request(this.axios, this.basePath));
     }
 }

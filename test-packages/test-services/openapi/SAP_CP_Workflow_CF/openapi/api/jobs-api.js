@@ -95,7 +95,7 @@ var JobsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1JobsByJobId: function (jobId, options) {
+        v1JobsJobIdGet: function (jobId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -104,7 +104,7 @@ var JobsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'jobId' is not null or undefined
                             if (jobId === null || jobId === undefined) {
-                                throw new base_1.RequiredError('jobId', 'Required parameter jobId was null or undefined when calling getV1JobsByJobId.');
+                                throw new base_1.RequiredError('jobId', 'Required parameter jobId was null or undefined when calling v1JobsJobIdGet.');
                             }
                             localVarPath = "/v1/jobs/{jobId}"
                                 .replace("{" + "jobId" + "}", encodeURIComponent(String(jobId)));
@@ -179,12 +179,12 @@ var JobsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1JobsByJobId: function (jobId, options) {
+        v1JobsJobIdGet: function (jobId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.JobsApiAxiosParamCreator(configuration).getV1JobsByJobId(jobId, options)];
+                        case 0: return [4 /*yield*/, exports.JobsApiAxiosParamCreator(configuration).v1JobsJobIdGet(jobId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -213,8 +213,8 @@ var JobsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1JobsByJobId: function (jobId, options) {
-            return exports.JobsApiFp(configuration).getV1JobsByJobId(jobId, options).then(function (request) { return request(axios, basePath); });
+        v1JobsJobIdGet: function (jobId, options) {
+            return exports.JobsApiFp(configuration).v1JobsJobIdGet(jobId, options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -238,9 +238,9 @@ var JobsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof JobsApi
      */
-    JobsApi.prototype.getV1JobsByJobId = function (jobId, options) {
+    JobsApi.prototype.v1JobsJobIdGet = function (jobId, options) {
         var _this = this;
-        return exports.JobsApiFp(this.configuration).getV1JobsByJobId(jobId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.JobsApiFp(this.configuration).v1JobsJobIdGet(jobId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return JobsApi;
 }(base_1.BaseAPI));

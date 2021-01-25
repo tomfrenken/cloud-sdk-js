@@ -24,7 +24,8 @@ export async function convertOpenApiSpec(
   const file = await parseFileAsJson(filePath);
   const openApiDocument = await convertDocToOpenApiV3(file);
   // return convertDocToGlobalTag(convertDocToUniqueOperationIds(openApiDocument));
-  return convertDocToUniqueOperationIds(openApiDocument);
+  // return convertDocToUniqueOperationIds(openApiDocument);
+  return openApiDocument;
 }
 
 /**

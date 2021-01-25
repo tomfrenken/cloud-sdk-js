@@ -41,10 +41,10 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Messages: async (sendMessagePayload: SendMessagePayload, options: any = {}): Promise<RequestArgs> => {
+        v1MessagesPost: async (sendMessagePayload: SendMessagePayload, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'sendMessagePayload' is not null or undefined
             if (sendMessagePayload === null || sendMessagePayload === undefined) {
-                throw new RequiredError('sendMessagePayload','Required parameter sendMessagePayload was null or undefined when calling createV1Messages.');
+                throw new RequiredError('sendMessagePayload','Required parameter sendMessagePayload was null or undefined when calling v1MessagesPost.');
             }
             const localVarPath = `/v1/messages/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -113,8 +113,8 @@ export const MessagesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createV1Messages(sendMessagePayload: SendMessagePayload, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ConsumingWorkflowInstance>>> {
-            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).createV1Messages(sendMessagePayload, options);
+        async v1MessagesPost(sendMessagePayload: SendMessagePayload, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ConsumingWorkflowInstance>>> {
+            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).v1MessagesPost(sendMessagePayload, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -136,8 +136,8 @@ export const MessagesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Messages(sendMessagePayload: SendMessagePayload, options?: any): AxiosPromise<Array<ConsumingWorkflowInstance>> {
-            return MessagesApiFp(configuration).createV1Messages(sendMessagePayload, options).then((request) => request(axios, basePath));
+        v1MessagesPost(sendMessagePayload: SendMessagePayload, options?: any): AxiosPromise<Array<ConsumingWorkflowInstance>> {
+            return MessagesApiFp(configuration).v1MessagesPost(sendMessagePayload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -157,7 +157,7 @@ export class MessagesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    public createV1Messages(sendMessagePayload: SendMessagePayload, options?: any) {
-        return MessagesApiFp(this.configuration).createV1Messages(sendMessagePayload, options).then((request) => request(this.axios, this.basePath));
+    public v1MessagesPost(sendMessagePayload: SendMessagePayload, options?: any) {
+        return MessagesApiFp(this.configuration).v1MessagesPost(sendMessagePayload, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -95,7 +95,7 @@ var FormsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteV1FormsByFormId: function (formId, options) {
+        v1FormsFormIdDelete: function (formId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -104,7 +104,7 @@ var FormsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'formId' is not null or undefined
                             if (formId === null || formId === undefined) {
-                                throw new base_1.RequiredError('formId', 'Required parameter formId was null or undefined when calling deleteV1FormsByFormId.');
+                                throw new base_1.RequiredError('formId', 'Required parameter formId was null or undefined when calling v1FormsFormIdDelete.');
                             }
                             localVarPath = "/v1/forms/{formId}"
                                 .replace("{" + "formId" + "}", encodeURIComponent(String(formId)));
@@ -113,6 +113,168 @@ var FormsApiAxiosParamCreator = function (configuration) {
                                 baseOptions = configuration.baseOptions;
                             }
                             localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
+                        case 1:
+                            _a = _c.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            localVarAccessTokenValue = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 5;
+                        case 5:
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
+                        case 6:
+                            _b = _c.sent();
+                            return [3 /*break*/, 9];
+                        case 7: return [4 /*yield*/, configuration.accessToken];
+                        case 8:
+                            _b = _c.sent();
+                            _c.label = 9;
+                        case 9:
+                            localVarAccessTokenValue = _b;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 10;
+                        case 10:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.query) {
+                                query.set(key, options.query[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
+         * @summary Retrieve form model by ID and revision.
+         * @param {string} formId The ID of the form for which the model should be retrieved.
+         * @param {string} revisionId The revision of the form for which the model should be retrieved.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdRevisionsRevisionIdModelGet: function (formId, revisionId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            // verify required parameter 'formId' is not null or undefined
+                            if (formId === null || formId === undefined) {
+                                throw new base_1.RequiredError('formId', 'Required parameter formId was null or undefined when calling v1FormsFormIdRevisionsRevisionIdModelGet.');
+                            }
+                            // verify required parameter 'revisionId' is not null or undefined
+                            if (revisionId === null || revisionId === undefined) {
+                                throw new base_1.RequiredError('revisionId', 'Required parameter revisionId was null or undefined when calling v1FormsFormIdRevisionsRevisionIdModelGet.');
+                            }
+                            localVarPath = "/v1/forms/{formId}/revisions/{revisionId}/model"
+                                .replace("{" + "formId" + "}", encodeURIComponent(String(formId)))
+                                .replace("{" + "revisionId" + "}", encodeURIComponent(String(revisionId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
+                        case 1:
+                            _a = _c.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            localVarAccessTokenValue = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 5;
+                        case 5:
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
+                        case 6:
+                            _b = _c.sent();
+                            return [3 /*break*/, 9];
+                        case 7: return [4 /*yield*/, configuration.accessToken];
+                        case 8:
+                            _b = _c.sent();
+                            _c.label = 9;
+                        case 9:
+                            localVarAccessTokenValue = _b;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 10;
+                        case 10:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.query) {
+                                query.set(key, options.query[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
+         * @summary Retrieve form model by ID and version number.
+         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdVersionsVersionNumberModelGet: function (formId, versionNumber, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            // verify required parameter 'formId' is not null or undefined
+                            if (formId === null || formId === undefined) {
+                                throw new base_1.RequiredError('formId', 'Required parameter formId was null or undefined when calling v1FormsFormIdVersionsVersionNumberModelGet.');
+                            }
+                            // verify required parameter 'versionNumber' is not null or undefined
+                            if (versionNumber === null || versionNumber === undefined) {
+                                throw new base_1.RequiredError('versionNumber', 'Required parameter versionNumber was null or undefined when calling v1FormsFormIdVersionsVersionNumberModelGet.');
+                            }
+                            localVarPath = "/v1/forms/{formId}/versions/{versionNumber}/model"
+                                .replace("{" + "formId" + "}", encodeURIComponent(String(formId)))
+                                .replace("{" + "versionNumber" + "}", encodeURIComponent(String(versionNumber)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
                             localVarHeaderParameter = {};
                             localVarQueryParameter = {};
                             if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
@@ -173,7 +335,7 @@ var FormsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Forms: function ($skip, $top, $inlinecount, type, options) {
+        v1FormsGet: function ($skip, $top, $inlinecount, type, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -248,168 +410,6 @@ var FormsApiAxiosParamCreator = function (configuration) {
                 });
             });
         },
-        /**
-         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
-         * @summary Retrieve form model by ID and revision.
-         * @param {string} formId The ID of the form for which the model should be retrieved.
-         * @param {string} revisionId The revision of the form for which the model should be retrieved.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsRevisionsModelByFormIdAndRevisionId: function (formId, revisionId, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            // verify required parameter 'formId' is not null or undefined
-                            if (formId === null || formId === undefined) {
-                                throw new base_1.RequiredError('formId', 'Required parameter formId was null or undefined when calling getV1FormsRevisionsModelByFormIdAndRevisionId.');
-                            }
-                            // verify required parameter 'revisionId' is not null or undefined
-                            if (revisionId === null || revisionId === undefined) {
-                                throw new base_1.RequiredError('revisionId', 'Required parameter revisionId was null or undefined when calling getV1FormsRevisionsModelByFormIdAndRevisionId.');
-                            }
-                            localVarPath = "/v1/forms/{formId}/revisions/{revisionId}/model"
-                                .replace("{" + "formId" + "}", encodeURIComponent(String(formId)))
-                                .replace("{" + "revisionId" + "}", encodeURIComponent(String(revisionId)));
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
-                        case 1:
-                            _a = _c.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _c.sent();
-                            _c.label = 4;
-                        case 4:
-                            localVarAccessTokenValue = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 5;
-                        case 5:
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
-                        case 6:
-                            _b = _c.sent();
-                            return [3 /*break*/, 9];
-                        case 7: return [4 /*yield*/, configuration.accessToken];
-                        case 8:
-                            _b = _c.sent();
-                            _c.label = 9;
-                        case 9:
-                            localVarAccessTokenValue = _b;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 10;
-                        case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.query) {
-                                query.set(key, options.query[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
-         * @summary Retrieve form model by ID and version number.
-         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsVersionsModelByFormIdAndVersionNumber: function (formId, versionNumber, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            // verify required parameter 'formId' is not null or undefined
-                            if (formId === null || formId === undefined) {
-                                throw new base_1.RequiredError('formId', 'Required parameter formId was null or undefined when calling getV1FormsVersionsModelByFormIdAndVersionNumber.');
-                            }
-                            // verify required parameter 'versionNumber' is not null or undefined
-                            if (versionNumber === null || versionNumber === undefined) {
-                                throw new base_1.RequiredError('versionNumber', 'Required parameter versionNumber was null or undefined when calling getV1FormsVersionsModelByFormIdAndVersionNumber.');
-                            }
-                            localVarPath = "/v1/forms/{formId}/versions/{versionNumber}/model"
-                                .replace("{" + "formId" + "}", encodeURIComponent(String(formId)))
-                                .replace("{" + "versionNumber" + "}", encodeURIComponent(String(versionNumber)));
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
-                        case 1:
-                            _a = _c.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _c.sent();
-                            _c.label = 4;
-                        case 4:
-                            localVarAccessTokenValue = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 5;
-                        case 5:
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
-                        case 6:
-                            _b = _c.sent();
-                            return [3 /*break*/, 9];
-                        case 7: return [4 /*yield*/, configuration.accessToken];
-                        case 8:
-                            _b = _c.sent();
-                            _c.label = 9;
-                        case 9:
-                            localVarAccessTokenValue = _b;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 10;
-                        case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.query) {
-                                query.set(key, options.query[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
     };
 };
 exports.FormsApiAxiosParamCreator = FormsApiAxiosParamCreator;
@@ -426,12 +426,64 @@ var FormsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteV1FormsByFormId: function (formId, options) {
+        v1FormsFormIdDelete: function (formId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.FormsApiAxiosParamCreator(configuration).deleteV1FormsByFormId(formId, options)];
+                        case 0: return [4 /*yield*/, exports.FormsApiAxiosParamCreator(configuration).v1FormsFormIdDelete(formId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
+         * @summary Retrieve form model by ID and revision.
+         * @param {string} formId The ID of the form for which the model should be retrieved.
+         * @param {string} revisionId The revision of the form for which the model should be retrieved.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdRevisionsRevisionIdModelGet: function (formId, revisionId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.FormsApiAxiosParamCreator(configuration).v1FormsFormIdRevisionsRevisionIdModelGet(formId, revisionId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
+         * @summary Retrieve form model by ID and version number.
+         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdVersionsVersionNumberModelGet: function (formId, versionNumber, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.FormsApiAxiosParamCreator(configuration).v1FormsFormIdVersionsVersionNumberModelGet(formId, versionNumber, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -454,64 +506,12 @@ var FormsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Forms: function ($skip, $top, $inlinecount, type, options) {
+        v1FormsGet: function ($skip, $top, $inlinecount, type, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.FormsApiAxiosParamCreator(configuration).getV1Forms($skip, $top, $inlinecount, type, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
-         * @summary Retrieve form model by ID and revision.
-         * @param {string} formId The ID of the form for which the model should be retrieved.
-         * @param {string} revisionId The revision of the form for which the model should be retrieved.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsRevisionsModelByFormIdAndRevisionId: function (formId, revisionId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.FormsApiAxiosParamCreator(configuration).getV1FormsRevisionsModelByFormIdAndRevisionId(formId, revisionId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
-         * @summary Retrieve form model by ID and version number.
-         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsVersionsModelByFormIdAndVersionNumber: function (formId, versionNumber, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.FormsApiAxiosParamCreator(configuration).getV1FormsVersionsModelByFormIdAndVersionNumber(formId, versionNumber, options)];
+                        case 0: return [4 /*yield*/, exports.FormsApiAxiosParamCreator(configuration).v1FormsGet($skip, $top, $inlinecount, type, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -540,8 +540,30 @@ var FormsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteV1FormsByFormId: function (formId, options) {
-            return exports.FormsApiFp(configuration).deleteV1FormsByFormId(formId, options).then(function (request) { return request(axios, basePath); });
+        v1FormsFormIdDelete: function (formId, options) {
+            return exports.FormsApiFp(configuration).v1FormsFormIdDelete(formId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
+         * @summary Retrieve form model by ID and revision.
+         * @param {string} formId The ID of the form for which the model should be retrieved.
+         * @param {string} revisionId The revision of the form for which the model should be retrieved.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdRevisionsRevisionIdModelGet: function (formId, revisionId, options) {
+            return exports.FormsApiFp(configuration).v1FormsFormIdRevisionsRevisionIdModelGet(formId, revisionId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
+         * @summary Retrieve form model by ID and version number.
+         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdVersionsVersionNumberModelGet: function (formId, versionNumber, options) {
+            return exports.FormsApiFp(configuration).v1FormsFormIdVersionsVersionNumberModelGet(formId, versionNumber, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves a list of the latest version of each revision of each deployed form definition. The request can be parameterized.  The results are sorted by the \'createdAt\' attribute in descending order.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: FORM_DEFINITION_GET
@@ -553,30 +575,8 @@ var FormsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Forms: function ($skip, $top, $inlinecount, type, options) {
-            return exports.FormsApiFp(configuration).getV1Forms($skip, $top, $inlinecount, type, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
-         * @summary Retrieve form model by ID and revision.
-         * @param {string} formId The ID of the form for which the model should be retrieved.
-         * @param {string} revisionId The revision of the form for which the model should be retrieved.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsRevisionsModelByFormIdAndRevisionId: function (formId, revisionId, options) {
-            return exports.FormsApiFp(configuration).getV1FormsRevisionsModelByFormIdAndRevisionId(formId, revisionId, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
-         * @summary Retrieve form model by ID and version number.
-         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsVersionsModelByFormIdAndVersionNumber: function (formId, versionNumber, options) {
-            return exports.FormsApiFp(configuration).getV1FormsVersionsModelByFormIdAndVersionNumber(formId, versionNumber, options).then(function (request) { return request(axios, basePath); });
+        v1FormsGet: function ($skip, $top, $inlinecount, type, options) {
+            return exports.FormsApiFp(configuration).v1FormsGet($skip, $top, $inlinecount, type, options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -600,9 +600,35 @@ var FormsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof FormsApi
      */
-    FormsApi.prototype.deleteV1FormsByFormId = function (formId, options) {
+    FormsApi.prototype.v1FormsFormIdDelete = function (formId, options) {
         var _this = this;
-        return exports.FormsApiFp(this.configuration).deleteV1FormsByFormId(formId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.FormsApiFp(this.configuration).v1FormsFormIdDelete(formId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and revision.
+     * @param {string} formId The ID of the form for which the model should be retrieved.
+     * @param {string} revisionId The revision of the form for which the model should be retrieved.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FormsApi
+     */
+    FormsApi.prototype.v1FormsFormIdRevisionsRevisionIdModelGet = function (formId, revisionId, options) {
+        var _this = this;
+        return exports.FormsApiFp(this.configuration).v1FormsFormIdRevisionsRevisionIdModelGet(formId, revisionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and version number.
+     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FormsApi
+     */
+    FormsApi.prototype.v1FormsFormIdVersionsVersionNumberModelGet = function (formId, versionNumber, options) {
+        var _this = this;
+        return exports.FormsApiFp(this.configuration).v1FormsFormIdVersionsVersionNumberModelGet(formId, versionNumber, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves a list of the latest version of each revision of each deployed form definition. The request can be parameterized.  The results are sorted by the \'createdAt\' attribute in descending order.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: FORM_DEFINITION_GET
@@ -615,35 +641,9 @@ var FormsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof FormsApi
      */
-    FormsApi.prototype.getV1Forms = function ($skip, $top, $inlinecount, type, options) {
+    FormsApi.prototype.v1FormsGet = function ($skip, $top, $inlinecount, type, options) {
         var _this = this;
-        return exports.FormsApiFp(this.configuration).getV1Forms($skip, $top, $inlinecount, type, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and revision.
-     * @param {string} formId The ID of the form for which the model should be retrieved.
-     * @param {string} revisionId The revision of the form for which the model should be retrieved.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FormsApi
-     */
-    FormsApi.prototype.getV1FormsRevisionsModelByFormIdAndRevisionId = function (formId, revisionId, options) {
-        var _this = this;
-        return exports.FormsApiFp(this.configuration).getV1FormsRevisionsModelByFormIdAndRevisionId(formId, revisionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and version number.
-     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FormsApi
-     */
-    FormsApi.prototype.getV1FormsVersionsModelByFormIdAndVersionNumber = function (formId, versionNumber, options) {
-        var _this = this;
-        return exports.FormsApiFp(this.configuration).getV1FormsVersionsModelByFormIdAndVersionNumber(formId, versionNumber, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.FormsApiFp(this.configuration).v1FormsGet($skip, $top, $inlinecount, type, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return FormsApi;
 }(base_1.BaseAPI));

@@ -207,7 +207,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstances: function ($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options) {
+        v1TaskInstancesGet: function ($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -379,7 +379,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttachmentsByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdAttachmentsGet: function (taskInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -388,7 +388,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'taskInstanceId' is not null or undefined
                             if (taskInstanceId === null || taskInstanceId === undefined) {
-                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesAttachmentsByTaskInstanceId.');
+                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdAttachmentsGet.');
                             }
                             localVarPath = "/v1/task-instances/{taskInstanceId}/attachments"
                                 .replace("{" + "taskInstanceId" + "}", encodeURIComponent(String(taskInstanceId)));
@@ -454,7 +454,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttributesByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdAttributesGet: function (taskInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -463,7 +463,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'taskInstanceId' is not null or undefined
                             if (taskInstanceId === null || taskInstanceId === undefined) {
-                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesAttributesByTaskInstanceId.');
+                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdAttributesGet.');
                             }
                             localVarPath = "/v1/task-instances/{taskInstanceId}/attributes"
                                 .replace("{" + "taskInstanceId" + "}", encodeURIComponent(String(taskInstanceId)));
@@ -529,7 +529,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesContextByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdContextGet: function (taskInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -538,7 +538,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'taskInstanceId' is not null or undefined
                             if (taskInstanceId === null || taskInstanceId === undefined) {
-                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesContextByTaskInstanceId.');
+                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdContextGet.');
                             }
                             localVarPath = "/v1/task-instances/{taskInstanceId}/context"
                                 .replace("{" + "taskInstanceId" + "}", encodeURIComponent(String(taskInstanceId)));
@@ -604,7 +604,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdFormGet: function (taskInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -613,7 +613,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'taskInstanceId' is not null or undefined
                             if (taskInstanceId === null || taskInstanceId === undefined) {
-                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesFormByTaskInstanceId.');
+                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdFormGet.');
                             }
                             localVarPath = "/v1/task-instances/{taskInstanceId}/form"
                                 .replace("{" + "taskInstanceId" + "}", encodeURIComponent(String(taskInstanceId)));
@@ -679,7 +679,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormModelByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdFormModelGet: function (taskInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -688,7 +688,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'taskInstanceId' is not null or undefined
                             if (taskInstanceId === null || taskInstanceId === undefined) {
-                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesFormModelByTaskInstanceId.');
+                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdFormModelGet.');
                             }
                             localVarPath = "/v1/task-instances/{taskInstanceId}/form/model"
                                 .replace("{" + "taskInstanceId" + "}", encodeURIComponent(String(taskInstanceId)));
@@ -755,7 +755,7 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1TaskInstancesByTaskInstanceId: function (taskInstanceId, updateTaskInstancePayload, options) {
+        v1TaskInstancesTaskInstanceIdPatch: function (taskInstanceId, updateTaskInstancePayload, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -764,11 +764,11 @@ var UserTaskInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'taskInstanceId' is not null or undefined
                             if (taskInstanceId === null || taskInstanceId === undefined) {
-                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling updateV1TaskInstancesByTaskInstanceId.');
+                                throw new base_1.RequiredError('taskInstanceId', 'Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdPatch.');
                             }
                             // verify required parameter 'updateTaskInstancePayload' is not null or undefined
                             if (updateTaskInstancePayload === null || updateTaskInstancePayload === undefined) {
-                                throw new base_1.RequiredError('updateTaskInstancePayload', 'Required parameter updateTaskInstancePayload was null or undefined when calling updateV1TaskInstancesByTaskInstanceId.');
+                                throw new base_1.RequiredError('updateTaskInstancePayload', 'Required parameter updateTaskInstancePayload was null or undefined when calling v1TaskInstancesTaskInstanceIdPatch.');
                             }
                             localVarPath = "/v1/task-instances/{taskInstanceId}"
                                 .replace("{" + "taskInstanceId" + "}", encodeURIComponent(String(taskInstanceId)));
@@ -905,12 +905,12 @@ var UserTaskInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstances: function ($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options) {
+        v1TaskInstancesGet: function ($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstances($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options)];
+                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesGet($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -930,12 +930,12 @@ var UserTaskInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttachmentsByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdAttachmentsGet: function (taskInstanceId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId, options)];
+                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -955,12 +955,12 @@ var UserTaskInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttributesByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdAttributesGet: function (taskInstanceId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId, options)];
+                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -980,12 +980,12 @@ var UserTaskInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesContextByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdContextGet: function (taskInstanceId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesContextByTaskInstanceId(taskInstanceId, options)];
+                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1005,12 +1005,12 @@ var UserTaskInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdFormGet: function (taskInstanceId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesFormByTaskInstanceId(taskInstanceId, options)];
+                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1030,12 +1030,12 @@ var UserTaskInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormModelByTaskInstanceId: function (taskInstanceId, options) {
+        v1TaskInstancesTaskInstanceIdFormModelGet: function (taskInstanceId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId, options)];
+                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1056,12 +1056,12 @@ var UserTaskInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1TaskInstancesByTaskInstanceId: function (taskInstanceId, updateTaskInstancePayload, options) {
+        v1TaskInstancesTaskInstanceIdPatch: function (taskInstanceId, updateTaskInstancePayload, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).updateV1TaskInstancesByTaskInstanceId(taskInstanceId, updateTaskInstancePayload, options)];
+                        case 0: return [4 /*yield*/, exports.UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdPatch(taskInstanceId, updateTaskInstancePayload, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1134,8 +1134,8 @@ var UserTaskInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstances: function ($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options) {
-            return exports.UserTaskInstancesApiFp(configuration).getV1TaskInstances($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options).then(function (request) { return request(axios, basePath); });
+        v1TaskInstancesGet: function ($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options) {
+            return exports.UserTaskInstancesApiFp(configuration).v1TaskInstancesGet($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the attachments information of a workflow instance via the given user task.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_ATTACHMENTS
@@ -1144,8 +1144,8 @@ var UserTaskInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttachmentsByTaskInstanceId: function (taskInstanceId, options) {
-            return exports.UserTaskInstancesApiFp(configuration).getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
+        v1TaskInstancesTaskInstanceIdAttachmentsGet: function (taskInstanceId, options) {
+            return exports.UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves custom task attributes of a user task. Labels as well as the order of the custom task attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: TASK_GET_ATTRIBUTES
@@ -1154,8 +1154,8 @@ var UserTaskInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttributesByTaskInstanceId: function (taskInstanceId, options) {
-            return exports.UserTaskInstancesApiFp(configuration).getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
+        v1TaskInstancesTaskInstanceIdAttributesGet: function (taskInstanceId, options) {
+            return exports.UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the task context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context of a user task.  Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_CONTEXT
@@ -1164,8 +1164,8 @@ var UserTaskInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesContextByTaskInstanceId: function (taskInstanceId, options) {
-            return exports.UserTaskInstancesApiFp(configuration).getV1TaskInstancesContextByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
+        v1TaskInstancesTaskInstanceIdContextGet: function (taskInstanceId, options) {
+            return exports.UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the form metadata of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM
@@ -1174,8 +1174,8 @@ var UserTaskInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormByTaskInstanceId: function (taskInstanceId, options) {
-            return exports.UserTaskInstancesApiFp(configuration).getV1TaskInstancesFormByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
+        v1TaskInstancesTaskInstanceIdFormGet: function (taskInstanceId, options) {
+            return exports.UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the form model of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM_MODEL
@@ -1184,8 +1184,8 @@ var UserTaskInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormModelByTaskInstanceId: function (taskInstanceId, options) {
-            return exports.UserTaskInstancesApiFp(configuration).getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
+        v1TaskInstancesTaskInstanceIdFormModelGet: function (taskInstanceId, options) {
+            return exports.UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Updates a user task\'s status, its properties (for example, subject), and its context with the attributes provided in the request body.    For more information, see SAP Cloud Platform Workflow Service documentation on the  [SAP Help Portal](https://help.sap.com/viewer/e157c391253b4ecd93647bf232d18a83/Cloud/en-US/fe41c54d61fa4710b34f2afe11b5d00e.html).  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: TASK_COMPLETE, TASK_UPDATE
@@ -1195,8 +1195,8 @@ var UserTaskInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1TaskInstancesByTaskInstanceId: function (taskInstanceId, updateTaskInstancePayload, options) {
-            return exports.UserTaskInstancesApiFp(configuration).updateV1TaskInstancesByTaskInstanceId(taskInstanceId, updateTaskInstancePayload, options).then(function (request) { return request(axios, basePath); });
+        v1TaskInstancesTaskInstanceIdPatch: function (taskInstanceId, updateTaskInstancePayload, options) {
+            return exports.UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdPatch(taskInstanceId, updateTaskInstancePayload, options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -1266,9 +1266,9 @@ var UserTaskInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    UserTaskInstancesApi.prototype.getV1TaskInstances = function ($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options) {
+    UserTaskInstancesApi.prototype.v1TaskInstancesGet = function ($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options) {
         var _this = this;
-        return exports.UserTaskInstancesApiFp(this.configuration).getV1TaskInstances($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.UserTaskInstancesApiFp(this.configuration).v1TaskInstancesGet($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the attachments information of a workflow instance via the given user task.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_ATTACHMENTS
@@ -1278,9 +1278,9 @@ var UserTaskInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    UserTaskInstancesApi.prototype.getV1TaskInstancesAttachmentsByTaskInstanceId = function (taskInstanceId, options) {
+    UserTaskInstancesApi.prototype.v1TaskInstancesTaskInstanceIdAttachmentsGet = function (taskInstanceId, options) {
         var _this = this;
-        return exports.UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves custom task attributes of a user task. Labels as well as the order of the custom task attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: TASK_GET_ATTRIBUTES
@@ -1290,9 +1290,9 @@ var UserTaskInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    UserTaskInstancesApi.prototype.getV1TaskInstancesAttributesByTaskInstanceId = function (taskInstanceId, options) {
+    UserTaskInstancesApi.prototype.v1TaskInstancesTaskInstanceIdAttributesGet = function (taskInstanceId, options) {
         var _this = this;
-        return exports.UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the task context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context of a user task.  Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_CONTEXT
@@ -1302,9 +1302,9 @@ var UserTaskInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    UserTaskInstancesApi.prototype.getV1TaskInstancesContextByTaskInstanceId = function (taskInstanceId, options) {
+    UserTaskInstancesApi.prototype.v1TaskInstancesTaskInstanceIdContextGet = function (taskInstanceId, options) {
         var _this = this;
-        return exports.UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesContextByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the form metadata of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM
@@ -1314,9 +1314,9 @@ var UserTaskInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    UserTaskInstancesApi.prototype.getV1TaskInstancesFormByTaskInstanceId = function (taskInstanceId, options) {
+    UserTaskInstancesApi.prototype.v1TaskInstancesTaskInstanceIdFormGet = function (taskInstanceId, options) {
         var _this = this;
-        return exports.UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesFormByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the form model of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM_MODEL
@@ -1326,9 +1326,9 @@ var UserTaskInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    UserTaskInstancesApi.prototype.getV1TaskInstancesFormModelByTaskInstanceId = function (taskInstanceId, options) {
+    UserTaskInstancesApi.prototype.v1TaskInstancesTaskInstanceIdFormModelGet = function (taskInstanceId, options) {
         var _this = this;
-        return exports.UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Updates a user task\'s status, its properties (for example, subject), and its context with the attributes provided in the request body.    For more information, see SAP Cloud Platform Workflow Service documentation on the  [SAP Help Portal](https://help.sap.com/viewer/e157c391253b4ecd93647bf232d18a83/Cloud/en-US/fe41c54d61fa4710b34f2afe11b5d00e.html).  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: TASK_COMPLETE, TASK_UPDATE
@@ -1339,9 +1339,9 @@ var UserTaskInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    UserTaskInstancesApi.prototype.updateV1TaskInstancesByTaskInstanceId = function (taskInstanceId, updateTaskInstancePayload, options) {
+    UserTaskInstancesApi.prototype.v1TaskInstancesTaskInstanceIdPatch = function (taskInstanceId, updateTaskInstancePayload, options) {
         var _this = this;
-        return exports.UserTaskInstancesApiFp(this.configuration).updateV1TaskInstancesByTaskInstanceId(taskInstanceId, updateTaskInstancePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdPatch(taskInstanceId, updateTaskInstancePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return UserTaskInstancesApi;
 }(base_1.BaseAPI));

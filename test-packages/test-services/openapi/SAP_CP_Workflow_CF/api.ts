@@ -8,7 +8,7 @@ import { DefaultApi } from './openapi/api';
 import { UpdateTaskInstancePayload, WorkflowInstanceStartPayload, WorkflowInstancesUpdatePayload, WorkflowInstanceUpdatePayload, AttachmentsContext, WorkflowInstanceRolesUpdatePayload, SendMessagePayload } from './openapi/model';
 
 export const SAPCPWorkflowCFApi = {
-  getV1TaskInstances: (args?: {
+  undefined: (args?: {
     skip?: number,
     top?: number,
     inlinecount?: 'allpages' | 'none',
@@ -43,9 +43,9 @@ export const SAPCPWorkflowCFApi = {
     containsText?: string,
     attributesExampleCustomAttribute?: string,
     definitionId?: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1TaskInstances'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1TaskInstances',
+    'undefined',
     args?.skip,
     args?.top,
     args?.inlinecount,
@@ -90,149 +90,149 @@ export const SAPCPWorkflowCFApi = {
     args.taskInstanceId,
     args.expand
   ),
-  updateV1TaskInstancesByTaskInstanceId: (args: {
+  undefined: (args: {
     taskInstanceId: string,
     body: UpdateTaskInstancePayload
-  }) => new OpenApiRequestBuilder<DefaultApi, 'updateV1TaskInstancesByTaskInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'updateV1TaskInstancesByTaskInstanceId',
+    'undefined',
     args.taskInstanceId,
     args.body
   ),
-  getV1TaskInstancesAttributesByTaskInstanceId: (args: {
+  undefined: (args: {
     taskInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1TaskInstancesAttributesByTaskInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1TaskInstancesAttributesByTaskInstanceId',
+    'undefined',
     args.taskInstanceId
   ),
-  getV1TaskInstancesContextByTaskInstanceId: (args: {
+  undefined: (args: {
     taskInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1TaskInstancesContextByTaskInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1TaskInstancesContextByTaskInstanceId',
+    'undefined',
     args.taskInstanceId
   ),
-  getV1TaskInstancesAttachmentsByTaskInstanceId: (args: {
+  undefined: (args: {
     taskInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1TaskInstancesAttachmentsByTaskInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1TaskInstancesAttachmentsByTaskInstanceId',
+    'undefined',
     args.taskInstanceId
   ),
-  getV1TaskInstancesFormByTaskInstanceId: (args: {
+  undefined: (args: {
     taskInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1TaskInstancesFormByTaskInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1TaskInstancesFormByTaskInstanceId',
+    'undefined',
     args.taskInstanceId
   ),
-  getV1TaskInstancesFormModelByTaskInstanceId: (args: {
+  undefined: (args: {
     taskInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1TaskInstancesFormModelByTaskInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1TaskInstancesFormModelByTaskInstanceId',
+    'undefined',
     args.taskInstanceId
   ),
-  getV1TaskDefinitions: (args?: {
+  undefined: (args?: {
     skip?: number,
     top?: number,
     inlinecount?: 'allpages' | 'none',
     expand?: 'attributeDefinitions'
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1TaskDefinitions'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1TaskDefinitions',
+    'undefined',
     args?.skip,
     args?.top,
     args?.inlinecount,
     args?.expand
   ),
-  getV1WorkflowDefinitions: (args?: {
+  undefined: (args?: {
     orderby?: 'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc',
     skip?: number,
     top?: number,
     inlinecount?: 'allpages' | 'none'
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowDefinitions'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowDefinitions',
+    'undefined',
     args?.orderby,
     args?.skip,
     args?.top,
     args?.inlinecount
   ),
-  getV1WorkflowDefinitionsByDefinitionId: (args: {
+  undefined: (args: {
     definitionId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowDefinitionsByDefinitionId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowDefinitionsByDefinitionId',
+    'undefined',
     args.definitionId
   ),
-  deleteV1WorkflowDefinitionsByDefinitionId: (args: {
+  undefined: (args: {
     definitionId: string,
     cascade?: boolean
-  }) => new OpenApiRequestBuilder<DefaultApi, 'deleteV1WorkflowDefinitionsByDefinitionId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'deleteV1WorkflowDefinitionsByDefinitionId',
+    'undefined',
     args.definitionId,
     args.cascade
   ),
-  getV1WorkflowDefinitionsVersionsByDefinitionId: (args: {
+  undefined: (args: {
     definitionId: string,
     orderby?: 'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc',
     skip?: number,
     top?: number,
     inlinecount?: 'allpages' | 'none'
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowDefinitionsVersionsByDefinitionId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowDefinitionsVersionsByDefinitionId',
+    'undefined',
     args.definitionId,
     args.orderby,
     args.skip,
     args.top,
     args.inlinecount
   ),
-  getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber: (args: {
+  undefined: (args: {
     definitionId: string,
     versionNumber: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber',
+    'undefined',
     args.definitionId,
     args.versionNumber
   ),
-  getV1WorkflowDefinitionsModelByDefinitionId: (args: {
+  undefined: (args: {
     definitionId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowDefinitionsModelByDefinitionId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowDefinitionsModelByDefinitionId',
+    'undefined',
     args.definitionId
   ),
-  getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber: (args: {
+  undefined: (args: {
     definitionId: string,
     versionNumber: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber',
+    'undefined',
     args.definitionId,
     args.versionNumber
   ),
-  getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId: (args: {
+  undefined: (args: {
     definitionId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId',
+    'undefined',
     args.definitionId
   ),
-  getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber: (args: {
+  undefined: (args: {
     definitionId: string,
     versionNumber: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber',
+    'undefined',
     args.definitionId,
     args.versionNumber
   ),
-  getV1WorkflowInstances: (args?: {
+  undefined: (args?: {
     orderby?: 'id asc' | 'id desc' | 'definitionId asc' | 'definitionId desc' | 'definitionVersion asc' | 'definitionVersion desc' | 'startedAt asc' | 'startedAt desc' | 'completedAt asc' | 'completedAt desc' | 'startedBy asc' | 'startedBy desc' | 'subject asc' | 'subject desc' | 'businessKey asc' | 'businessKey desc',
     skip?: number,
     top?: number,
@@ -255,9 +255,9 @@ export const SAPCPWorkflowCFApi = {
     rootInstanceId?: string,
     parentInstanceId?: string,
     attributesExampleCustomAttribute?: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowInstances'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowInstances',
+    'undefined',
     args?.orderby,
     args?.skip,
     args?.top,
@@ -281,174 +281,174 @@ export const SAPCPWorkflowCFApi = {
     args?.parentInstanceId,
     args?.attributesExampleCustomAttribute
   ),
-  createV1WorkflowInstances: (args: {
+  undefined: (args: {
     body: WorkflowInstanceStartPayload
-  }) => new OpenApiRequestBuilder<DefaultApi, 'createV1WorkflowInstances'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'createV1WorkflowInstances',
+    'undefined',
     args.body
   ),
-  updateV1WorkflowInstances: (args: {
+  undefined: (args: {
     body: WorkflowInstancesUpdatePayload[]
-  }) => new OpenApiRequestBuilder<DefaultApi, 'updateV1WorkflowInstances'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'updateV1WorkflowInstances',
+    'undefined',
     args.body
   ),
-  getInstance1: (args: {
+  getInstance: (args: {
     workflowInstanceId: string,
     expand?: 'attributes'
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getInstance1'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'getInstance'>(
     DefaultApi,
-    'getInstance1',
+    'getInstance',
     args.workflowInstanceId,
     args.expand
   ),
-  updateV1WorkflowInstancesByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string,
     body: WorkflowInstanceUpdatePayload
-  }) => new OpenApiRequestBuilder<DefaultApi, 'updateV1WorkflowInstancesByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'updateV1WorkflowInstancesByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId,
     args.body
   ),
-  getV1WorkflowInstancesAttributesByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowInstancesAttributesByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowInstancesAttributesByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId
   ),
-  getV1WorkflowInstancesContextByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowInstancesContextByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowInstancesContextByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId
   ),
-  updateV1WorkflowInstancesContextByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string,
     body: Record<string, any>
-  }) => new OpenApiRequestBuilder<DefaultApi, 'updateV1WorkflowInstancesContextByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'updateV1WorkflowInstancesContextByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId,
     args.body
   ),
-  updateV1WorkflowInstancesContextByWorkflowInstanceId1: (args: {
+  undefined: (args: {
     workflowInstanceId: string,
     body: Record<string, any>
-  }) => new OpenApiRequestBuilder<DefaultApi, 'updateV1WorkflowInstancesContextByWorkflowInstanceId1'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'updateV1WorkflowInstancesContextByWorkflowInstanceId1',
+    'undefined',
     args.workflowInstanceId,
     args.body
   ),
-  getV1WorkflowInstancesAttachmentsByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowInstancesAttachmentsByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowInstancesAttachmentsByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId
   ),
-  updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string,
     body: AttachmentsContext
-  }) => new OpenApiRequestBuilder<DefaultApi, 'updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId,
     args.body
   ),
-  getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId
   ),
-  getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId
   ),
-  getV1WorkflowInstancesRolesByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1WorkflowInstancesRolesByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1WorkflowInstancesRolesByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId
   ),
-  updateV1WorkflowInstancesRolesByWorkflowInstanceId: (args: {
+  undefined: (args: {
     workflowInstanceId: string,
     body: WorkflowInstanceRolesUpdatePayload
-  }) => new OpenApiRequestBuilder<DefaultApi, 'updateV1WorkflowInstancesRolesByWorkflowInstanceId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'updateV1WorkflowInstancesRolesByWorkflowInstanceId',
+    'undefined',
     args.workflowInstanceId,
     args.body
   ),
-  getV1Forms: (args?: {
+  undefined: (args?: {
     skip?: number,
     top?: number,
     inlinecount?: 'allpages' | 'none',
     type?: 'start' | 'task'
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1Forms'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1Forms',
+    'undefined',
     args?.skip,
     args?.top,
     args?.inlinecount,
     args?.type
   ),
-  deleteV1FormsByFormId: (args: {
+  undefined: (args: {
     formId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'deleteV1FormsByFormId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'deleteV1FormsByFormId',
+    'undefined',
     args.formId
   ),
-  getV1FormsRevisionsModelByFormIdAndRevisionId: (args: {
+  undefined: (args: {
     formId: string,
     revisionId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1FormsRevisionsModelByFormIdAndRevisionId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1FormsRevisionsModelByFormIdAndRevisionId',
+    'undefined',
     args.formId,
     args.revisionId
   ),
-  getV1FormsVersionsModelByFormIdAndVersionNumber: (args: {
+  undefined: (args: {
     formId: string,
     versionNumber: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1FormsVersionsModelByFormIdAndVersionNumber'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1FormsVersionsModelByFormIdAndVersionNumber',
+    'undefined',
     args.formId,
     args.versionNumber
   ),
-  getV1Export: () => new OpenApiRequestBuilder<DefaultApi, 'getV1Export'>(
+  undefined: () => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1Export'
+    'undefined'
   ),
-  createV1Purge: () => new OpenApiRequestBuilder<DefaultApi, 'createV1Purge'>(
+  undefined: () => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'createV1Purge'
+    'undefined'
   ),
-  getV1JobsByJobId: (args: {
+  undefined: (args: {
     jobId: string
-  }) => new OpenApiRequestBuilder<DefaultApi, 'getV1JobsByJobId'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'getV1JobsByJobId',
+    'undefined',
     args.jobId
   ),
-  createV1Messages: (args: {
+  undefined: (args: {
     body: SendMessagePayload
-  }) => new OpenApiRequestBuilder<DefaultApi, 'createV1Messages'>(
+  }) => new OpenApiRequestBuilder<DefaultApi, 'undefined'>(
     DefaultApi,
-    'createV1Messages',
+    'undefined',
     args.body
   )
 };

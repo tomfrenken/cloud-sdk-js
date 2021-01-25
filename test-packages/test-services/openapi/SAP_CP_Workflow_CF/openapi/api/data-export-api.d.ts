@@ -23,7 +23,7 @@ export declare const DataExportApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1Export: (options?: any) => Promise<RequestArgs>;
+    v1ExportGet: (options?: any) => Promise<RequestArgs>;
 };
 /**
  * DataExportApi - functional programming interface
@@ -36,7 +36,7 @@ export declare const DataExportApiFp: (configuration?: Configuration | undefined
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1Export(options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1ExportGet(options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
 };
 /**
  * DataExportApi - factory interface
@@ -49,7 +49,7 @@ export declare const DataExportApiFactory: (configuration?: Configuration | unde
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1Export(options?: any): AxiosPromise<void>;
+    v1ExportGet(options?: any): AxiosPromise<void>;
 };
 /**
  * DataExportApi - object-oriented interface
@@ -65,6 +65,6 @@ export declare class DataExportApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DataExportApi
      */
-    getV1Export(options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1ExportGet(options?: any): Promise<import("axios").AxiosResponse<void>>;
 }
 //# sourceMappingURL=data-export-api.d.ts.map

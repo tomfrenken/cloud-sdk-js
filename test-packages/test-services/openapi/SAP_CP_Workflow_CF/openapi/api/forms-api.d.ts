@@ -26,7 +26,25 @@ export declare const FormsApiAxiosParamCreator: (configuration?: Configuration |
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteV1FormsByFormId: (formId: string, options?: any) => Promise<RequestArgs>;
+    v1FormsFormIdDelete: (formId: string, options?: any) => Promise<RequestArgs>;
+    /**
+     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and revision.
+     * @param {string} formId The ID of the form for which the model should be retrieved.
+     * @param {string} revisionId The revision of the form for which the model should be retrieved.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1FormsFormIdRevisionsRevisionIdModelGet: (formId: string, revisionId: string, options?: any) => Promise<RequestArgs>;
+    /**
+     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and version number.
+     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1FormsFormIdVersionsVersionNumberModelGet: (formId: string, versionNumber: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves a list of the latest version of each revision of each deployed form definition. The request can be parameterized.  The results are sorted by the \'createdAt\' attribute in descending order.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: FORM_DEFINITION_GET
      * @summary Retrieve all form definitions
@@ -37,25 +55,7 @@ export declare const FormsApiAxiosParamCreator: (configuration?: Configuration |
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1Forms: ($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, type?: "start" | "task" | undefined, options?: any) => Promise<RequestArgs>;
-    /**
-     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and revision.
-     * @param {string} formId The ID of the form for which the model should be retrieved.
-     * @param {string} revisionId The revision of the form for which the model should be retrieved.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1FormsRevisionsModelByFormIdAndRevisionId: (formId: string, revisionId: string, options?: any) => Promise<RequestArgs>;
-    /**
-     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and version number.
-     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1FormsVersionsModelByFormIdAndVersionNumber: (formId: string, versionNumber: string, options?: any) => Promise<RequestArgs>;
+    v1FormsGet: ($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, type?: "start" | "task" | undefined, options?: any) => Promise<RequestArgs>;
 };
 /**
  * FormsApi - functional programming interface
@@ -69,7 +69,25 @@ export declare const FormsApiFp: (configuration?: Configuration | undefined) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteV1FormsByFormId(formId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1FormsFormIdDelete(formId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    /**
+     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and revision.
+     * @param {string} formId The ID of the form for which the model should be retrieved.
+     * @param {string} revisionId The revision of the form for which the model should be retrieved.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1FormsFormIdRevisionsRevisionIdModelGet(formId: string, revisionId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FormModel>>;
+    /**
+     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and version number.
+     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1FormsFormIdVersionsVersionNumberModelGet(formId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FormModel>>;
     /**
      * Retrieves a list of the latest version of each revision of each deployed form definition. The request can be parameterized.  The results are sorted by the \'createdAt\' attribute in descending order.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: FORM_DEFINITION_GET
      * @summary Retrieve all form definitions
@@ -80,25 +98,7 @@ export declare const FormsApiFp: (configuration?: Configuration | undefined) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1Forms($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, type?: "start" | "task" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<FormMetadata>>>;
-    /**
-     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and revision.
-     * @param {string} formId The ID of the form for which the model should be retrieved.
-     * @param {string} revisionId The revision of the form for which the model should be retrieved.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1FormsRevisionsModelByFormIdAndRevisionId(formId: string, revisionId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FormModel>>;
-    /**
-     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and version number.
-     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1FormsVersionsModelByFormIdAndVersionNumber(formId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FormModel>>;
+    v1FormsGet($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, type?: "start" | "task" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<FormMetadata>>>;
 };
 /**
  * FormsApi - factory interface
@@ -112,7 +112,25 @@ export declare const FormsApiFactory: (configuration?: Configuration | undefined
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteV1FormsByFormId(formId: string, options?: any): AxiosPromise<void>;
+    v1FormsFormIdDelete(formId: string, options?: any): AxiosPromise<void>;
+    /**
+     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and revision.
+     * @param {string} formId The ID of the form for which the model should be retrieved.
+     * @param {string} revisionId The revision of the form for which the model should be retrieved.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1FormsFormIdRevisionsRevisionIdModelGet(formId: string, revisionId: string, options?: any): AxiosPromise<FormModel>;
+    /**
+     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and version number.
+     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1FormsFormIdVersionsVersionNumberModelGet(formId: string, versionNumber: string, options?: any): AxiosPromise<FormModel>;
     /**
      * Retrieves a list of the latest version of each revision of each deployed form definition. The request can be parameterized.  The results are sorted by the \'createdAt\' attribute in descending order.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: FORM_DEFINITION_GET
      * @summary Retrieve all form definitions
@@ -123,25 +141,7 @@ export declare const FormsApiFactory: (configuration?: Configuration | undefined
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1Forms($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, type?: "start" | "task" | undefined, options?: any): AxiosPromise<Array<FormMetadata>>;
-    /**
-     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and revision.
-     * @param {string} formId The ID of the form for which the model should be retrieved.
-     * @param {string} revisionId The revision of the form for which the model should be retrieved.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1FormsRevisionsModelByFormIdAndRevisionId(formId: string, revisionId: string, options?: any): AxiosPromise<FormModel>;
-    /**
-     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and version number.
-     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1FormsVersionsModelByFormIdAndVersionNumber(formId: string, versionNumber: string, options?: any): AxiosPromise<FormModel>;
+    v1FormsGet($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, type?: "start" | "task" | undefined, options?: any): AxiosPromise<Array<FormMetadata>>;
 };
 /**
  * FormsApi - object-oriented interface
@@ -158,7 +158,27 @@ export declare class FormsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FormsApi
      */
-    deleteV1FormsByFormId(formId: string, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1FormsFormIdDelete(formId: string, options?: any): Promise<import("axios").AxiosResponse<void>>;
+    /**
+     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and revision.
+     * @param {string} formId The ID of the form for which the model should be retrieved.
+     * @param {string} revisionId The revision of the form for which the model should be retrieved.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FormsApi
+     */
+    v1FormsFormIdRevisionsRevisionIdModelGet(formId: string, revisionId: string, options?: any): Promise<import("axios").AxiosResponse<FormModel>>;
+    /**
+     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
+     * @summary Retrieve form model by ID and version number.
+     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FormsApi
+     */
+    v1FormsFormIdVersionsVersionNumberModelGet(formId: string, versionNumber: string, options?: any): Promise<import("axios").AxiosResponse<FormModel>>;
     /**
      * Retrieves a list of the latest version of each revision of each deployed form definition. The request can be parameterized.  The results are sorted by the \'createdAt\' attribute in descending order.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: FORM_DEFINITION_GET
      * @summary Retrieve all form definitions
@@ -170,26 +190,6 @@ export declare class FormsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FormsApi
      */
-    getV1Forms($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options?: any): Promise<import("axios").AxiosResponse<FormMetadata[]>>;
-    /**
-     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and revision.
-     * @param {string} formId The ID of the form for which the model should be retrieved.
-     * @param {string} revisionId The revision of the form for which the model should be retrieved.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FormsApi
-     */
-    getV1FormsRevisionsModelByFormIdAndRevisionId(formId: string, revisionId: string, options?: any): Promise<import("axios").AxiosResponse<FormModel>>;
-    /**
-     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL
-     * @summary Retrieve form model by ID and version number.
-     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FormsApi
-     */
-    getV1FormsVersionsModelByFormIdAndVersionNumber(formId: string, versionNumber: string, options?: any): Promise<import("axios").AxiosResponse<FormModel>>;
+    v1FormsGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options?: any): Promise<import("axios").AxiosResponse<FormMetadata[]>>;
 }
 //# sourceMappingURL=forms-api.d.ts.map

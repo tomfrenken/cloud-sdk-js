@@ -89,83 +89,6 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
     var _this = this;
     return {
         /**
-         * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
-         * @summary Start a new instance
-         * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createV1WorkflowInstances: function (workflowInstanceStartPayload, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            // verify required parameter 'workflowInstanceStartPayload' is not null or undefined
-                            if (workflowInstanceStartPayload === null || workflowInstanceStartPayload === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceStartPayload', 'Required parameter workflowInstanceStartPayload was null or undefined when calling createV1WorkflowInstances.');
-                            }
-                            localVarPath = "/v1/workflow-instances";
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
-                        case 1:
-                            _a = _c.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _c.sent();
-                            _c.label = 4;
-                        case 4:
-                            localVarAccessTokenValue = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 5;
-                        case 5:
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
-                        case 6:
-                            _b = _c.sent();
-                            return [3 /*break*/, 9];
-                        case 7: return [4 /*yield*/, configuration.accessToken];
-                        case 8:
-                            _b = _c.sent();
-                            _c.label = 9;
-                        case 9:
-                            localVarAccessTokenValue = _b;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 10;
-                        case 10:
-                            localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.query) {
-                                query.set(key, options.query[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof workflowInstanceStartPayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(workflowInstanceStartPayload !== undefined ? workflowInstanceStartPayload : {}) : (workflowInstanceStartPayload || "");
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
          * Retrieves the workflow instance with the specified workflow instance ID.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
          * @summary Retrieve workflow instance by ID
          * @param {string} workflowInstanceId The ID of the workflow instance, which should be retrieved. The workflow instance ID is 36 characters long.
@@ -173,7 +96,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstance1: function (workflowInstanceId, $expand, options) {
+        getInstance: function (workflowInstanceId, $expand, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -182,7 +105,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling getInstance1.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling getInstance.');
                             }
                             localVarPath = "/v1/workflow-instances/{workflowInstanceId}"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
@@ -272,7 +195,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowInstances: function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
+        v1WorkflowInstancesGet: function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -402,13 +325,167 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
             });
         },
         /**
+         * Modifies the given workflow instances according to the specified operations. Currently, the only operation supported is the deletion of workflow instances. You can at most specify 10000 instances to delete in one API call.  Roles permitted to execute this operation: - Global roles: WorkflowTenantOperator - Scope: WORKFLOW_INSTANCES_UPDATE
+         * @summary Delete instance by ID
+         * @param {Array<WorkflowInstancesUpdatePayload>} workflowInstancesUpdatePayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesPatch: function (workflowInstancesUpdatePayload, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            // verify required parameter 'workflowInstancesUpdatePayload' is not null or undefined
+                            if (workflowInstancesUpdatePayload === null || workflowInstancesUpdatePayload === undefined) {
+                                throw new base_1.RequiredError('workflowInstancesUpdatePayload', 'Required parameter workflowInstancesUpdatePayload was null or undefined when calling v1WorkflowInstancesPatch.');
+                            }
+                            localVarPath = "/v1/workflow-instances";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PATCH' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
+                        case 1:
+                            _a = _c.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            localVarAccessTokenValue = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 5;
+                        case 5:
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
+                        case 6:
+                            _b = _c.sent();
+                            return [3 /*break*/, 9];
+                        case 7: return [4 /*yield*/, configuration.accessToken];
+                        case 8:
+                            _b = _c.sent();
+                            _c.label = 9;
+                        case 9:
+                            localVarAccessTokenValue = _b;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 10;
+                        case 10:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.query) {
+                                query.set(key, options.query[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof workflowInstancesUpdatePayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(workflowInstancesUpdatePayload !== undefined ? workflowInstancesUpdatePayload : {}) : (workflowInstancesUpdatePayload || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
+         * @summary Start a new instance
+         * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesPost: function (workflowInstanceStartPayload, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            // verify required parameter 'workflowInstanceStartPayload' is not null or undefined
+                            if (workflowInstanceStartPayload === null || workflowInstanceStartPayload === undefined) {
+                                throw new base_1.RequiredError('workflowInstanceStartPayload', 'Required parameter workflowInstanceStartPayload was null or undefined when calling v1WorkflowInstancesPost.');
+                            }
+                            localVarPath = "/v1/workflow-instances";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
+                        case 1:
+                            _a = _c.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            localVarAccessTokenValue = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 5;
+                        case 5:
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
+                        case 6:
+                            _b = _c.sent();
+                            return [3 /*break*/, 9];
+                        case 7: return [4 /*yield*/, configuration.accessToken];
+                        case 8:
+                            _b = _c.sent();
+                            _c.label = 9;
+                        case 9:
+                            localVarAccessTokenValue = _b;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 10;
+                        case 10:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.query) {
+                                query.set(key, options.query[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof workflowInstanceStartPayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(workflowInstanceStartPayload !== undefined ? workflowInstanceStartPayload : {}) : (workflowInstanceStartPayload || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
          * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
          * @summary Retrieve instance attachments
          * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowInstancesAttachmentsByWorkflowInstanceId: function (workflowInstanceId, options) {
+        v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -417,7 +494,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling getV1WorkflowInstancesAttachmentsByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet.');
                             }
                             localVarPath = "/v1/workflow-instances/{workflowInstanceId}/attachments"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
@@ -477,13 +554,96 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
             });
         },
         /**
+         * Overrides the attachments information for a workflow instance independent of its status.  Take special care when using this API, because it will override the workflow attachments, that is, it might change the workflow   in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ATTACHMENTS
+         * @summary Overwrite instance attachments
+         * @param {string} workflowInstanceId Specify the workflow instance ID for which the attachments should be overridden. The workflow instance ID is 36 characters long.
+         * @param {AttachmentsContext} attachmentsContext Specify the new information according to the given schema.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut: function (workflowInstanceId, attachmentsContext, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            // verify required parameter 'workflowInstanceId' is not null or undefined
+                            if (workflowInstanceId === null || workflowInstanceId === undefined) {
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut.');
+                            }
+                            // verify required parameter 'attachmentsContext' is not null or undefined
+                            if (attachmentsContext === null || attachmentsContext === undefined) {
+                                throw new base_1.RequiredError('attachmentsContext', 'Required parameter attachmentsContext was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut.');
+                            }
+                            localVarPath = "/v1/workflow-instances/{workflowInstanceId}/attachments"
+                                .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
+                        case 1:
+                            _a = _c.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            localVarAccessTokenValue = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 5;
+                        case 5:
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
+                        case 6:
+                            _b = _c.sent();
+                            return [3 /*break*/, 9];
+                        case 7: return [4 /*yield*/, configuration.accessToken];
+                        case 8:
+                            _b = _c.sent();
+                            _c.label = 9;
+                        case 9:
+                            localVarAccessTokenValue = _b;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 10;
+                        case 10:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.query) {
+                                query.set(key, options.query[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof attachmentsContext !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(attachmentsContext !== undefined ? attachmentsContext : {}) : (attachmentsContext || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
          * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
          * @summary Retrieve custom workflow attributes by workflow instance ID
          * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowInstancesAttributesByWorkflowInstanceId: function (workflowInstanceId, options) {
+        v1WorkflowInstancesWorkflowInstanceIdAttributesGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -492,7 +652,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling getV1WorkflowInstancesAttributesByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdAttributesGet.');
                             }
                             localVarPath = "/v1/workflow-instances/{workflowInstanceId}/attributes"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
@@ -558,7 +718,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowInstancesContextByWorkflowInstanceId: function (workflowInstanceId, options) {
+        v1WorkflowInstancesWorkflowInstanceIdContextGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -567,7 +727,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling getV1WorkflowInstancesContextByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdContextGet.');
                             }
                             localVarPath = "/v1/workflow-instances/{workflowInstanceId}/context"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
@@ -627,13 +787,179 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
             });
         },
         /**
+         * Modifies parts of the context for a workflow instance independent of its status.  Take special care when using this API, because it might change the workflow context in ways that are incompatible with the expectations  of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and make sure that  the execution has come to a halt, that is, that no further steps are being added to the execution log. Refer to PATCH on the parent resource  and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+         * @summary Update instance context
+         * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be modified. The workflow instance ID is 36 characters long.
+         * @param {object} body Specify the modified parts of the context. Note that the modification is limited by the allowed content length of the request body. The length is restricted to ensure optimal operation of the service.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdContextPatch: function (workflowInstanceId, body, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            // verify required parameter 'workflowInstanceId' is not null or undefined
+                            if (workflowInstanceId === null || workflowInstanceId === undefined) {
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdContextPatch.');
+                            }
+                            // verify required parameter 'body' is not null or undefined
+                            if (body === null || body === undefined) {
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdContextPatch.');
+                            }
+                            localVarPath = "/v1/workflow-instances/{workflowInstanceId}/context"
+                                .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PATCH' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
+                        case 1:
+                            _a = _c.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            localVarAccessTokenValue = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 5;
+                        case 5:
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
+                        case 6:
+                            _b = _c.sent();
+                            return [3 /*break*/, 9];
+                        case 7: return [4 /*yield*/, configuration.accessToken];
+                        case 8:
+                            _b = _c.sent();
+                            _c.label = 9;
+                        case 9:
+                            localVarAccessTokenValue = _b;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 10;
+                        case 10:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.query) {
+                                query.set(key, options.query[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+         * @summary Overwrite instance context
+         * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
+         * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdContextPut: function (workflowInstanceId, body, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            // verify required parameter 'workflowInstanceId' is not null or undefined
+                            if (workflowInstanceId === null || workflowInstanceId === undefined) {
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdContextPut.');
+                            }
+                            // verify required parameter 'body' is not null or undefined
+                            if (body === null || body === undefined) {
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdContextPut.');
+                            }
+                            localVarPath = "/v1/workflow-instances/{workflowInstanceId}/context"
+                                .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
+                        case 1:
+                            _a = _c.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            localVarAccessTokenValue = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 5;
+                        case 5:
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
+                        case 6:
+                            _b = _c.sent();
+                            return [3 /*break*/, 9];
+                        case 7: return [4 /*yield*/, configuration.accessToken];
+                        case 8:
+                            _b = _c.sent();
+                            _c.label = 9;
+                        case 9:
+                            localVarAccessTokenValue = _b;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 10;
+                        case 10:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.query) {
+                                query.set(key, options.query[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
          * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
          * @summary Retrieve error messages
          * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId: function (workflowInstanceId, options) {
+        v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -642,7 +968,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet.');
                             }
                             localVarPath = "/v1/workflow-instances/{workflowInstanceId}/error-messages"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
@@ -708,7 +1034,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId: function (workflowInstanceId, options) {
+        v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -717,7 +1043,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet.');
                             }
                             localVarPath = "/v1/workflow-instances/{workflowInstanceId}/execution-logs"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
@@ -777,241 +1103,6 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
             });
         },
         /**
-         * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
-         * @summary Retrieve instance roles
-         * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesRolesByWorkflowInstanceId: function (workflowInstanceId, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            // verify required parameter 'workflowInstanceId' is not null or undefined
-                            if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling getV1WorkflowInstancesRolesByWorkflowInstanceId.');
-                            }
-                            localVarPath = "/v1/workflow-instances/{workflowInstanceId}/roles"
-                                .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
-                        case 1:
-                            _a = _c.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _c.sent();
-                            _c.label = 4;
-                        case 4:
-                            localVarAccessTokenValue = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 5;
-                        case 5:
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
-                        case 6:
-                            _b = _c.sent();
-                            return [3 /*break*/, 9];
-                        case 7: return [4 /*yield*/, configuration.accessToken];
-                        case 8:
-                            _b = _c.sent();
-                            _c.label = 9;
-                        case 9:
-                            localVarAccessTokenValue = _b;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 10;
-                        case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.query) {
-                                query.set(key, options.query[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Modifies the given workflow instances according to the specified operations. Currently, the only operation supported is the deletion of workflow instances. You can at most specify 10000 instances to delete in one API call.  Roles permitted to execute this operation: - Global roles: WorkflowTenantOperator - Scope: WORKFLOW_INSTANCES_UPDATE
-         * @summary Delete instance by ID
-         * @param {Array<WorkflowInstancesUpdatePayload>} workflowInstancesUpdatePayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateV1WorkflowInstances: function (workflowInstancesUpdatePayload, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            // verify required parameter 'workflowInstancesUpdatePayload' is not null or undefined
-                            if (workflowInstancesUpdatePayload === null || workflowInstancesUpdatePayload === undefined) {
-                                throw new base_1.RequiredError('workflowInstancesUpdatePayload', 'Required parameter workflowInstancesUpdatePayload was null or undefined when calling updateV1WorkflowInstances.');
-                            }
-                            localVarPath = "/v1/workflow-instances";
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'PATCH' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
-                        case 1:
-                            _a = _c.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _c.sent();
-                            _c.label = 4;
-                        case 4:
-                            localVarAccessTokenValue = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 5;
-                        case 5:
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
-                        case 6:
-                            _b = _c.sent();
-                            return [3 /*break*/, 9];
-                        case 7: return [4 /*yield*/, configuration.accessToken];
-                        case 8:
-                            _b = _c.sent();
-                            _c.label = 9;
-                        case 9:
-                            localVarAccessTokenValue = _b;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 10;
-                        case 10:
-                            localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.query) {
-                                query.set(key, options.query[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof workflowInstancesUpdatePayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(workflowInstancesUpdatePayload !== undefined ? workflowInstancesUpdatePayload : {}) : (workflowInstancesUpdatePayload || "");
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Overrides the attachments information for a workflow instance independent of its status.  Take special care when using this API, because it will override the workflow attachments, that is, it might change the workflow   in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ATTACHMENTS
-         * @summary Overwrite instance attachments
-         * @param {string} workflowInstanceId Specify the workflow instance ID for which the attachments should be overridden. The workflow instance ID is 36 characters long.
-         * @param {AttachmentsContext} attachmentsContext Specify the new information according to the given schema.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId: function (workflowInstanceId, attachmentsContext, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            // verify required parameter 'workflowInstanceId' is not null or undefined
-                            if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId.');
-                            }
-                            // verify required parameter 'attachmentsContext' is not null or undefined
-                            if (attachmentsContext === null || attachmentsContext === undefined) {
-                                throw new base_1.RequiredError('attachmentsContext', 'Required parameter attachmentsContext was null or undefined when calling updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId.');
-                            }
-                            localVarPath = "/v1/workflow-instances/{workflowInstanceId}/attachments"
-                                .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
-                        case 1:
-                            _a = _c.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _c.sent();
-                            _c.label = 4;
-                        case 4:
-                            localVarAccessTokenValue = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 5;
-                        case 5:
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
-                        case 6:
-                            _b = _c.sent();
-                            return [3 /*break*/, 9];
-                        case 7: return [4 /*yield*/, configuration.accessToken];
-                        case 8:
-                            _b = _c.sent();
-                            _c.label = 9;
-                        case 9:
-                            localVarAccessTokenValue = _b;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 10;
-                        case 10:
-                            localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.query) {
-                                query.set(key, options.query[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof attachmentsContext !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(attachmentsContext !== undefined ? attachmentsContext : {}) : (attachmentsContext || "");
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
          * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
          * @summary Update instance
          * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
@@ -1019,7 +1110,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesByWorkflowInstanceId: function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
+        v1WorkflowInstancesWorkflowInstanceIdPatch: function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -1028,11 +1119,11 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling updateV1WorkflowInstancesByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdPatch.');
                             }
                             // verify required parameter 'workflowInstanceUpdatePayload' is not null or undefined
                             if (workflowInstanceUpdatePayload === null || workflowInstanceUpdatePayload === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceUpdatePayload', 'Required parameter workflowInstanceUpdatePayload was null or undefined when calling updateV1WorkflowInstancesByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceUpdatePayload', 'Required parameter workflowInstanceUpdatePayload was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdPatch.');
                             }
                             localVarPath = "/v1/workflow-instances/{workflowInstanceId}"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
@@ -1095,35 +1186,30 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
             });
         },
         /**
-         * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-         * @summary Overwrite instance context
-         * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
-         * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+         * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
+         * @summary Retrieve instance roles
+         * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesContextByWorkflowInstanceId: function (workflowInstanceId, body, options) {
+        v1WorkflowInstancesWorkflowInstanceIdRolesGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling updateV1WorkflowInstancesContextByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdRolesGet.');
                             }
-                            // verify required parameter 'body' is not null or undefined
-                            if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling updateV1WorkflowInstancesContextByWorkflowInstanceId.');
-                            }
-                            localVarPath = "/v1/workflow-instances/{workflowInstanceId}/context"
+                            localVarPath = "/v1/workflow-instances/{workflowInstanceId}/roles"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
                             }
-                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
                             localVarHeaderParameter = {};
                             localVarQueryParameter = {};
                             if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
@@ -1156,7 +1242,6 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
                             _c.label = 10;
                         case 10:
-                            localVarHeaderParameter['Content-Type'] = 'application/json';
                             query = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
                                 query.set(key, localVarQueryParameter[key]);
@@ -1167,91 +1252,6 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             localVarUrlObj.search = (new URLSearchParams(query)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Modifies parts of the context for a workflow instance independent of its status.  Take special care when using this API, because it might change the workflow context in ways that are incompatible with the expectations  of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and make sure that  the execution has come to a halt, that is, that no further steps are being added to the execution log. Refer to PATCH on the parent resource  and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-         * @summary Update instance context
-         * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be modified. The workflow instance ID is 36 characters long.
-         * @param {object} body Specify the modified parts of the context. Note that the modification is limited by the allowed content length of the request body. The length is restricted to ensure optimal operation of the service.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateV1WorkflowInstancesContextByWorkflowInstanceId1: function (workflowInstanceId, body, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            // verify required parameter 'workflowInstanceId' is not null or undefined
-                            if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling updateV1WorkflowInstancesContextByWorkflowInstanceId1.');
-                            }
-                            // verify required parameter 'body' is not null or undefined
-                            if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling updateV1WorkflowInstancesContextByWorkflowInstanceId1.');
-                            }
-                            localVarPath = "/v1/workflow-instances/{workflowInstanceId}/context"
-                                .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'PATCH' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
-                        case 1:
-                            _a = _c.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _c.sent();
-                            _c.label = 4;
-                        case 4:
-                            localVarAccessTokenValue = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 5;
-                        case 5:
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
-                        case 6:
-                            _b = _c.sent();
-                            return [3 /*break*/, 9];
-                        case 7: return [4 /*yield*/, configuration.accessToken];
-                        case 8:
-                            _b = _c.sent();
-                            _c.label = 9;
-                        case 9:
-                            localVarAccessTokenValue = _b;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 10;
-                        case 10:
-                            localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.query) {
-                                query.set(key, options.query[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
                             return [2 /*return*/, {
                                     url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                                     options: localVarRequestOptions,
@@ -1268,7 +1268,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesRolesByWorkflowInstanceId: function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
+        v1WorkflowInstancesWorkflowInstanceIdRolesPatch: function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -1277,11 +1277,11 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'workflowInstanceId' is not null or undefined
                             if (workflowInstanceId === null || workflowInstanceId === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling updateV1WorkflowInstancesRolesByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceId', 'Required parameter workflowInstanceId was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdRolesPatch.');
                             }
                             // verify required parameter 'workflowInstanceRolesUpdatePayload' is not null or undefined
                             if (workflowInstanceRolesUpdatePayload === null || workflowInstanceRolesUpdatePayload === undefined) {
-                                throw new base_1.RequiredError('workflowInstanceRolesUpdatePayload', 'Required parameter workflowInstanceRolesUpdatePayload was null or undefined when calling updateV1WorkflowInstancesRolesByWorkflowInstanceId.');
+                                throw new base_1.RequiredError('workflowInstanceRolesUpdatePayload', 'Required parameter workflowInstanceRolesUpdatePayload was null or undefined when calling v1WorkflowInstancesWorkflowInstanceIdRolesPatch.');
                             }
                             localVarPath = "/v1/workflow-instances/{workflowInstanceId}/roles"
                                 .replace("{" + "workflowInstanceId" + "}", encodeURIComponent(String(workflowInstanceId)));
@@ -1353,31 +1353,6 @@ exports.WorkflowInstancesApiAxiosParamCreator = WorkflowInstancesApiAxiosParamCr
 var WorkflowInstancesApiFp = function (configuration) {
     return {
         /**
-         * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
-         * @summary Start a new instance
-         * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createV1WorkflowInstances: function (workflowInstanceStartPayload, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).createV1WorkflowInstances(workflowInstanceStartPayload, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
          * Retrieves the workflow instance with the specified workflow instance ID.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
          * @summary Retrieve workflow instance by ID
          * @param {string} workflowInstanceId The ID of the workflow instance, which should be retrieved. The workflow instance ID is 36 characters long.
@@ -1385,12 +1360,12 @@ var WorkflowInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstance1: function (workflowInstanceId, $expand, options) {
+        getInstance: function (workflowInstanceId, $expand, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getInstance1(workflowInstanceId, $expand, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getInstance(workflowInstanceId, $expand, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1431,162 +1406,12 @@ var WorkflowInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowInstances: function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
+        v1WorkflowInstancesGet: function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getV1WorkflowInstances($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
-         * @summary Retrieve instance attachments
-         * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesAttachmentsByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
-         * @summary Retrieve custom workflow attributes by workflow instance ID
-         * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesAttributesByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getV1WorkflowInstancesAttributesByWorkflowInstanceId(workflowInstanceId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
-         * @summary Retrieve instance context
-         * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesContextByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
-         * @summary Retrieve error messages
-         * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId(workflowInstanceId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
-         * @summary Retrieve execution logs
-         * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId(workflowInstanceId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
-         * @summary Retrieve instance roles
-         * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesRolesByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).getV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesGet($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1606,12 +1431,62 @@ var WorkflowInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstances: function (workflowInstancesUpdatePayload, options) {
+        v1WorkflowInstancesPatch: function (workflowInstancesUpdatePayload, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).updateV1WorkflowInstances(workflowInstancesUpdatePayload, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesPatch(workflowInstancesUpdatePayload, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
+         * @summary Start a new instance
+         * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesPost: function (workflowInstanceStartPayload, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesPost(workflowInstanceStartPayload, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
+         * @summary Retrieve instance attachments
+         * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet: function (workflowInstanceId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet(workflowInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1632,12 +1507,12 @@ var WorkflowInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId: function (workflowInstanceId, attachmentsContext, options) {
+        v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut: function (workflowInstanceId, attachmentsContext, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId, attachmentsContext, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut(workflowInstanceId, attachmentsContext, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1651,19 +1526,18 @@ var WorkflowInstancesApiFp = function (configuration) {
             });
         },
         /**
-         * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
-         * @summary Update instance
-         * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
-         * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+         * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
+         * @summary Retrieve custom workflow attributes by workflow instance ID
+         * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesByWorkflowInstanceId: function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
+        v1WorkflowInstancesWorkflowInstanceIdAttributesGet: function (workflowInstanceId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).updateV1WorkflowInstancesByWorkflowInstanceId(workflowInstanceId, workflowInstanceUpdatePayload, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdAttributesGet(workflowInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1677,19 +1551,18 @@ var WorkflowInstancesApiFp = function (configuration) {
             });
         },
         /**
-         * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-         * @summary Overwrite instance context
-         * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
-         * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+         * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
+         * @summary Retrieve instance context
+         * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesContextByWorkflowInstanceId: function (workflowInstanceId, body, options) {
+        v1WorkflowInstancesWorkflowInstanceIdContextGet: function (workflowInstanceId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).updateV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId, body, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdContextGet(workflowInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1710,12 +1583,139 @@ var WorkflowInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesContextByWorkflowInstanceId1: function (workflowInstanceId, body, options) {
+        v1WorkflowInstancesWorkflowInstanceIdContextPatch: function (workflowInstanceId, body, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).updateV1WorkflowInstancesContextByWorkflowInstanceId1(workflowInstanceId, body, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdContextPatch(workflowInstanceId, body, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+         * @summary Overwrite instance context
+         * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
+         * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdContextPut: function (workflowInstanceId, body, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdContextPut(workflowInstanceId, body, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
+         * @summary Retrieve error messages
+         * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet: function (workflowInstanceId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet(workflowInstanceId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
+         * @summary Retrieve execution logs
+         * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet: function (workflowInstanceId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet(workflowInstanceId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
+         * @summary Update instance
+         * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
+         * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdPatch: function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdPatch(workflowInstanceId, workflowInstanceUpdatePayload, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
+         * @summary Retrieve instance roles
+         * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdRolesGet: function (workflowInstanceId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdRolesGet(workflowInstanceId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1736,12 +1736,12 @@ var WorkflowInstancesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesRolesByWorkflowInstanceId: function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
+        v1WorkflowInstancesWorkflowInstanceIdRolesPatch: function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).updateV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId, workflowInstanceRolesUpdatePayload, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowInstancesApiAxiosParamCreator(configuration).v1WorkflowInstancesWorkflowInstanceIdRolesPatch(workflowInstanceId, workflowInstanceRolesUpdatePayload, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1764,16 +1764,6 @@ exports.WorkflowInstancesApiFp = WorkflowInstancesApiFp;
 var WorkflowInstancesApiFactory = function (configuration, basePath, axios) {
     return {
         /**
-         * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
-         * @summary Start a new instance
-         * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createV1WorkflowInstances: function (workflowInstanceStartPayload, options) {
-            return exports.WorkflowInstancesApiFp(configuration).createV1WorkflowInstances(workflowInstanceStartPayload, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
          * Retrieves the workflow instance with the specified workflow instance ID.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
          * @summary Retrieve workflow instance by ID
          * @param {string} workflowInstanceId The ID of the workflow instance, which should be retrieved. The workflow instance ID is 36 characters long.
@@ -1781,8 +1771,8 @@ var WorkflowInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstance1: function (workflowInstanceId, $expand, options) {
-            return exports.WorkflowInstancesApiFp(configuration).getInstance1(workflowInstanceId, $expand, options).then(function (request) { return request(axios, basePath); });
+        getInstance: function (workflowInstanceId, $expand, options) {
+            return exports.WorkflowInstancesApiFp(configuration).getInstance(workflowInstanceId, $expand, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves workflow instances by parameters. If no parameters are specified, all RUNNING, or ERRONEOUS instances are returned. Parameters for different attributes of the instance are evaluated using the logical \'and\' operator. If multiple parameters are specified for the same attribute or a parameter is specified multiple times, results are matched using the logical \'or\' operator, unless noted otherwise. Empty parameters are treated as if they were not given.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
@@ -1812,68 +1802,8 @@ var WorkflowInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowInstances: function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
-            return exports.WorkflowInstancesApiFp(configuration).getV1WorkflowInstances($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
-         * @summary Retrieve instance attachments
-         * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesAttachmentsByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return exports.WorkflowInstancesApiFp(configuration).getV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
-         * @summary Retrieve custom workflow attributes by workflow instance ID
-         * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesAttributesByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return exports.WorkflowInstancesApiFp(configuration).getV1WorkflowInstancesAttributesByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
-         * @summary Retrieve instance context
-         * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesContextByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return exports.WorkflowInstancesApiFp(configuration).getV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
-         * @summary Retrieve error messages
-         * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return exports.WorkflowInstancesApiFp(configuration).getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
-         * @summary Retrieve execution logs
-         * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return exports.WorkflowInstancesApiFp(configuration).getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
-         * @summary Retrieve instance roles
-         * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowInstancesRolesByWorkflowInstanceId: function (workflowInstanceId, options) {
-            return exports.WorkflowInstancesApiFp(configuration).getV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowInstancesGet: function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesGet($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Modifies the given workflow instances according to the specified operations. Currently, the only operation supported is the deletion of workflow instances. You can at most specify 10000 instances to delete in one API call.  Roles permitted to execute this operation: - Global roles: WorkflowTenantOperator - Scope: WORKFLOW_INSTANCES_UPDATE
@@ -1882,8 +1812,28 @@ var WorkflowInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstances: function (workflowInstancesUpdatePayload, options) {
-            return exports.WorkflowInstancesApiFp(configuration).updateV1WorkflowInstances(workflowInstancesUpdatePayload, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowInstancesPatch: function (workflowInstancesUpdatePayload, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesPatch(workflowInstancesUpdatePayload, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
+         * @summary Start a new instance
+         * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesPost: function (workflowInstanceStartPayload, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesPost(workflowInstanceStartPayload, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
+         * @summary Retrieve instance attachments
+         * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet: function (workflowInstanceId, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Overrides the attachments information for a workflow instance independent of its status.  Take special care when using this API, because it will override the workflow attachments, that is, it might change the workflow   in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ATTACHMENTS
@@ -1893,30 +1843,28 @@ var WorkflowInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId: function (workflowInstanceId, attachmentsContext, options) {
-            return exports.WorkflowInstancesApiFp(configuration).updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId, attachmentsContext, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut: function (workflowInstanceId, attachmentsContext, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut(workflowInstanceId, attachmentsContext, options).then(function (request) { return request(axios, basePath); });
         },
         /**
-         * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
-         * @summary Update instance
-         * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
-         * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+         * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
+         * @summary Retrieve custom workflow attributes by workflow instance ID
+         * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesByWorkflowInstanceId: function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
-            return exports.WorkflowInstancesApiFp(configuration).updateV1WorkflowInstancesByWorkflowInstanceId(workflowInstanceId, workflowInstanceUpdatePayload, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowInstancesWorkflowInstanceIdAttributesGet: function (workflowInstanceId, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdAttributesGet(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
-         * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-         * @summary Overwrite instance context
-         * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
-         * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+         * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
+         * @summary Retrieve instance context
+         * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesContextByWorkflowInstanceId: function (workflowInstanceId, body, options) {
-            return exports.WorkflowInstancesApiFp(configuration).updateV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId, body, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowInstancesWorkflowInstanceIdContextGet: function (workflowInstanceId, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdContextGet(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Modifies parts of the context for a workflow instance independent of its status.  Take special care when using this API, because it might change the workflow context in ways that are incompatible with the expectations  of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and make sure that  the execution has come to a halt, that is, that no further steps are being added to the execution log. Refer to PATCH on the parent resource  and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
@@ -1926,8 +1874,60 @@ var WorkflowInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesContextByWorkflowInstanceId1: function (workflowInstanceId, body, options) {
-            return exports.WorkflowInstancesApiFp(configuration).updateV1WorkflowInstancesContextByWorkflowInstanceId1(workflowInstanceId, body, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowInstancesWorkflowInstanceIdContextPatch: function (workflowInstanceId, body, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdContextPatch(workflowInstanceId, body, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+         * @summary Overwrite instance context
+         * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
+         * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdContextPut: function (workflowInstanceId, body, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdContextPut(workflowInstanceId, body, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
+         * @summary Retrieve error messages
+         * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet: function (workflowInstanceId, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
+         * @summary Retrieve execution logs
+         * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet: function (workflowInstanceId, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
+         * @summary Update instance
+         * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
+         * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdPatch: function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdPatch(workflowInstanceId, workflowInstanceUpdatePayload, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
+         * @summary Retrieve instance roles
+         * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowInstancesWorkflowInstanceIdRolesGet: function (workflowInstanceId, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdRolesGet(workflowInstanceId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Updates the instance-specific role assignments of the given workflow instance.  Any of the role assignment properties that is present in the request body will overwrite the existing assignments with the new assignments. Any properties that are either null or not present at all in the request body will leave the corresponding role assignments unchanged.  The maximum number of users and groups that can be assigned to each role is limited to 100.  The use of expressions as part of the role assignments (e.g. ${context.variable}) is only allowed for workflow instances that are not yet COMPLETED or CANCELED.  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ROLES  Examples: - Setting **viewerUsers: \"UserId1, UserId8\"** will remove all existing user assignments of the viewer role and then assign   only the two specified users to the role. - Setting **viewerUsers: \"\"** will remove all existing user assignments of the viewer role. - Specifying any non-null **viewerUsers** in the request body and leaving out **viewerGroups** will update the user   assignments and leave the group assignments unchanged.
@@ -1937,8 +1937,8 @@ var WorkflowInstancesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1WorkflowInstancesRolesByWorkflowInstanceId: function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
-            return exports.WorkflowInstancesApiFp(configuration).updateV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId, workflowInstanceRolesUpdatePayload, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowInstancesWorkflowInstanceIdRolesPatch: function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
+            return exports.WorkflowInstancesApiFp(configuration).v1WorkflowInstancesWorkflowInstanceIdRolesPatch(workflowInstanceId, workflowInstanceRolesUpdatePayload, options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -1955,18 +1955,6 @@ var WorkflowInstancesApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
-     * @summary Start a new instance
-     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    WorkflowInstancesApi.prototype.createV1WorkflowInstances = function (workflowInstanceStartPayload, options) {
-        var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).createV1WorkflowInstances(workflowInstanceStartPayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
      * Retrieves the workflow instance with the specified workflow instance ID.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
      * @summary Retrieve workflow instance by ID
      * @param {string} workflowInstanceId The ID of the workflow instance, which should be retrieved. The workflow instance ID is 36 characters long.
@@ -1975,9 +1963,9 @@ var WorkflowInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    WorkflowInstancesApi.prototype.getInstance1 = function (workflowInstanceId, $expand, options) {
+    WorkflowInstancesApi.prototype.getInstance = function (workflowInstanceId, $expand, options) {
         var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).getInstance1(workflowInstanceId, $expand, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowInstancesApiFp(this.configuration).getInstance(workflowInstanceId, $expand, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves workflow instances by parameters. If no parameters are specified, all RUNNING, or ERRONEOUS instances are returned. Parameters for different attributes of the instance are evaluated using the logical \'and\' operator. If multiple parameters are specified for the same attribute or a parameter is specified multiple times, results are matched using the logical \'or\' operator, unless noted otherwise. Empty parameters are treated as if they were not given.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET
@@ -2008,81 +1996,9 @@ var WorkflowInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    WorkflowInstancesApi.prototype.getV1WorkflowInstances = function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesGet = function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
         var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).getV1WorkflowInstances($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
-     * @summary Retrieve instance attachments
-     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    WorkflowInstancesApi.prototype.getV1WorkflowInstancesAttachmentsByWorkflowInstanceId = function (workflowInstanceId, options) {
-        var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).getV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
-     * @summary Retrieve custom workflow attributes by workflow instance ID
-     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    WorkflowInstancesApi.prototype.getV1WorkflowInstancesAttributesByWorkflowInstanceId = function (workflowInstanceId, options) {
-        var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).getV1WorkflowInstancesAttributesByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
-     * @summary Retrieve instance context
-     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    WorkflowInstancesApi.prototype.getV1WorkflowInstancesContextByWorkflowInstanceId = function (workflowInstanceId, options) {
-        var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).getV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
-     * @summary Retrieve error messages
-     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    WorkflowInstancesApi.prototype.getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId = function (workflowInstanceId, options) {
-        var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).getV1WorkflowInstancesErrorMessagesByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
-     * @summary Retrieve execution logs
-     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    WorkflowInstancesApi.prototype.getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId = function (workflowInstanceId, options) {
-        var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).getV1WorkflowInstancesExecutionLogsByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
-     * @summary Retrieve instance roles
-     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowInstancesApi
-     */
-    WorkflowInstancesApi.prototype.getV1WorkflowInstancesRolesByWorkflowInstanceId = function (workflowInstanceId, options) {
-        var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).getV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesGet($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Modifies the given workflow instances according to the specified operations. Currently, the only operation supported is the deletion of workflow instances. You can at most specify 10000 instances to delete in one API call.  Roles permitted to execute this operation: - Global roles: WorkflowTenantOperator - Scope: WORKFLOW_INSTANCES_UPDATE
@@ -2092,9 +2008,33 @@ var WorkflowInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    WorkflowInstancesApi.prototype.updateV1WorkflowInstances = function (workflowInstancesUpdatePayload, options) {
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesPatch = function (workflowInstancesUpdatePayload, options) {
         var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).updateV1WorkflowInstances(workflowInstancesUpdatePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesPatch(workflowInstancesUpdatePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Starts a new workflow instance of the provided workflow definition. Specify the ID of the workflow definition in the body. The workflow instance automatically starts based on the latest deployed version of the definition.  Roles permitted to execute this operation:  - Global roles: WorkflowInitiator  - Scope: WORKFLOW_INSTANCE_START
+     * @summary Start a new instance
+     * @param {WorkflowInstanceStartPayload} workflowInstanceStartPayload Specify the request body according to the given schema. Note that the length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesPost = function (workflowInstanceStartPayload, options) {
+        var _this = this;
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesPost(workflowInstanceStartPayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Retrieves the attachments information for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ATTACHMENTS
+     * @summary Retrieve instance attachments
+     * @param {string} workflowInstanceId The workflow instance ID for which the attachments should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet = function (workflowInstanceId, options) {
+        var _this = this;
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Overrides the attachments information for a workflow instance independent of its status.  Take special care when using this API, because it will override the workflow attachments, that is, it might change the workflow   in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ATTACHMENTS
@@ -2105,35 +2045,33 @@ var WorkflowInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    WorkflowInstancesApi.prototype.updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId = function (workflowInstanceId, attachmentsContext, options) {
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut = function (workflowInstanceId, attachmentsContext, options) {
         var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).updateV1WorkflowInstancesAttachmentsByWorkflowInstanceId(workflowInstanceId, attachmentsContext, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut(workflowInstanceId, attachmentsContext, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
-     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
-     * @summary Update instance
-     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
-     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * Retrieves custom workflow attributes for a workflow instance. Labels as well as the order of the custom workflow attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: WORKFLOW_INSTANCE_GET_ATTRIBUTES
+     * @summary Retrieve custom workflow attributes by workflow instance ID
+     * @param {string} workflowInstanceId The ID of the workflow instance for which the custom workflow attributes should be retrieved. The ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    WorkflowInstancesApi.prototype.updateV1WorkflowInstancesByWorkflowInstanceId = function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdAttributesGet = function (workflowInstanceId, options) {
         var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).updateV1WorkflowInstancesByWorkflowInstanceId(workflowInstanceId, workflowInstanceUpdatePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdAttributesGet(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
-     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
-     * @summary Overwrite instance context
-     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
-     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the workflow context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context for a workflow instance independent of its status.   Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_CONTEXT
+     * @summary Retrieve instance context
+     * @param {string} workflowInstanceId The workflow instance ID for which the context should be retrieved. The workflow instance ID is 36 characters long.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    WorkflowInstancesApi.prototype.updateV1WorkflowInstancesContextByWorkflowInstanceId = function (workflowInstanceId, body, options) {
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdContextGet = function (workflowInstanceId, options) {
         var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).updateV1WorkflowInstancesContextByWorkflowInstanceId(workflowInstanceId, body, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdContextGet(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Modifies parts of the context for a workflow instance independent of its status.  Take special care when using this API, because it might change the workflow context in ways that are incompatible with the expectations  of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and make sure that  the execution has come to a halt, that is, that no further steps are being added to the execution log. Refer to PATCH on the parent resource  and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
@@ -2144,9 +2082,71 @@ var WorkflowInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    WorkflowInstancesApi.prototype.updateV1WorkflowInstancesContextByWorkflowInstanceId1 = function (workflowInstanceId, body, options) {
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdContextPatch = function (workflowInstanceId, body, options) {
         var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).updateV1WorkflowInstancesContextByWorkflowInstanceId1(workflowInstanceId, body, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdContextPatch(workflowInstanceId, body, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Overrides the context for a workflow instance independent of its status.   Take special care when using this API, because it will override the workflow context, that is, it might change the workflow context  in ways that are incompatible with the expectations of the tasks in the workflow definition. Before changing the context, we recommend that you suspend the workflow instance and check that the execution has come to a halt, that is, no further steps are being added to the execution log.  Refer to PATCH on the parent resource and GET on the \'execution-logs\' sibling resource.  Roles permitted to execute this operation:   - Global roles: WorkflowContextAdmin  - Instance-specific roles: contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_CONTEXT
+     * @summary Overwrite instance context
+     * @param {string} workflowInstanceId Specify the workflow instance ID for which the context should be overridden. The workflow instance ID is 36 characters long.
+     * @param {object} body Specify the new context according to the given schema. The length of the request body is limited to ensure optimal operation of the service.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdContextPut = function (workflowInstanceId, body, options) {
+        var _this = this;
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdContextPut(workflowInstanceId, body, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Retrieves current error messages for a workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowDeveloper, WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ERROR_MESSAGES
+     * @summary Retrieve error messages
+     * @param {string} workflowInstanceId The workflow instance ID for which the error messages should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet = function (workflowInstanceId, options) {
+        var _this = this;
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Retrieves execution logs for a given workflow instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_EXECUTION_LOGS
+     * @summary Retrieve execution logs
+     * @param {string} workflowInstanceId The workflow instance ID for which the execution logs should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet = function (workflowInstanceId, options) {
+        var _this = this;
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Modifies the properties of a given workflow instance, for example, sets its status to CANCELED or RUNNING.  Status change effects may not take effect immediately, due to asynchronous processing of the request. When you change the status to CANCELED, note the following:  * Workflow instances in CANCELED status are considered final, that is, no further changes are allowed. This is valid as well for other APIs and the processing according to the workflow definition.  * Workflow instances in CANCELED status stop processing as soon as the system allows.  When you are changing the status to SUSPENDED, note the following:  * Status SUSPENDED manually and temporarily suspends processing.  * Workflow instances in SUSPENDED status stop processing as soon as the system allows.  * Workflow instances remain in SUSPENDED status until a status change to RUNNING or CANCELED is requested.  * While the workflow instance status reported by the respective API might change with immediate effect, follow-up actions might only be successful, after asynchronous processing within the workflow instance actually has stopped. To check whether asynchronous processing is ongoing, analyze the execution logs or check the workflow definition structure.  When you are changing the status to RUNNING, note the following:  * For workflow instances in ERRONEOUS status, this retries the failed activities. If these activities continue failing, the workflow instance automatically moves again into ERRONEOUS status.  * If the workflow instance had previously been suspended while in ERRONEOUS status, failed activities, such as service tasks, are retried.   Roles permitted to execute this operation:  - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: WORKFLOW_INSTANCE_CANCEL, WORKFLOW_INSTANCE_RETRY_RESUME, WORKFLOW_INSTANCE_SUSPEND
+     * @summary Update instance
+     * @param {string} workflowInstanceId The ID of the workflow instance, which should be modified. The workflow instance ID is 36 characters long.
+     * @param {WorkflowInstanceUpdatePayload} workflowInstanceUpdatePayload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdPatch = function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
+        var _this = this;
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdPatch(workflowInstanceId, workflowInstanceUpdatePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Retrieves the instance-specific role assignments of the given workflow instance.   Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_GET_ROLES
+     * @summary Retrieve instance roles
+     * @param {string} workflowInstanceId The workflow instance ID for which the roles should be retrieved. The workflow instance ID is 36 characters long.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowInstancesApi
+     */
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdRolesGet = function (workflowInstanceId, options) {
+        var _this = this;
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdRolesGet(workflowInstanceId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Updates the instance-specific role assignments of the given workflow instance.  Any of the role assignment properties that is present in the request body will overwrite the existing assignments with the new assignments. Any properties that are either null or not present at all in the request body will leave the corresponding role assignments unchanged.  The maximum number of users and groups that can be assigned to each role is limited to 100.  The use of expressions as part of the role assignments (e.g. ${context.variable}) is only allowed for workflow instances that are not yet COMPLETED or CANCELED.  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: WORKFLOW_INSTANCE_UPDATE_ROLES  Examples: - Setting **viewerUsers: \"UserId1, UserId8\"** will remove all existing user assignments of the viewer role and then assign   only the two specified users to the role. - Setting **viewerUsers: \"\"** will remove all existing user assignments of the viewer role. - Specifying any non-null **viewerUsers** in the request body and leaving out **viewerGroups** will update the user   assignments and leave the group assignments unchanged.
@@ -2157,9 +2157,9 @@ var WorkflowInstancesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    WorkflowInstancesApi.prototype.updateV1WorkflowInstancesRolesByWorkflowInstanceId = function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
+    WorkflowInstancesApi.prototype.v1WorkflowInstancesWorkflowInstanceIdRolesPatch = function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
         var _this = this;
-        return exports.WorkflowInstancesApiFp(this.configuration).updateV1WorkflowInstancesRolesByWorkflowInstanceId(workflowInstanceId, workflowInstanceRolesUpdatePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowInstancesApiFp(this.configuration).v1WorkflowInstancesWorkflowInstanceIdRolesPatch(workflowInstanceId, workflowInstanceRolesUpdatePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return WorkflowInstancesApi;
 }(base_1.BaseAPI));

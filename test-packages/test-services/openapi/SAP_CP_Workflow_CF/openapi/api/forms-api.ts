@@ -39,10 +39,10 @@ export const FormsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteV1FormsByFormId: async (formId: string, options: any = {}): Promise<RequestArgs> => {
+        v1FormsFormIdDelete: async (formId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'formId' is not null or undefined
             if (formId === null || formId === undefined) {
-                throw new RequiredError('formId','Required parameter formId was null or undefined when calling deleteV1FormsByFormId.');
+                throw new RequiredError('formId','Required parameter formId was null or undefined when calling v1FormsFormIdDelete.');
             }
             const localVarPath = `/v1/forms/{formId}`
                 .replace(`{${"formId"}}`, encodeURIComponent(String(formId)));
@@ -93,6 +93,138 @@ export const FormsApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
+         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL 
+         * @summary Retrieve form model by ID and revision.
+         * @param {string} formId The ID of the form for which the model should be retrieved.
+         * @param {string} revisionId The revision of the form for which the model should be retrieved.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdRevisionsRevisionIdModelGet: async (formId: string, revisionId: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'formId' is not null or undefined
+            if (formId === null || formId === undefined) {
+                throw new RequiredError('formId','Required parameter formId was null or undefined when calling v1FormsFormIdRevisionsRevisionIdModelGet.');
+            }
+            // verify required parameter 'revisionId' is not null or undefined
+            if (revisionId === null || revisionId === undefined) {
+                throw new RequiredError('revisionId','Required parameter revisionId was null or undefined when calling v1FormsFormIdRevisionsRevisionIdModelGet.');
+            }
+            const localVarPath = `/v1/forms/{formId}/revisions/{revisionId}/model`
+                .replace(`{${"formId"}}`, encodeURIComponent(String(formId)))
+                .replace(`{${"revisionId"}}`, encodeURIComponent(String(revisionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Oauth2_AuthorizationCode required
+            // oauth required
+            if (configuration && configuration.accessToken) {
+                const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken("Oauth2_AuthorizationCode", [])
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+            }
+
+            // authentication Oauth2_ClientCredentials required
+            // oauth required
+            if (configuration && configuration.accessToken) {
+                const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken("Oauth2_ClientCredentials", [])
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+            }
+
+
+    
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                query.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL 
+         * @summary Retrieve form model by ID and version number.
+         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdVersionsVersionNumberModelGet: async (formId: string, versionNumber: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'formId' is not null or undefined
+            if (formId === null || formId === undefined) {
+                throw new RequiredError('formId','Required parameter formId was null or undefined when calling v1FormsFormIdVersionsVersionNumberModelGet.');
+            }
+            // verify required parameter 'versionNumber' is not null or undefined
+            if (versionNumber === null || versionNumber === undefined) {
+                throw new RequiredError('versionNumber','Required parameter versionNumber was null or undefined when calling v1FormsFormIdVersionsVersionNumberModelGet.');
+            }
+            const localVarPath = `/v1/forms/{formId}/versions/{versionNumber}/model`
+                .replace(`{${"formId"}}`, encodeURIComponent(String(formId)))
+                .replace(`{${"versionNumber"}}`, encodeURIComponent(String(versionNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Oauth2_AuthorizationCode required
+            // oauth required
+            if (configuration && configuration.accessToken) {
+                const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken("Oauth2_AuthorizationCode", [])
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+            }
+
+            // authentication Oauth2_ClientCredentials required
+            // oauth required
+            if (configuration && configuration.accessToken) {
+                const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken("Oauth2_ClientCredentials", [])
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+            }
+
+
+    
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                query.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves a list of the latest version of each revision of each deployed form definition. The request can be parameterized.  The results are sorted by the \'createdAt\' attribute in descending order.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: FORM_DEFINITION_GET 
          * @summary Retrieve all form definitions
          * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
@@ -102,7 +234,7 @@ export const FormsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Forms: async ($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options: any = {}): Promise<RequestArgs> => {
+        v1FormsGet: async ($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/forms`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -166,138 +298,6 @@ export const FormsApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL 
-         * @summary Retrieve form model by ID and revision.
-         * @param {string} formId The ID of the form for which the model should be retrieved.
-         * @param {string} revisionId The revision of the form for which the model should be retrieved.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsRevisionsModelByFormIdAndRevisionId: async (formId: string, revisionId: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'formId' is not null or undefined
-            if (formId === null || formId === undefined) {
-                throw new RequiredError('formId','Required parameter formId was null or undefined when calling getV1FormsRevisionsModelByFormIdAndRevisionId.');
-            }
-            // verify required parameter 'revisionId' is not null or undefined
-            if (revisionId === null || revisionId === undefined) {
-                throw new RequiredError('revisionId','Required parameter revisionId was null or undefined when calling getV1FormsRevisionsModelByFormIdAndRevisionId.');
-            }
-            const localVarPath = `/v1/forms/{formId}/revisions/{revisionId}/model`
-                .replace(`{${"formId"}}`, encodeURIComponent(String(formId)))
-                .replace(`{${"revisionId"}}`, encodeURIComponent(String(revisionId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Oauth2_AuthorizationCode required
-            // oauth required
-            if (configuration && configuration.accessToken) {
-                const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken("Oauth2_AuthorizationCode", [])
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-            }
-
-            // authentication Oauth2_ClientCredentials required
-            // oauth required
-            if (configuration && configuration.accessToken) {
-                const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken("Oauth2_ClientCredentials", [])
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-            }
-
-
-    
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                query.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL 
-         * @summary Retrieve form model by ID and version number.
-         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsVersionsModelByFormIdAndVersionNumber: async (formId: string, versionNumber: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'formId' is not null or undefined
-            if (formId === null || formId === undefined) {
-                throw new RequiredError('formId','Required parameter formId was null or undefined when calling getV1FormsVersionsModelByFormIdAndVersionNumber.');
-            }
-            // verify required parameter 'versionNumber' is not null or undefined
-            if (versionNumber === null || versionNumber === undefined) {
-                throw new RequiredError('versionNumber','Required parameter versionNumber was null or undefined when calling getV1FormsVersionsModelByFormIdAndVersionNumber.');
-            }
-            const localVarPath = `/v1/forms/{formId}/versions/{versionNumber}/model`
-                .replace(`{${"formId"}}`, encodeURIComponent(String(formId)))
-                .replace(`{${"versionNumber"}}`, encodeURIComponent(String(versionNumber)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Oauth2_AuthorizationCode required
-            // oauth required
-            if (configuration && configuration.accessToken) {
-                const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken("Oauth2_AuthorizationCode", [])
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-            }
-
-            // authentication Oauth2_ClientCredentials required
-            // oauth required
-            if (configuration && configuration.accessToken) {
-                const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken("Oauth2_ClientCredentials", [])
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-            }
-
-
-    
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                query.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -314,8 +314,38 @@ export const FormsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteV1FormsByFormId(formId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await FormsApiAxiosParamCreator(configuration).deleteV1FormsByFormId(formId, options);
+        async v1FormsFormIdDelete(formId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await FormsApiAxiosParamCreator(configuration).v1FormsFormIdDelete(formId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL 
+         * @summary Retrieve form model by ID and revision.
+         * @param {string} formId The ID of the form for which the model should be retrieved.
+         * @param {string} revisionId The revision of the form for which the model should be retrieved.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async v1FormsFormIdRevisionsRevisionIdModelGet(formId: string, revisionId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormModel>> {
+            const localVarAxiosArgs = await FormsApiAxiosParamCreator(configuration).v1FormsFormIdRevisionsRevisionIdModelGet(formId, revisionId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL 
+         * @summary Retrieve form model by ID and version number.
+         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async v1FormsFormIdVersionsVersionNumberModelGet(formId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormModel>> {
+            const localVarAxiosArgs = await FormsApiAxiosParamCreator(configuration).v1FormsFormIdVersionsVersionNumberModelGet(formId, versionNumber, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -331,38 +361,8 @@ export const FormsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1Forms($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FormMetadata>>> {
-            const localVarAxiosArgs = await FormsApiAxiosParamCreator(configuration).getV1Forms($skip, $top, $inlinecount, type, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL 
-         * @summary Retrieve form model by ID and revision.
-         * @param {string} formId The ID of the form for which the model should be retrieved.
-         * @param {string} revisionId The revision of the form for which the model should be retrieved.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getV1FormsRevisionsModelByFormIdAndRevisionId(formId: string, revisionId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormModel>> {
-            const localVarAxiosArgs = await FormsApiAxiosParamCreator(configuration).getV1FormsRevisionsModelByFormIdAndRevisionId(formId, revisionId, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL 
-         * @summary Retrieve form model by ID and version number.
-         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getV1FormsVersionsModelByFormIdAndVersionNumber(formId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormModel>> {
-            const localVarAxiosArgs = await FormsApiAxiosParamCreator(configuration).getV1FormsVersionsModelByFormIdAndVersionNumber(formId, versionNumber, options);
+        async v1FormsGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FormMetadata>>> {
+            const localVarAxiosArgs = await FormsApiAxiosParamCreator(configuration).v1FormsGet($skip, $top, $inlinecount, type, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -384,8 +384,30 @@ export const FormsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteV1FormsByFormId(formId: string, options?: any): AxiosPromise<void> {
-            return FormsApiFp(configuration).deleteV1FormsByFormId(formId, options).then((request) => request(axios, basePath));
+        v1FormsFormIdDelete(formId: string, options?: any): AxiosPromise<void> {
+            return FormsApiFp(configuration).v1FormsFormIdDelete(formId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL 
+         * @summary Retrieve form model by ID and revision.
+         * @param {string} formId The ID of the form for which the model should be retrieved.
+         * @param {string} revisionId The revision of the form for which the model should be retrieved.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdRevisionsRevisionIdModelGet(formId: string, revisionId: string, options?: any): AxiosPromise<FormModel> {
+            return FormsApiFp(configuration).v1FormsFormIdRevisionsRevisionIdModelGet(formId, revisionId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL 
+         * @summary Retrieve form model by ID and version number.
+         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FormsFormIdVersionsVersionNumberModelGet(formId: string, versionNumber: string, options?: any): AxiosPromise<FormModel> {
+            return FormsApiFp(configuration).v1FormsFormIdVersionsVersionNumberModelGet(formId, versionNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a list of the latest version of each revision of each deployed form definition. The request can be parameterized.  The results are sorted by the \'createdAt\' attribute in descending order.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: FORM_DEFINITION_GET 
@@ -397,30 +419,8 @@ export const FormsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Forms($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options?: any): AxiosPromise<Array<FormMetadata>> {
-            return FormsApiFp(configuration).getV1Forms($skip, $top, $inlinecount, type, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL 
-         * @summary Retrieve form model by ID and revision.
-         * @param {string} formId The ID of the form for which the model should be retrieved.
-         * @param {string} revisionId The revision of the form for which the model should be retrieved.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsRevisionsModelByFormIdAndRevisionId(formId: string, revisionId: string, options?: any): AxiosPromise<FormModel> {
-            return FormsApiFp(configuration).getV1FormsRevisionsModelByFormIdAndRevisionId(formId, revisionId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL 
-         * @summary Retrieve form model by ID and version number.
-         * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-         * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1FormsVersionsModelByFormIdAndVersionNumber(formId: string, versionNumber: string, options?: any): AxiosPromise<FormModel> {
-            return FormsApiFp(configuration).getV1FormsVersionsModelByFormIdAndVersionNumber(formId, versionNumber, options).then((request) => request(axios, basePath));
+        v1FormsGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options?: any): AxiosPromise<Array<FormMetadata>> {
+            return FormsApiFp(configuration).v1FormsGet($skip, $top, $inlinecount, type, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -440,8 +440,34 @@ export class FormsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FormsApi
      */
-    public deleteV1FormsByFormId(formId: string, options?: any) {
-        return FormsApiFp(this.configuration).deleteV1FormsByFormId(formId, options).then((request) => request(this.axios, this.basePath));
+    public v1FormsFormIdDelete(formId: string, options?: any) {
+        return FormsApiFp(this.configuration).v1FormsFormIdDelete(formId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL 
+     * @summary Retrieve form model by ID and revision.
+     * @param {string} formId The ID of the form for which the model should be retrieved.
+     * @param {string} revisionId The revision of the form for which the model should be retrieved.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FormsApi
+     */
+    public v1FormsFormIdRevisionsRevisionIdModelGet(formId: string, revisionId: string, options?: any) {
+        return FormsApiFp(this.configuration).v1FormsFormIdRevisionsRevisionIdModelGet(formId, revisionId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL 
+     * @summary Retrieve form model by ID and version number.
+     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
+     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FormsApi
+     */
+    public v1FormsFormIdVersionsVersionNumberModelGet(formId: string, versionNumber: string, options?: any) {
+        return FormsApiFp(this.configuration).v1FormsFormIdVersionsVersionNumberModelGet(formId, versionNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -455,33 +481,7 @@ export class FormsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FormsApi
      */
-    public getV1Forms($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options?: any) {
-        return FormsApiFp(this.configuration).getV1Forms($skip, $top, $inlinecount, type, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieves the form model with the specified form ID and revision.  Roles permitted to execute this operation:  - Global roles (retrieve start and task forms): WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Global roles (retrieve start forms only): WorkflowInitiator  - Scope: FORM_DEFINITION_GET_MODEL 
-     * @summary Retrieve form model by ID and revision.
-     * @param {string} formId The ID of the form for which the model should be retrieved.
-     * @param {string} revisionId The revision of the form for which the model should be retrieved.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FormsApi
-     */
-    public getV1FormsRevisionsModelByFormIdAndRevisionId(formId: string, revisionId: string, options?: any) {
-        return FormsApiFp(this.configuration).getV1FormsRevisionsModelByFormIdAndRevisionId(formId, revisionId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieves the model of the specified version of the specified form definition.    Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin, WorkflowDeveloper   - Scope: FORM_DEFINITION_GET_MODEL 
-     * @summary Retrieve form model by ID and version number.
-     * @param {string} formId The form ID for which the model should be retrieved. The form definition ID is at most 255 characters long.
-     * @param {string} versionNumber The version number for which the model should be retrieved. The version number consists of 1 - 10 digits.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FormsApi
-     */
-    public getV1FormsVersionsModelByFormIdAndVersionNumber(formId: string, versionNumber: string, options?: any) {
-        return FormsApiFp(this.configuration).getV1FormsVersionsModelByFormIdAndVersionNumber(formId, versionNumber, options).then((request) => request(this.axios, this.basePath));
+    public v1FormsGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', type?: 'start' | 'task', options?: any) {
+        return FormsApiFp(this.configuration).v1FormsGet($skip, $top, $inlinecount, type, options).then((request) => request(this.axios, this.basePath));
     }
 }

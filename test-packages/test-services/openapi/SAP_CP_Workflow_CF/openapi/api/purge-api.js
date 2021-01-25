@@ -94,7 +94,7 @@ var PurgeApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Purge: function (options) {
+        v1PurgePost: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -172,12 +172,12 @@ var PurgeApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Purge: function (options) {
+        v1PurgePost: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.PurgeApiAxiosParamCreator(configuration).createV1Purge(options)];
+                        case 0: return [4 /*yield*/, exports.PurgeApiAxiosParamCreator(configuration).v1PurgePost(options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -205,8 +205,8 @@ var PurgeApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Purge: function (options) {
-            return exports.PurgeApiFp(configuration).createV1Purge(options).then(function (request) { return request(axios, basePath); });
+        v1PurgePost: function (options) {
+            return exports.PurgeApiFp(configuration).v1PurgePost(options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -229,9 +229,9 @@ var PurgeApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof PurgeApi
      */
-    PurgeApi.prototype.createV1Purge = function (options) {
+    PurgeApi.prototype.v1PurgePost = function (options) {
         var _this = this;
-        return exports.PurgeApiFp(this.configuration).createV1Purge(options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.PurgeApiFp(this.configuration).v1PurgePost(options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return PurgeApi;
 }(base_1.BaseAPI));

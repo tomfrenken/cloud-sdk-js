@@ -34,7 +34,7 @@ export const PurgeApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Purge: async (options: any = {}): Promise<RequestArgs> => {
+        v1PurgePost: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/purge`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -97,8 +97,8 @@ export const PurgeApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createV1Purge(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PurgeApiAxiosParamCreator(configuration).createV1Purge(options);
+        async v1PurgePost(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PurgeApiAxiosParamCreator(configuration).v1PurgePost(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -119,8 +119,8 @@ export const PurgeApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Purge(options?: any): AxiosPromise<void> {
-            return PurgeApiFp(configuration).createV1Purge(options).then((request) => request(axios, basePath));
+        v1PurgePost(options?: any): AxiosPromise<void> {
+            return PurgeApiFp(configuration).v1PurgePost(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -139,7 +139,7 @@ export class PurgeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PurgeApi
      */
-    public createV1Purge(options?: any) {
-        return PurgeApiFp(this.configuration).createV1Purge(options).then((request) => request(this.axios, this.basePath));
+    public v1PurgePost(options?: any) {
+        return PurgeApiFp(this.configuration).v1PurgePost(options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -29,18 +29,7 @@ export declare const WorkflowDefinitionsApiAxiosParamCreator: (configuration?: C
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteV1WorkflowDefinitionsByDefinitionId: (definitionId: string, cascade?: boolean | undefined, options?: any) => Promise<RequestArgs>;
-    /**
-     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
-     * @summary Retrieve all workflow definitions
-     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
-     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
-     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
-     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowDefinitions: ($orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any) => Promise<RequestArgs>;
+    v1WorkflowDefinitionsDefinitionIdDelete: (definitionId: string, cascade?: boolean | undefined, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:   WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve workflow definition by ID
@@ -48,7 +37,7 @@ export declare const WorkflowDefinitionsApiAxiosParamCreator: (configuration?: C
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsByDefinitionId: (definitionId: string, options?: any) => Promise<RequestArgs>;
+    v1WorkflowDefinitionsDefinitionIdGet: (definitionId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the model of the latest version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
      * @summary Retrieve workflow definition model by ID
@@ -56,7 +45,7 @@ export declare const WorkflowDefinitionsApiAxiosParamCreator: (configuration?: C
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsModelByDefinitionId: (definitionId: string, options?: any) => Promise<RequestArgs>;
+    v1WorkflowDefinitionsDefinitionIdModelGet: (definitionId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the default start context of the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
      * @summary Retrieve sample start context of workflow definition by ID
@@ -64,7 +53,7 @@ export declare const WorkflowDefinitionsApiAxiosParamCreator: (configuration?: C
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId: (definitionId: string, options?: any) => Promise<RequestArgs>;
+    v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet: (definitionId: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves a list of all deployed versions of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve all versions of workflow definition by ID
@@ -76,7 +65,7 @@ export declare const WorkflowDefinitionsApiAxiosParamCreator: (configuration?: C
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsByDefinitionId: (definitionId: string, $orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any) => Promise<RequestArgs>;
+    v1WorkflowDefinitionsDefinitionIdVersionsGet: (definitionId: string, $orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve workflow definition by ID and version number
@@ -85,7 +74,7 @@ export declare const WorkflowDefinitionsApiAxiosParamCreator: (configuration?: C
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber: (definitionId: string, versionNumber: string, options?: any) => Promise<RequestArgs>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet: (definitionId: string, versionNumber: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the model of the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
      * @summary Retrieve workflow definition model by ID and version number
@@ -94,7 +83,7 @@ export declare const WorkflowDefinitionsApiAxiosParamCreator: (configuration?: C
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber: (definitionId: string, versionNumber: string, options?: any) => Promise<RequestArgs>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet: (definitionId: string, versionNumber: string, options?: any) => Promise<RequestArgs>;
     /**
      * Retrieves the default start context of the specified version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
      * @summary Retrieve sample start context of workflow definition by ID and version number
@@ -103,7 +92,18 @@ export declare const WorkflowDefinitionsApiAxiosParamCreator: (configuration?: C
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber: (definitionId: string, versionNumber: string, options?: any) => Promise<RequestArgs>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet: (definitionId: string, versionNumber: string, options?: any) => Promise<RequestArgs>;
+    /**
+     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
+     * @summary Retrieve all workflow definitions
+     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
+     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
+     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
+     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowDefinitionsGet: ($orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any) => Promise<RequestArgs>;
 };
 /**
  * WorkflowDefinitionsApi - functional programming interface
@@ -118,18 +118,7 @@ export declare const WorkflowDefinitionsApiFp: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteV1WorkflowDefinitionsByDefinitionId(definitionId: string, cascade?: boolean | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
-    /**
-     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
-     * @summary Retrieve all workflow definitions
-     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
-     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
-     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
-     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowDefinitions($orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowDefinition>>>;
+    v1WorkflowDefinitionsDefinitionIdDelete(definitionId: string, cascade?: boolean | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
     /**
      * Retrieves the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:   WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve workflow definition by ID
@@ -137,7 +126,7 @@ export declare const WorkflowDefinitionsApiFp: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsByDefinitionId(definitionId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowDefinition>>;
+    v1WorkflowDefinitionsDefinitionIdGet(definitionId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowDefinition>>;
     /**
      * Retrieves the model of the latest version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
      * @summary Retrieve workflow definition model by ID
@@ -145,7 +134,7 @@ export declare const WorkflowDefinitionsApiFp: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsModelByDefinitionId(definitionId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowModel>>;
+    v1WorkflowDefinitionsDefinitionIdModelGet(definitionId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowModel>>;
     /**
      * Retrieves the default start context of the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
      * @summary Retrieve sample start context of workflow definition by ID
@@ -153,7 +142,7 @@ export declare const WorkflowDefinitionsApiFp: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId(definitionId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<SampleContext>>;
+    v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet(definitionId: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<SampleContext>>;
     /**
      * Retrieves a list of all deployed versions of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve all versions of workflow definition by ID
@@ -165,7 +154,7 @@ export declare const WorkflowDefinitionsApiFp: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsByDefinitionId(definitionId: string, $orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowDefinitionVersion>>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsGet(definitionId: string, $orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowDefinitionVersion>>>;
     /**
      * Retrieves the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve workflow definition by ID and version number
@@ -174,7 +163,7 @@ export declare const WorkflowDefinitionsApiFp: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowDefinitionVersion>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet(definitionId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowDefinitionVersion>>;
     /**
      * Retrieves the model of the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
      * @summary Retrieve workflow definition model by ID and version number
@@ -183,7 +172,7 @@ export declare const WorkflowDefinitionsApiFp: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowModel>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet(definitionId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<WorkflowModel>>;
     /**
      * Retrieves the default start context of the specified version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
      * @summary Retrieve sample start context of workflow definition by ID and version number
@@ -192,7 +181,18 @@ export declare const WorkflowDefinitionsApiFp: (configuration?: Configuration | 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<SampleContext>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet(definitionId: string, versionNumber: string, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<SampleContext>>;
+    /**
+     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
+     * @summary Retrieve all workflow definitions
+     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
+     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
+     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
+     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowDefinitionsGet($orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<WorkflowDefinition>>>;
 };
 /**
  * WorkflowDefinitionsApi - factory interface
@@ -207,18 +207,7 @@ export declare const WorkflowDefinitionsApiFactory: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteV1WorkflowDefinitionsByDefinitionId(definitionId: string, cascade?: boolean | undefined, options?: any): AxiosPromise<void>;
-    /**
-     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
-     * @summary Retrieve all workflow definitions
-     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
-     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
-     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
-     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getV1WorkflowDefinitions($orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any): AxiosPromise<Array<WorkflowDefinition>>;
+    v1WorkflowDefinitionsDefinitionIdDelete(definitionId: string, cascade?: boolean | undefined, options?: any): AxiosPromise<void>;
     /**
      * Retrieves the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:   WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve workflow definition by ID
@@ -226,7 +215,7 @@ export declare const WorkflowDefinitionsApiFactory: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsByDefinitionId(definitionId: string, options?: any): AxiosPromise<WorkflowDefinition>;
+    v1WorkflowDefinitionsDefinitionIdGet(definitionId: string, options?: any): AxiosPromise<WorkflowDefinition>;
     /**
      * Retrieves the model of the latest version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
      * @summary Retrieve workflow definition model by ID
@@ -234,7 +223,7 @@ export declare const WorkflowDefinitionsApiFactory: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsModelByDefinitionId(definitionId: string, options?: any): AxiosPromise<WorkflowModel>;
+    v1WorkflowDefinitionsDefinitionIdModelGet(definitionId: string, options?: any): AxiosPromise<WorkflowModel>;
     /**
      * Retrieves the default start context of the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
      * @summary Retrieve sample start context of workflow definition by ID
@@ -242,7 +231,7 @@ export declare const WorkflowDefinitionsApiFactory: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId(definitionId: string, options?: any): AxiosPromise<SampleContext>;
+    v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet(definitionId: string, options?: any): AxiosPromise<SampleContext>;
     /**
      * Retrieves a list of all deployed versions of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve all versions of workflow definition by ID
@@ -254,7 +243,7 @@ export declare const WorkflowDefinitionsApiFactory: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsByDefinitionId(definitionId: string, $orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any): AxiosPromise<Array<WorkflowDefinitionVersion>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsGet(definitionId: string, $orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any): AxiosPromise<Array<WorkflowDefinitionVersion>>;
     /**
      * Retrieves the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve workflow definition by ID and version number
@@ -263,7 +252,7 @@ export declare const WorkflowDefinitionsApiFactory: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): AxiosPromise<WorkflowDefinitionVersion>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet(definitionId: string, versionNumber: string, options?: any): AxiosPromise<WorkflowDefinitionVersion>;
     /**
      * Retrieves the model of the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
      * @summary Retrieve workflow definition model by ID and version number
@@ -272,7 +261,7 @@ export declare const WorkflowDefinitionsApiFactory: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): AxiosPromise<WorkflowModel>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet(definitionId: string, versionNumber: string, options?: any): AxiosPromise<WorkflowModel>;
     /**
      * Retrieves the default start context of the specified version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
      * @summary Retrieve sample start context of workflow definition by ID and version number
@@ -281,7 +270,18 @@ export declare const WorkflowDefinitionsApiFactory: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): AxiosPromise<SampleContext>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet(definitionId: string, versionNumber: string, options?: any): AxiosPromise<SampleContext>;
+    /**
+     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
+     * @summary Retrieve all workflow definitions
+     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
+     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
+     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
+     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1WorkflowDefinitionsGet($orderby?: "createdAt asc" | "createdAt desc" | "id asc" | "id desc" | "id" | "createdAt" | "version" | "version asc" | "version desc" | "name" | "name asc" | "name desc" | "createdBy" | "createdBy asc" | "createdBy desc" | undefined, $skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, options?: any): AxiosPromise<Array<WorkflowDefinition>>;
 };
 /**
  * WorkflowDefinitionsApi - object-oriented interface
@@ -299,19 +299,7 @@ export declare class WorkflowDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    deleteV1WorkflowDefinitionsByDefinitionId(definitionId: string, cascade?: boolean, options?: any): Promise<import("axios").AxiosResponse<void>>;
-    /**
-     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
-     * @summary Retrieve all workflow definitions
-     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
-     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
-     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
-     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowDefinitionsApi
-     */
-    getV1WorkflowDefinitions($orderby?: 'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc', $skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', options?: any): Promise<import("axios").AxiosResponse<WorkflowDefinition[]>>;
+    v1WorkflowDefinitionsDefinitionIdDelete(definitionId: string, cascade?: boolean, options?: any): Promise<import("axios").AxiosResponse<void>>;
     /**
      * Retrieves the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:   WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve workflow definition by ID
@@ -320,7 +308,7 @@ export declare class WorkflowDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    getV1WorkflowDefinitionsByDefinitionId(definitionId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowDefinition>>;
+    v1WorkflowDefinitionsDefinitionIdGet(definitionId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowDefinition>>;
     /**
      * Retrieves the model of the latest version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
      * @summary Retrieve workflow definition model by ID
@@ -329,7 +317,7 @@ export declare class WorkflowDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    getV1WorkflowDefinitionsModelByDefinitionId(definitionId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowModel>>;
+    v1WorkflowDefinitionsDefinitionIdModelGet(definitionId: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowModel>>;
     /**
      * Retrieves the default start context of the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
      * @summary Retrieve sample start context of workflow definition by ID
@@ -338,7 +326,7 @@ export declare class WorkflowDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId(definitionId: string, options?: any): Promise<import("axios").AxiosResponse<SampleContext>>;
+    v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet(definitionId: string, options?: any): Promise<import("axios").AxiosResponse<SampleContext>>;
     /**
      * Retrieves a list of all deployed versions of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve all versions of workflow definition by ID
@@ -351,7 +339,7 @@ export declare class WorkflowDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    getV1WorkflowDefinitionsVersionsByDefinitionId(definitionId: string, $orderby?: 'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc', $skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', options?: any): Promise<import("axios").AxiosResponse<WorkflowDefinitionVersion[]>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsGet(definitionId: string, $orderby?: 'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc', $skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', options?: any): Promise<import("axios").AxiosResponse<WorkflowDefinitionVersion[]>>;
     /**
      * Retrieves the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
      * @summary Retrieve workflow definition by ID and version number
@@ -361,7 +349,7 @@ export declare class WorkflowDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowDefinitionVersion>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet(definitionId: string, versionNumber: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowDefinitionVersion>>;
     /**
      * Retrieves the model of the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
      * @summary Retrieve workflow definition model by ID and version number
@@ -371,7 +359,7 @@ export declare class WorkflowDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowModel>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet(definitionId: string, versionNumber: string, options?: any): Promise<import("axios").AxiosResponse<WorkflowModel>>;
     /**
      * Retrieves the default start context of the specified version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
      * @summary Retrieve sample start context of workflow definition by ID and version number
@@ -381,6 +369,18 @@ export declare class WorkflowDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber(definitionId: string, versionNumber: string, options?: any): Promise<import("axios").AxiosResponse<SampleContext>>;
+    v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet(definitionId: string, versionNumber: string, options?: any): Promise<import("axios").AxiosResponse<SampleContext>>;
+    /**
+     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
+     * @summary Retrieve all workflow definitions
+     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
+     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
+     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
+     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowDefinitionsApi
+     */
+    v1WorkflowDefinitionsGet($orderby?: 'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc', $skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', options?: any): Promise<import("axios").AxiosResponse<WorkflowDefinition[]>>;
 }
 //# sourceMappingURL=workflow-definitions-api.d.ts.map

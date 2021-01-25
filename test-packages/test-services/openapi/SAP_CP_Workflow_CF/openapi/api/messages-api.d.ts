@@ -26,7 +26,7 @@ export declare const MessagesApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createV1Messages: (sendMessagePayload: SendMessagePayload, options?: any) => Promise<RequestArgs>;
+    v1MessagesPost: (sendMessagePayload: SendMessagePayload, options?: any) => Promise<RequestArgs>;
 };
 /**
  * MessagesApi - functional programming interface
@@ -40,7 +40,7 @@ export declare const MessagesApiFp: (configuration?: Configuration | undefined) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createV1Messages(sendMessagePayload: SendMessagePayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<ConsumingWorkflowInstance>>>;
+    v1MessagesPost(sendMessagePayload: SendMessagePayload, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<ConsumingWorkflowInstance>>>;
 };
 /**
  * MessagesApi - factory interface
@@ -54,7 +54,7 @@ export declare const MessagesApiFactory: (configuration?: Configuration | undefi
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createV1Messages(sendMessagePayload: SendMessagePayload, options?: any): AxiosPromise<Array<ConsumingWorkflowInstance>>;
+    v1MessagesPost(sendMessagePayload: SendMessagePayload, options?: any): AxiosPromise<Array<ConsumingWorkflowInstance>>;
 };
 /**
  * MessagesApi - object-oriented interface
@@ -71,6 +71,6 @@ export declare class MessagesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    createV1Messages(sendMessagePayload: SendMessagePayload, options?: any): Promise<import("axios").AxiosResponse<ConsumingWorkflowInstance[]>>;
+    v1MessagesPost(sendMessagePayload: SendMessagePayload, options?: any): Promise<import("axios").AxiosResponse<ConsumingWorkflowInstance[]>>;
 }
 //# sourceMappingURL=messages-api.d.ts.map

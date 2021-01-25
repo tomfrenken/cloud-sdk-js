@@ -23,7 +23,7 @@ export declare const PurgeApiAxiosParamCreator: (configuration?: Configuration |
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createV1Purge: (options?: any) => Promise<RequestArgs>;
+    v1PurgePost: (options?: any) => Promise<RequestArgs>;
 };
 /**
  * PurgeApi - functional programming interface
@@ -36,7 +36,7 @@ export declare const PurgeApiFp: (configuration?: Configuration | undefined) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createV1Purge(options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
+    v1PurgePost(options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<void>>;
 };
 /**
  * PurgeApi - factory interface
@@ -49,7 +49,7 @@ export declare const PurgeApiFactory: (configuration?: Configuration | undefined
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createV1Purge(options?: any): AxiosPromise<void>;
+    v1PurgePost(options?: any): AxiosPromise<void>;
 };
 /**
  * PurgeApi - object-oriented interface
@@ -65,6 +65,6 @@ export declare class PurgeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PurgeApi
      */
-    createV1Purge(options?: any): Promise<import("axios").AxiosResponse<void>>;
+    v1PurgePost(options?: any): Promise<import("axios").AxiosResponse<void>>;
 }
 //# sourceMappingURL=purge-api.d.ts.map

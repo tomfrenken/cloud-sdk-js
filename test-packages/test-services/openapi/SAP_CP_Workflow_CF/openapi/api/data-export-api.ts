@@ -34,7 +34,7 @@ export const DataExportApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Export: async (options: any = {}): Promise<RequestArgs> => {
+        v1ExportGet: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/export`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -97,8 +97,8 @@ export const DataExportApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1Export(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await DataExportApiAxiosParamCreator(configuration).getV1Export(options);
+        async v1ExportGet(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await DataExportApiAxiosParamCreator(configuration).v1ExportGet(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -119,8 +119,8 @@ export const DataExportApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1Export(options?: any): AxiosPromise<void> {
-            return DataExportApiFp(configuration).getV1Export(options).then((request) => request(axios, basePath));
+        v1ExportGet(options?: any): AxiosPromise<void> {
+            return DataExportApiFp(configuration).v1ExportGet(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -139,7 +139,7 @@ export class DataExportApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DataExportApi
      */
-    public getV1Export(options?: any) {
-        return DataExportApiFp(this.configuration).getV1Export(options).then((request) => request(this.axios, this.basePath));
+    public v1ExportGet(options?: any) {
+        return DataExportApiFp(this.configuration).v1ExportGet(options).then((request) => request(this.axios, this.basePath));
     }
 }

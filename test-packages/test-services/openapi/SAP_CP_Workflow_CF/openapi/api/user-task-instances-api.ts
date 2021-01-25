@@ -147,7 +147,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstances: async ($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options: any = {}): Promise<RequestArgs> => {
+        v1TaskInstancesGet: async ($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/task-instances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -338,10 +338,10 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttachmentsByTaskInstanceId: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
+        v1TaskInstancesTaskInstanceIdAttachmentsGet: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'taskInstanceId' is not null or undefined
             if (taskInstanceId === null || taskInstanceId === undefined) {
-                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesAttachmentsByTaskInstanceId.');
+                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdAttachmentsGet.');
             }
             const localVarPath = `/v1/task-instances/{taskInstanceId}/attachments`
                 .replace(`{${"taskInstanceId"}}`, encodeURIComponent(String(taskInstanceId)));
@@ -398,10 +398,10 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttributesByTaskInstanceId: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
+        v1TaskInstancesTaskInstanceIdAttributesGet: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'taskInstanceId' is not null or undefined
             if (taskInstanceId === null || taskInstanceId === undefined) {
-                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesAttributesByTaskInstanceId.');
+                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdAttributesGet.');
             }
             const localVarPath = `/v1/task-instances/{taskInstanceId}/attributes`
                 .replace(`{${"taskInstanceId"}}`, encodeURIComponent(String(taskInstanceId)));
@@ -458,10 +458,10 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesContextByTaskInstanceId: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
+        v1TaskInstancesTaskInstanceIdContextGet: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'taskInstanceId' is not null or undefined
             if (taskInstanceId === null || taskInstanceId === undefined) {
-                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesContextByTaskInstanceId.');
+                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdContextGet.');
             }
             const localVarPath = `/v1/task-instances/{taskInstanceId}/context`
                 .replace(`{${"taskInstanceId"}}`, encodeURIComponent(String(taskInstanceId)));
@@ -518,10 +518,10 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormByTaskInstanceId: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
+        v1TaskInstancesTaskInstanceIdFormGet: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'taskInstanceId' is not null or undefined
             if (taskInstanceId === null || taskInstanceId === undefined) {
-                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesFormByTaskInstanceId.');
+                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdFormGet.');
             }
             const localVarPath = `/v1/task-instances/{taskInstanceId}/form`
                 .replace(`{${"taskInstanceId"}}`, encodeURIComponent(String(taskInstanceId)));
@@ -578,10 +578,10 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormModelByTaskInstanceId: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
+        v1TaskInstancesTaskInstanceIdFormModelGet: async (taskInstanceId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'taskInstanceId' is not null or undefined
             if (taskInstanceId === null || taskInstanceId === undefined) {
-                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling getV1TaskInstancesFormModelByTaskInstanceId.');
+                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdFormModelGet.');
             }
             const localVarPath = `/v1/task-instances/{taskInstanceId}/form/model`
                 .replace(`{${"taskInstanceId"}}`, encodeURIComponent(String(taskInstanceId)));
@@ -639,14 +639,14 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1TaskInstancesByTaskInstanceId: async (taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options: any = {}): Promise<RequestArgs> => {
+        v1TaskInstancesTaskInstanceIdPatch: async (taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'taskInstanceId' is not null or undefined
             if (taskInstanceId === null || taskInstanceId === undefined) {
-                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling updateV1TaskInstancesByTaskInstanceId.');
+                throw new RequiredError('taskInstanceId','Required parameter taskInstanceId was null or undefined when calling v1TaskInstancesTaskInstanceIdPatch.');
             }
             // verify required parameter 'updateTaskInstancePayload' is not null or undefined
             if (updateTaskInstancePayload === null || updateTaskInstancePayload === undefined) {
-                throw new RequiredError('updateTaskInstancePayload','Required parameter updateTaskInstancePayload was null or undefined when calling updateV1TaskInstancesByTaskInstanceId.');
+                throw new RequiredError('updateTaskInstancePayload','Required parameter updateTaskInstancePayload was null or undefined when calling v1TaskInstancesTaskInstanceIdPatch.');
             }
             const localVarPath = `/v1/task-instances/{taskInstanceId}`
                 .replace(`{${"taskInstanceId"}}`, encodeURIComponent(String(taskInstanceId)));
@@ -764,8 +764,8 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1TaskInstances($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TaskInstance>>> {
-            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstances($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options);
+        async v1TaskInstancesGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TaskInstance>>> {
+            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesGet($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -778,8 +778,8 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentsContext>> {
-            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId, options);
+        async v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentsContext>> {
+            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -792,8 +792,8 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomAttribute>>> {
-            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId, options);
+        async v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomAttribute>>> {
+            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -806,8 +806,8 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1TaskInstancesContextByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesContextByTaskInstanceId(taskInstanceId, options);
+        async v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -820,8 +820,8 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1TaskInstancesFormByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormMetadata>> {
-            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesFormByTaskInstanceId(taskInstanceId, options);
+        async v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormMetadata>> {
+            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -834,8 +834,8 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormModel>> {
-            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId, options);
+        async v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormModel>> {
+            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -849,8 +849,8 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateV1TaskInstancesByTaskInstanceId(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).updateV1TaskInstancesByTaskInstanceId(taskInstanceId, updateTaskInstancePayload, options);
+        async v1TaskInstancesTaskInstanceIdPatch(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdPatch(taskInstanceId, updateTaskInstancePayload, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -916,8 +916,8 @@ export const UserTaskInstancesApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstances($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any): AxiosPromise<Array<TaskInstance>> {
-            return UserTaskInstancesApiFp(configuration).getV1TaskInstances($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options).then((request) => request(axios, basePath));
+        v1TaskInstancesGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any): AxiosPromise<Array<TaskInstance>> {
+            return UserTaskInstancesApiFp(configuration).v1TaskInstancesGet($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the attachments information of a workflow instance via the given user task.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin  - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_ATTACHMENTS
@@ -926,8 +926,8 @@ export const UserTaskInstancesApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<AttachmentsContext> {
-            return UserTaskInstancesApiFp(configuration).getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId, options).then((request) => request(axios, basePath));
+        v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId: string, options?: any): AxiosPromise<AttachmentsContext> {
+            return UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves custom task attributes of a user task. Labels as well as the order of the custom task attributes in which they are returned, are taken from the latest versions of the workflow definitions where these attributes are present.  Roles permitted to execute this operation:  - Global roles: WorkflowViewer, WorkflowAdmin - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.] - Scope: TASK_GET_ATTRIBUTES 
@@ -936,8 +936,8 @@ export const UserTaskInstancesApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<Array<CustomAttribute>> {
-            return UserTaskInstancesApiFp(configuration).getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId, options).then((request) => request(axios, basePath));
+        v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId: string, options?: any): AxiosPromise<Array<CustomAttribute>> {
+            return UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId, options).then((request) => request(axios, basePath));
         },
         /**
          * **Warning: Users with the role \"WorkflowAdmin\" are no longer able to view the task context. To allow these users to continue to view the context, assign the role \"WorkflowContextViewer\" to them.**  Retrieves the context of a user task.  Roles permitted to execute this operation:   - Global roles: WorkflowContextViewer, WorkflowContextAdmin  - Instance-specific roles: contextViewerUsers, contextViewerGroups, contextAdminUsers, contextAdminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scope: TASK_GET_CONTEXT
@@ -946,8 +946,8 @@ export const UserTaskInstancesApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesContextByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<object> {
-            return UserTaskInstancesApiFp(configuration).getV1TaskInstancesContextByTaskInstanceId(taskInstanceId, options).then((request) => request(axios, basePath));
+        v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId: string, options?: any): AxiosPromise<object> {
+            return UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the form metadata of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM 
@@ -956,8 +956,8 @@ export const UserTaskInstancesApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<FormMetadata> {
-            return UserTaskInstancesApiFp(configuration).getV1TaskInstancesFormByTaskInstanceId(taskInstanceId, options).then((request) => request(axios, basePath));
+        v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId: string, options?: any): AxiosPromise<FormMetadata> {
+            return UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the form model of the given task instance.  Roles permitted to execute this operation:   - Global roles: WorkflowViewer, WorkflowAdmin   - Instance-specific roles: viewerUsers, viewerGroups, adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]   - Scope: TASK_GET_FORM_MODEL 
@@ -966,8 +966,8 @@ export const UserTaskInstancesApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId: string, options?: any): AxiosPromise<FormModel> {
-            return UserTaskInstancesApiFp(configuration).getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId, options).then((request) => request(axios, basePath));
+        v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId: string, options?: any): AxiosPromise<FormModel> {
+            return UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates a user task\'s status, its properties (for example, subject), and its context with the attributes provided in the request body.    For more information, see SAP Cloud Platform Workflow Service documentation on the  [SAP Help Portal](https://help.sap.com/viewer/e157c391253b4ecd93647bf232d18a83/Cloud/en-US/fe41c54d61fa4710b34f2afe11b5d00e.html).  Roles permitted to execute this operation:   - Global roles: WorkflowAdmin  - Instance-specific roles: adminUsers, adminGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Task-specific roles: recipientUsers, recipientGroups [Prerequisite: You are assigned to the WorkflowParticipant global role.]  - Scopes: TASK_COMPLETE, TASK_UPDATE
@@ -977,8 +977,8 @@ export const UserTaskInstancesApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateV1TaskInstancesByTaskInstanceId(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): AxiosPromise<void> {
-            return UserTaskInstancesApiFp(configuration).updateV1TaskInstancesByTaskInstanceId(taskInstanceId, updateTaskInstancePayload, options).then((request) => request(axios, basePath));
+        v1TaskInstancesTaskInstanceIdPatch(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): AxiosPromise<void> {
+            return UserTaskInstancesApiFp(configuration).v1TaskInstancesTaskInstanceIdPatch(taskInstanceId, updateTaskInstancePayload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1044,8 +1044,8 @@ export class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    public getV1TaskInstances($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any) {
-        return UserTaskInstancesApiFp(this.configuration).getV1TaskInstances($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options).then((request) => request(this.axios, this.basePath));
+    public v1TaskInstancesGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any) {
+        return UserTaskInstancesApiFp(this.configuration).v1TaskInstancesGet($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1056,8 +1056,8 @@ export class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    public getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId: string, options?: any) {
-        return UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesAttachmentsByTaskInstanceId(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
+    public v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId: string, options?: any) {
+        return UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1068,8 +1068,8 @@ export class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    public getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId: string, options?: any) {
-        return UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesAttributesByTaskInstanceId(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
+    public v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId: string, options?: any) {
+        return UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1080,8 +1080,8 @@ export class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    public getV1TaskInstancesContextByTaskInstanceId(taskInstanceId: string, options?: any) {
-        return UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesContextByTaskInstanceId(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
+    public v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId: string, options?: any) {
+        return UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1092,8 +1092,8 @@ export class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    public getV1TaskInstancesFormByTaskInstanceId(taskInstanceId: string, options?: any) {
-        return UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesFormByTaskInstanceId(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
+    public v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId: string, options?: any) {
+        return UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1104,8 +1104,8 @@ export class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    public getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId: string, options?: any) {
-        return UserTaskInstancesApiFp(this.configuration).getV1TaskInstancesFormModelByTaskInstanceId(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
+    public v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId: string, options?: any) {
+        return UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1117,7 +1117,7 @@ export class UserTaskInstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserTaskInstancesApi
      */
-    public updateV1TaskInstancesByTaskInstanceId(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any) {
-        return UserTaskInstancesApiFp(this.configuration).updateV1TaskInstancesByTaskInstanceId(taskInstanceId, updateTaskInstancePayload, options).then((request) => request(this.axios, this.basePath));
+    public v1TaskInstancesTaskInstanceIdPatch(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any) {
+        return UserTaskInstancesApiFp(this.configuration).v1TaskInstancesTaskInstanceIdPatch(taskInstanceId, updateTaskInstancePayload, options).then((request) => request(this.axios, this.basePath));
     }
 }

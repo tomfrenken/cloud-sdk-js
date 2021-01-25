@@ -96,7 +96,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteV1WorkflowDefinitionsByDefinitionId: function (definitionId, cascade, options) {
+        v1WorkflowDefinitionsDefinitionIdDelete: function (definitionId, cascade, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -105,7 +105,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'definitionId' is not null or undefined
                             if (definitionId === null || definitionId === undefined) {
-                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling deleteV1WorkflowDefinitionsByDefinitionId.');
+                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling v1WorkflowDefinitionsDefinitionIdDelete.');
                             }
                             localVarPath = "/v1/workflow-definitions/{definitionId}"
                                 .replace("{" + "definitionId" + "}", encodeURIComponent(String(definitionId)));
@@ -168,98 +168,13 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
             });
         },
         /**
-         * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
-         * @summary Retrieve all workflow definitions
-         * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
-         * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
-         * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
-         * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowDefinitions: function ($orderby, $skip, $top, $inlinecount, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            localVarPath = "/v1/workflow-definitions";
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
-                        case 1:
-                            _a = _c.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _c.sent();
-                            _c.label = 4;
-                        case 4:
-                            localVarAccessTokenValue = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 5;
-                        case 5:
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
-                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
-                        case 6:
-                            _b = _c.sent();
-                            return [3 /*break*/, 9];
-                        case 7: return [4 /*yield*/, configuration.accessToken];
-                        case 8:
-                            _b = _c.sent();
-                            _c.label = 9;
-                        case 9:
-                            localVarAccessTokenValue = _b;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-                            _c.label = 10;
-                        case 10:
-                            if ($orderby !== undefined) {
-                                localVarQueryParameter['$orderby'] = $orderby;
-                            }
-                            if ($skip !== undefined) {
-                                localVarQueryParameter['$skip'] = $skip;
-                            }
-                            if ($top !== undefined) {
-                                localVarQueryParameter['$top'] = $top;
-                            }
-                            if ($inlinecount !== undefined) {
-                                localVarQueryParameter['$inlinecount'] = $inlinecount;
-                            }
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.query) {
-                                query.set(key, options.query[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
          * Retrieves the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:   WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
          * @summary Retrieve workflow definition by ID
          * @param {string} definitionId The ID of the workflow definition for which the latest version should be retrieved. The ID is at most 64 characters long.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsByDefinitionId: function (definitionId, options) {
+        v1WorkflowDefinitionsDefinitionIdGet: function (definitionId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -268,7 +183,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'definitionId' is not null or undefined
                             if (definitionId === null || definitionId === undefined) {
-                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling getV1WorkflowDefinitionsByDefinitionId.');
+                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling v1WorkflowDefinitionsDefinitionIdGet.');
                             }
                             localVarPath = "/v1/workflow-definitions/{definitionId}"
                                 .replace("{" + "definitionId" + "}", encodeURIComponent(String(definitionId)));
@@ -334,7 +249,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsModelByDefinitionId: function (definitionId, options) {
+        v1WorkflowDefinitionsDefinitionIdModelGet: function (definitionId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -343,7 +258,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'definitionId' is not null or undefined
                             if (definitionId === null || definitionId === undefined) {
-                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling getV1WorkflowDefinitionsModelByDefinitionId.');
+                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling v1WorkflowDefinitionsDefinitionIdModelGet.');
                             }
                             localVarPath = "/v1/workflow-definitions/{definitionId}/model"
                                 .replace("{" + "definitionId" + "}", encodeURIComponent(String(definitionId)));
@@ -409,7 +324,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId: function (definitionId, options) {
+        v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet: function (definitionId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -418,7 +333,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'definitionId' is not null or undefined
                             if (definitionId === null || definitionId === undefined) {
-                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId.');
+                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet.');
                             }
                             localVarPath = "/v1/workflow-definitions/{definitionId}/sample-contexts/default-start-context"
                                 .replace("{" + "definitionId" + "}", encodeURIComponent(String(definitionId)));
@@ -488,7 +403,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsByDefinitionId: function (definitionId, $orderby, $skip, $top, $inlinecount, options) {
+        v1WorkflowDefinitionsDefinitionIdVersionsGet: function (definitionId, $orderby, $skip, $top, $inlinecount, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -497,7 +412,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'definitionId' is not null or undefined
                             if (definitionId === null || definitionId === undefined) {
-                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling getV1WorkflowDefinitionsVersionsByDefinitionId.');
+                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling v1WorkflowDefinitionsDefinitionIdVersionsGet.');
                             }
                             localVarPath = "/v1/workflow-definitions/{definitionId}/versions"
                                 .replace("{" + "definitionId" + "}", encodeURIComponent(String(definitionId)));
@@ -576,7 +491,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet: function (definitionId, versionNumber, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -585,11 +500,11 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'definitionId' is not null or undefined
                             if (definitionId === null || definitionId === undefined) {
-                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber.');
+                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet.');
                             }
                             // verify required parameter 'versionNumber' is not null or undefined
                             if (versionNumber === null || versionNumber === undefined) {
-                                throw new base_1.RequiredError('versionNumber', 'Required parameter versionNumber was null or undefined when calling getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber.');
+                                throw new base_1.RequiredError('versionNumber', 'Required parameter versionNumber was null or undefined when calling v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet.');
                             }
                             localVarPath = "/v1/workflow-definitions/{definitionId}/versions/{versionNumber}"
                                 .replace("{" + "definitionId" + "}", encodeURIComponent(String(definitionId)))
@@ -657,7 +572,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet: function (definitionId, versionNumber, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -666,11 +581,11 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'definitionId' is not null or undefined
                             if (definitionId === null || definitionId === undefined) {
-                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber.');
+                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet.');
                             }
                             // verify required parameter 'versionNumber' is not null or undefined
                             if (versionNumber === null || versionNumber === undefined) {
-                                throw new base_1.RequiredError('versionNumber', 'Required parameter versionNumber was null or undefined when calling getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber.');
+                                throw new base_1.RequiredError('versionNumber', 'Required parameter versionNumber was null or undefined when calling v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet.');
                             }
                             localVarPath = "/v1/workflow-definitions/{definitionId}/versions/{versionNumber}/model"
                                 .replace("{" + "definitionId" + "}", encodeURIComponent(String(definitionId)))
@@ -738,7 +653,7 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet: function (definitionId, versionNumber, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
@@ -747,11 +662,11 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'definitionId' is not null or undefined
                             if (definitionId === null || definitionId === undefined) {
-                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber.');
+                                throw new base_1.RequiredError('definitionId', 'Required parameter definitionId was null or undefined when calling v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet.');
                             }
                             // verify required parameter 'versionNumber' is not null or undefined
                             if (versionNumber === null || versionNumber === undefined) {
-                                throw new base_1.RequiredError('versionNumber', 'Required parameter versionNumber was null or undefined when calling getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber.');
+                                throw new base_1.RequiredError('versionNumber', 'Required parameter versionNumber was null or undefined when calling v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet.');
                             }
                             localVarPath = "/v1/workflow-definitions/{definitionId}/versions/{versionNumber}/sample-contexts/default-start-context"
                                 .replace("{" + "definitionId" + "}", encodeURIComponent(String(definitionId)))
@@ -811,6 +726,91 @@ var WorkflowDefinitionsApiAxiosParamCreator = function (configuration) {
                 });
             });
         },
+        /**
+         * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
+         * @summary Retrieve all workflow definitions
+         * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
+         * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
+         * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
+         * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowDefinitionsGet: function ($orderby, $skip, $top, $inlinecount, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            localVarPath = "/v1/workflow-definitions";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_AuthorizationCode", [])];
+                        case 1:
+                            _a = _c.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            localVarAccessTokenValue = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 5;
+                        case 5:
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 10];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 7];
+                            return [4 /*yield*/, configuration.accessToken("Oauth2_ClientCredentials", [])];
+                        case 6:
+                            _b = _c.sent();
+                            return [3 /*break*/, 9];
+                        case 7: return [4 /*yield*/, configuration.accessToken];
+                        case 8:
+                            _b = _c.sent();
+                            _c.label = 9;
+                        case 9:
+                            localVarAccessTokenValue = _b;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+                            _c.label = 10;
+                        case 10:
+                            if ($orderby !== undefined) {
+                                localVarQueryParameter['$orderby'] = $orderby;
+                            }
+                            if ($skip !== undefined) {
+                                localVarQueryParameter['$skip'] = $skip;
+                            }
+                            if ($top !== undefined) {
+                                localVarQueryParameter['$top'] = $top;
+                            }
+                            if ($inlinecount !== undefined) {
+                                localVarQueryParameter['$inlinecount'] = $inlinecount;
+                            }
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.query) {
+                                query.set(key, options.query[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
     };
 };
 exports.WorkflowDefinitionsApiAxiosParamCreator = WorkflowDefinitionsApiAxiosParamCreator;
@@ -828,40 +828,12 @@ var WorkflowDefinitionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteV1WorkflowDefinitionsByDefinitionId: function (definitionId, cascade, options) {
+        v1WorkflowDefinitionsDefinitionIdDelete: function (definitionId, cascade, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).deleteV1WorkflowDefinitionsByDefinitionId(definitionId, cascade, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
-         * @summary Retrieve all workflow definitions
-         * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
-         * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
-         * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
-         * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowDefinitions: function ($orderby, $skip, $top, $inlinecount, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).getV1WorkflowDefinitions($orderby, $skip, $top, $inlinecount, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsDefinitionIdDelete(definitionId, cascade, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -881,12 +853,12 @@ var WorkflowDefinitionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsByDefinitionId: function (definitionId, options) {
+        v1WorkflowDefinitionsDefinitionIdGet: function (definitionId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).getV1WorkflowDefinitionsByDefinitionId(definitionId, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsDefinitionIdGet(definitionId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -906,12 +878,12 @@ var WorkflowDefinitionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsModelByDefinitionId: function (definitionId, options) {
+        v1WorkflowDefinitionsDefinitionIdModelGet: function (definitionId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).getV1WorkflowDefinitionsModelByDefinitionId(definitionId, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsDefinitionIdModelGet(definitionId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -931,12 +903,12 @@ var WorkflowDefinitionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId: function (definitionId, options) {
+        v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet: function (definitionId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId(definitionId, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet(definitionId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -960,12 +932,12 @@ var WorkflowDefinitionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsByDefinitionId: function (definitionId, $orderby, $skip, $top, $inlinecount, options) {
+        v1WorkflowDefinitionsDefinitionIdVersionsGet: function (definitionId, $orderby, $skip, $top, $inlinecount, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).getV1WorkflowDefinitionsVersionsByDefinitionId(definitionId, $orderby, $skip, $top, $inlinecount, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsDefinitionIdVersionsGet(definitionId, $orderby, $skip, $top, $inlinecount, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -986,12 +958,12 @@ var WorkflowDefinitionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet: function (definitionId, versionNumber, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber(definitionId, versionNumber, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet(definitionId, versionNumber, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1012,12 +984,12 @@ var WorkflowDefinitionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet: function (definitionId, versionNumber, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber(definitionId, versionNumber, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet(definitionId, versionNumber, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1038,12 +1010,40 @@ var WorkflowDefinitionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet: function (definitionId, versionNumber, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber(definitionId, versionNumber, options)];
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet(definitionId, versionNumber, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
+         * @summary Retrieve all workflow definitions
+         * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
+         * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
+         * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
+         * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowDefinitionsGet: function ($orderby, $skip, $top, $inlinecount, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.WorkflowDefinitionsApiAxiosParamCreator(configuration).v1WorkflowDefinitionsGet($orderby, $skip, $top, $inlinecount, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1073,21 +1073,8 @@ var WorkflowDefinitionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteV1WorkflowDefinitionsByDefinitionId: function (definitionId, cascade, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).deleteV1WorkflowDefinitionsByDefinitionId(definitionId, cascade, options).then(function (request) { return request(axios, basePath); });
-        },
-        /**
-         * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
-         * @summary Retrieve all workflow definitions
-         * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
-         * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
-         * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
-         * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getV1WorkflowDefinitions: function ($orderby, $skip, $top, $inlinecount, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).getV1WorkflowDefinitions($orderby, $skip, $top, $inlinecount, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowDefinitionsDefinitionIdDelete: function (definitionId, cascade, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsDefinitionIdDelete(definitionId, cascade, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:   WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
@@ -1096,8 +1083,8 @@ var WorkflowDefinitionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsByDefinitionId: function (definitionId, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).getV1WorkflowDefinitionsByDefinitionId(definitionId, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowDefinitionsDefinitionIdGet: function (definitionId, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsDefinitionIdGet(definitionId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the model of the latest version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
@@ -1106,8 +1093,8 @@ var WorkflowDefinitionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsModelByDefinitionId: function (definitionId, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).getV1WorkflowDefinitionsModelByDefinitionId(definitionId, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowDefinitionsDefinitionIdModelGet: function (definitionId, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsDefinitionIdModelGet(definitionId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the default start context of the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
@@ -1116,8 +1103,8 @@ var WorkflowDefinitionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId: function (definitionId, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId(definitionId, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet: function (definitionId, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet(definitionId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves a list of all deployed versions of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
@@ -1130,8 +1117,8 @@ var WorkflowDefinitionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsByDefinitionId: function (definitionId, $orderby, $skip, $top, $inlinecount, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).getV1WorkflowDefinitionsVersionsByDefinitionId(definitionId, $orderby, $skip, $top, $inlinecount, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowDefinitionsDefinitionIdVersionsGet: function (definitionId, $orderby, $skip, $top, $inlinecount, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsDefinitionIdVersionsGet(definitionId, $orderby, $skip, $top, $inlinecount, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
@@ -1141,8 +1128,8 @@ var WorkflowDefinitionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber(definitionId, versionNumber, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet: function (definitionId, versionNumber, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet(definitionId, versionNumber, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the model of the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
@@ -1152,8 +1139,8 @@ var WorkflowDefinitionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber(definitionId, versionNumber, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet: function (definitionId, versionNumber, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet(definitionId, versionNumber, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          * Retrieves the default start context of the specified version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
@@ -1163,8 +1150,21 @@ var WorkflowDefinitionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber: function (definitionId, versionNumber, options) {
-            return exports.WorkflowDefinitionsApiFp(configuration).getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber(definitionId, versionNumber, options).then(function (request) { return request(axios, basePath); });
+        v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet: function (definitionId, versionNumber, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet(definitionId, versionNumber, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
+         * @summary Retrieve all workflow definitions
+         * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
+         * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
+         * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
+         * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1WorkflowDefinitionsGet: function ($orderby, $skip, $top, $inlinecount, options) {
+            return exports.WorkflowDefinitionsApiFp(configuration).v1WorkflowDefinitionsGet($orderby, $skip, $top, $inlinecount, options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -1189,24 +1189,9 @@ var WorkflowDefinitionsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    WorkflowDefinitionsApi.prototype.deleteV1WorkflowDefinitionsByDefinitionId = function (definitionId, cascade, options) {
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsDefinitionIdDelete = function (definitionId, cascade, options) {
         var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).deleteV1WorkflowDefinitionsByDefinitionId(definitionId, cascade, options).then(function (request) { return request(_this.axios, _this.basePath); });
-    };
-    /**
-     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
-     * @summary Retrieve all workflow definitions
-     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
-     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
-     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
-     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WorkflowDefinitionsApi
-     */
-    WorkflowDefinitionsApi.prototype.getV1WorkflowDefinitions = function ($orderby, $skip, $top, $inlinecount, options) {
-        var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).getV1WorkflowDefinitions($orderby, $skip, $top, $inlinecount, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsDefinitionIdDelete(definitionId, cascade, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:   WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
@@ -1216,9 +1201,9 @@ var WorkflowDefinitionsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    WorkflowDefinitionsApi.prototype.getV1WorkflowDefinitionsByDefinitionId = function (definitionId, options) {
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsDefinitionIdGet = function (definitionId, options) {
         var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).getV1WorkflowDefinitionsByDefinitionId(definitionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsDefinitionIdGet(definitionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the model of the latest version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
@@ -1228,9 +1213,9 @@ var WorkflowDefinitionsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    WorkflowDefinitionsApi.prototype.getV1WorkflowDefinitionsModelByDefinitionId = function (definitionId, options) {
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsDefinitionIdModelGet = function (definitionId, options) {
         var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).getV1WorkflowDefinitionsModelByDefinitionId(definitionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsDefinitionIdModelGet(definitionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the default start context of the latest version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
@@ -1240,9 +1225,9 @@ var WorkflowDefinitionsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    WorkflowDefinitionsApi.prototype.getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId = function (definitionId, options) {
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet = function (definitionId, options) {
         var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).getV1WorkflowDefinitionsSampleContextsDefaultStartContextByDefinitionId(definitionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsDefinitionIdSampleContextsDefaultStartContextGet(definitionId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves a list of all deployed versions of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
@@ -1256,9 +1241,9 @@ var WorkflowDefinitionsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    WorkflowDefinitionsApi.prototype.getV1WorkflowDefinitionsVersionsByDefinitionId = function (definitionId, $orderby, $skip, $top, $inlinecount, options) {
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsDefinitionIdVersionsGet = function (definitionId, $orderby, $skip, $top, $inlinecount, options) {
         var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).getV1WorkflowDefinitionsVersionsByDefinitionId(definitionId, $orderby, $skip, $top, $inlinecount, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsDefinitionIdVersionsGet(definitionId, $orderby, $skip, $top, $inlinecount, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
@@ -1269,9 +1254,9 @@ var WorkflowDefinitionsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    WorkflowDefinitionsApi.prototype.getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber = function (definitionId, versionNumber, options) {
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet = function (definitionId, versionNumber, options) {
         var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).getV1WorkflowDefinitionsVersionsByDefinitionIdAndVersionNumber(definitionId, versionNumber, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberGet(definitionId, versionNumber, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the model of the specified version of the specified workflow definition.   Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET_MODEL
@@ -1282,9 +1267,9 @@ var WorkflowDefinitionsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    WorkflowDefinitionsApi.prototype.getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber = function (definitionId, versionNumber, options) {
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet = function (definitionId, versionNumber, options) {
         var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).getV1WorkflowDefinitionsVersionsModelByDefinitionIdAndVersionNumber(definitionId, versionNumber, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberModelGet(definitionId, versionNumber, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      * Retrieves the default start context of the specified version of the specified workflow definition.  Roles permitted to execute this operation:  - Global roles:  WorkflowInitiator  - Scope: WORKFLOW_DEFINITION_GET_SAMPLE_CONTEXT
@@ -1295,9 +1280,24 @@ var WorkflowDefinitionsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof WorkflowDefinitionsApi
      */
-    WorkflowDefinitionsApi.prototype.getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber = function (definitionId, versionNumber, options) {
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet = function (definitionId, versionNumber, options) {
         var _this = this;
-        return exports.WorkflowDefinitionsApiFp(this.configuration).getV1WorkflowDefinitionsVersionsSampleContextsDefaultStartContextByDefinitionIdAndVersionNumber(definitionId, versionNumber, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsDefinitionIdVersionsVersionNumberSampleContextsDefaultStartContextGet(definitionId, versionNumber, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     * Retrieves a list of the latest version of each deployed workflow definition. The request can be parameterized.  Roles permitted to execute this operation:  - Global roles:  WorkflowViewer, WorkflowAdmin, WorkflowDeveloper  - Scope: WORKFLOW_DEFINITION_GET
+     * @summary Retrieve all workflow definitions
+     * @param {'id' | 'id asc' | 'id desc' | 'version' | 'version asc' | 'version desc' | 'name' | 'name asc' | 'name desc' | 'createdAt' | 'createdAt asc' | 'createdAt desc' | 'createdBy' | 'createdBy asc' | 'createdBy desc'} [$orderby] Specify the attribute you want to sort by and the order separated by a space. If the order is omitted it is ascending by default. If not specified, the results are sorted by the \&#39;createdAt\&#39; attribute in descending order.
+     * @param {number} [$skip] Specify the number of records you want to skip from the beginning. You can skip at most 4000 records. To indicate a result range that starts, for example, at 1001, combine the $skip with the $top parameter. If not specified, no records are skipped. Refer also to the $top parameter.
+     * @param {number} [$top] Specify the number of records you want to show. You can get at most 1000 records per API call. To indicate a result range that starts, for example, at 1001, combine the $top with the $skip parameter. If not specified, 100 records are returned. Refer also to the $skip parameter.
+     * @param {'allpages' | 'none'} [$inlinecount] Specify whether the total count of the workflow definitions should be returned as the value of the X-Total-Count response header. To enable the header, use the \&#39;allpages\&#39; setting. To disable the header, use the \&#39;none\&#39; setting. The values are case-sensitive.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowDefinitionsApi
+     */
+    WorkflowDefinitionsApi.prototype.v1WorkflowDefinitionsGet = function ($orderby, $skip, $top, $inlinecount, options) {
+        var _this = this;
+        return exports.WorkflowDefinitionsApiFp(this.configuration).v1WorkflowDefinitionsGet($orderby, $skip, $top, $inlinecount, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return WorkflowDefinitionsApi;
 }(base_1.BaseAPI));

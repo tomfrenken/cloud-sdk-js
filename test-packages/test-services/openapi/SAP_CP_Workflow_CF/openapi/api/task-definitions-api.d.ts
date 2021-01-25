@@ -27,7 +27,7 @@ export declare const TaskDefinitionsApiAxiosParamCreator: (configuration?: Confi
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskDefinitions: ($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributeDefinitions" | undefined, options?: any) => Promise<RequestArgs>;
+    v1TaskDefinitionsGet: ($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributeDefinitions" | undefined, options?: any) => Promise<RequestArgs>;
 };
 /**
  * TaskDefinitionsApi - functional programming interface
@@ -44,7 +44,7 @@ export declare const TaskDefinitionsApiFp: (configuration?: Configuration | unde
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskDefinitions($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributeDefinitions" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<object>>>;
+    v1TaskDefinitionsGet($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributeDefinitions" | undefined, options?: any): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<object>>>;
 };
 /**
  * TaskDefinitionsApi - factory interface
@@ -61,7 +61,7 @@ export declare const TaskDefinitionsApiFactory: (configuration?: Configuration |
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getV1TaskDefinitions($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributeDefinitions" | undefined, options?: any): AxiosPromise<Array<object>>;
+    v1TaskDefinitionsGet($skip?: number | undefined, $top?: number | undefined, $inlinecount?: "none" | "allpages" | undefined, $expand?: "attributeDefinitions" | undefined, options?: any): AxiosPromise<Array<object>>;
 };
 /**
  * TaskDefinitionsApi - object-oriented interface
@@ -81,6 +81,6 @@ export declare class TaskDefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TaskDefinitionsApi
      */
-    getV1TaskDefinitions($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options?: any): Promise<import("axios").AxiosResponse<object[]>>;
+    v1TaskDefinitionsGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributeDefinitions', options?: any): Promise<import("axios").AxiosResponse<object[]>>;
 }
 //# sourceMappingURL=task-definitions-api.d.ts.map

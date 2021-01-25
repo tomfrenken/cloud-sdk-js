@@ -95,7 +95,7 @@ var MessagesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Messages: function (sendMessagePayload, options) {
+        v1MessagesPost: function (sendMessagePayload, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -104,7 +104,7 @@ var MessagesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'sendMessagePayload' is not null or undefined
                             if (sendMessagePayload === null || sendMessagePayload === undefined) {
-                                throw new base_1.RequiredError('sendMessagePayload', 'Required parameter sendMessagePayload was null or undefined when calling createV1Messages.');
+                                throw new base_1.RequiredError('sendMessagePayload', 'Required parameter sendMessagePayload was null or undefined when calling v1MessagesPost.');
                             }
                             localVarPath = "/v1/messages/";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -181,12 +181,12 @@ var MessagesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Messages: function (sendMessagePayload, options) {
+        v1MessagesPost: function (sendMessagePayload, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.MessagesApiAxiosParamCreator(configuration).createV1Messages(sendMessagePayload, options)];
+                        case 0: return [4 /*yield*/, exports.MessagesApiAxiosParamCreator(configuration).v1MessagesPost(sendMessagePayload, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -215,8 +215,8 @@ var MessagesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createV1Messages: function (sendMessagePayload, options) {
-            return exports.MessagesApiFp(configuration).createV1Messages(sendMessagePayload, options).then(function (request) { return request(axios, basePath); });
+        v1MessagesPost: function (sendMessagePayload, options) {
+            return exports.MessagesApiFp(configuration).v1MessagesPost(sendMessagePayload, options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -240,9 +240,9 @@ var MessagesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    MessagesApi.prototype.createV1Messages = function (sendMessagePayload, options) {
+    MessagesApi.prototype.v1MessagesPost = function (sendMessagePayload, options) {
         var _this = this;
-        return exports.MessagesApiFp(this.configuration).createV1Messages(sendMessagePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return exports.MessagesApiFp(this.configuration).v1MessagesPost(sendMessagePayload, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return MessagesApi;
 }(base_1.BaseAPI));
