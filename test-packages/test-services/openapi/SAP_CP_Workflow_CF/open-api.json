@@ -524,6 +524,7 @@
     "/v1/task-instances/{taskInstanceId}": {
       "get": {
         "summary": "Retrieve task by ID",
+        "operationId": "getInstance",
         "tags": [
           "User Task Instances"
         ],
@@ -604,8 +605,7 @@
           "500": {
             "$ref": "#/components/responses/500"
           }
-        },
-        "operationId": "getV1TaskInstancesByTaskInstanceId"
+        }
       },
       "patch": {
         "summary": "Update task by ID",
@@ -2280,6 +2280,7 @@
       },
       "get": {
         "summary": "Retrieve workflow instance by ID",
+        "operationId": "getInstance1",
         "tags": [
           "Workflow Instances"
         ],
@@ -2355,8 +2356,7 @@
           "500": {
             "$ref": "#/components/responses/500"
           }
-        },
-        "operationId": "getV1WorkflowInstancesByWorkflowInstanceId"
+        }
       }
     },
     "/v1/workflow-instances/{workflowInstanceId}/attributes": {

@@ -37,10 +37,10 @@ export declare const SAPCPWorkflowCFApi: {
         attributesExampleCustomAttribute?: string | undefined;
         definitionId?: string | undefined;
     } | undefined) => OpenApiRequestBuilder<any, "getV1TaskInstances">;
-    getV1TaskInstancesByTaskInstanceId: (args: {
+    getInstance: (args: {
         taskInstanceId: string;
         expand?: 'attributes';
-    }) => OpenApiRequestBuilder<any, "getV1TaskInstancesByTaskInstanceId">;
+    }) => OpenApiRequestBuilder<any, "getInstance">;
     updateV1TaskInstancesByTaskInstanceId: (args: {
         taskInstanceId: string;
         body: UpdateTaskInstancePayload;
@@ -134,10 +134,10 @@ export declare const SAPCPWorkflowCFApi: {
     updateV1WorkflowInstances: (args: {
         body: WorkflowInstancesUpdatePayload[];
     }) => OpenApiRequestBuilder<any, "updateV1WorkflowInstances">;
-    getV1WorkflowInstancesByWorkflowInstanceId: (args: {
+    getInstance1: (args: {
         workflowInstanceId: string;
         expand?: 'attributes';
-    }) => OpenApiRequestBuilder<any, "getV1WorkflowInstancesByWorkflowInstanceId">;
+    }) => OpenApiRequestBuilder<any, "getInstance1">;
     updateV1WorkflowInstancesByWorkflowInstanceId: (args: {
         workflowInstanceId: string;
         body: WorkflowInstanceUpdatePayload;

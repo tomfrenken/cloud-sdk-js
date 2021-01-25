@@ -2810,6 +2810,7 @@ paths:
   /v1/task-instances/{taskInstanceId}:
     get:
       summary: Retrieve task by ID
+      operationId: getInstance
       tags:
       - User Task Instances
       description: "Retrieves the user task instance with the specified task instance\
@@ -4229,6 +4230,7 @@ paths:
           $ref: '#/responses/500'
     get:
       summary: Retrieve workflow instance by ID
+      operationId: getInstance
       tags:
       - Workflow Instances
       description: |-
