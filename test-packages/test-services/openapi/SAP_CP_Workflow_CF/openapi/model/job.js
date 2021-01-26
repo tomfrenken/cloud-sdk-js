@@ -20,7 +20,7 @@ exports.JobStatusEnum = void 0;
     */
 var JobStatusEnum;
 (function (JobStatusEnum) {
-    JobStatusEnum["RUNNING"] = "RUNNING";
-    JobStatusEnum["ERRONEOUS"] = "ERRONEOUS";
+    JobStatusEnum["Running"] = "RUNNING";
+    JobStatusEnum["Erroneous"] = "ERRONEOUS";
 })(JobStatusEnum = exports.JobStatusEnum || (exports.JobStatusEnum = {}));
 //# sourceMappingURL=job.js.map

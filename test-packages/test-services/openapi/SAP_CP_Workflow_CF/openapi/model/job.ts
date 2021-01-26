@@ -46,8 +46,8 @@ export interface Job {
     * @enum {string}
     */
 export enum JobStatusEnum {
-    RUNNING = 'RUNNING',
-    ERRONEOUS = 'ERRONEOUS'
+    Running = 'RUNNING',
+    Erroneous = 'ERRONEOUS'
 }
 
 

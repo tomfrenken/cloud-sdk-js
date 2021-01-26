@@ -27,8 +27,8 @@ export interface WorkflowInstanceUpdatePayload {
     * @enum {string}
     */
 export declare enum WorkflowInstanceUpdatePayloadStatusEnum {
-    CANCELED = "CANCELED",
-    RUNNING = "RUNNING",
-    SUSPENDED = "SUSPENDED"
+    Canceled = "CANCELED",
+    Running = "RUNNING",
+    Suspended = "SUSPENDED"
 }
 //# sourceMappingURL=workflow-instance-update-payload.d.ts.map

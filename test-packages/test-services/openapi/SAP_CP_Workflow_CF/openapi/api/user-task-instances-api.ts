@@ -63,6 +63,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
+
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
@@ -91,14 +92,14 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
 
 
     
-            const query = new URLSearchParams(localVarUrlObj.search);
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
+                queryParameters.set(key, localVarQueryParameter[key]);
             }
             for (const key in options.query) {
-                query.set(key, options.query[key]);
+                queryParameters.set(key, options.query[key]);
             }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -155,6 +156,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
+
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
@@ -315,14 +317,14 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
 
 
     
-            const query = new URLSearchParams(localVarUrlObj.search);
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
+                queryParameters.set(key, localVarQueryParameter[key]);
             }
             for (const key in options.query) {
-                query.set(key, options.query[key]);
+                queryParameters.set(key, options.query[key]);
             }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -351,6 +353,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
+
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
@@ -375,14 +378,14 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
 
 
     
-            const query = new URLSearchParams(localVarUrlObj.search);
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
+                queryParameters.set(key, localVarQueryParameter[key]);
             }
             for (const key in options.query) {
-                query.set(key, options.query[key]);
+                queryParameters.set(key, options.query[key]);
             }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -411,6 +414,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
+
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
@@ -435,14 +439,14 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
 
 
     
-            const query = new URLSearchParams(localVarUrlObj.search);
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
+                queryParameters.set(key, localVarQueryParameter[key]);
             }
             for (const key in options.query) {
-                query.set(key, options.query[key]);
+                queryParameters.set(key, options.query[key]);
             }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -471,6 +475,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
+
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
@@ -495,14 +500,14 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
 
 
     
-            const query = new URLSearchParams(localVarUrlObj.search);
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
+                queryParameters.set(key, localVarQueryParameter[key]);
             }
             for (const key in options.query) {
-                query.set(key, options.query[key]);
+                queryParameters.set(key, options.query[key]);
             }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -531,6 +536,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
+
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
@@ -555,14 +561,14 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
 
 
     
-            const query = new URLSearchParams(localVarUrlObj.search);
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
+                queryParameters.set(key, localVarQueryParameter[key]);
             }
             for (const key in options.query) {
-                query.set(key, options.query[key]);
+                queryParameters.set(key, options.query[key]);
             }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -591,6 +597,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
+
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
@@ -615,14 +622,14 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
 
 
     
-            const query = new URLSearchParams(localVarUrlObj.search);
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
+                queryParameters.set(key, localVarQueryParameter[key]);
             }
             for (const key in options.query) {
-                query.set(key, options.query[key]);
+                queryParameters.set(key, options.query[key]);
             }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -656,6 +663,7 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
+
             const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
@@ -682,18 +690,23 @@ export const UserTaskInstancesApiAxiosParamCreator = function (configuration?: C
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            const query = new URLSearchParams(localVarUrlObj.search);
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
+                queryParameters.set(key, localVarQueryParameter[key]);
             }
             for (const key in options.query) {
-                query.set(key, options.query[key]);
+                queryParameters.set(key, options.query[key]);
             }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof updateTaskInstancePayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(updateTaskInstancePayload !== undefined ? updateTaskInstancePayload : {}) : (updateTaskInstancePayload || "");
+            const nonString = typeof updateTaskInstancePayload !== 'string';
+            const needsSerialization = nonString && configuration && configuration.isJsonMime
+                ? configuration.isJsonMime(localVarRequestOptions.headers['Content-Type'])
+                : nonString;
+            localVarRequestOptions.data =  needsSerialization
+                ? JSON.stringify(updateTaskInstancePayload !== undefined ? updateTaskInstancePayload : {})
+                : (updateTaskInstancePayload || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -720,7 +733,7 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
         async getInstance(taskInstanceId: string, $expand?: 'attributes', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TaskInstance>> {
             const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).getInstance(taskInstanceId, $expand, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -767,7 +780,7 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
         async v1TaskInstancesGet($skip?: number, $top?: number, $inlinecount?: 'allpages' | 'none', $expand?: 'attributes', $orderby?: 'claimedAt asc' | 'claimedAt desc' | 'completedAt asc' | 'completedAt desc' | 'createdAt asc' | 'createdAt desc' | 'lastChangedAt asc' | 'lastChangedAt desc' | 'dueDate asc' | 'dueDate desc' | 'subject asc' | 'subject desc' | 'description asc' | 'description desc' | 'activityId asc' | 'activityId desc' | 'id asc' | 'id desc' | 'processor asc' | 'processor desc' | 'workflowDefinitionId asc' | 'workflowDefinitionId desc' | 'workflowInstanceId asc' | 'workflowInstanceId desc' | 'priority asc' | 'priority desc', workflowInstanceId?: string, workflowDefinitionId?: string, processor?: string, id?: string, activityId?: string, description?: string, subject?: string, createdAt?: string, createdFrom?: string, createdUpTo?: string, claimedAt?: string, claimedFrom?: string, claimedUpTo?: string, completedAt?: string, completedFrom?: string, completedUpTo?: string, lastChangedAt?: string, lastChangedFrom?: string, lastChangedUpTo?: string, dueDate?: string, dueDateFrom?: string, dueDateUpTo?: string, priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH', status?: 'READY' | 'RESERVED' | 'COMPLETED' | 'CANCELED', recipientUsers?: string, recipientGroups?: string, containsText?: string, attributesExampleCustomAttribute?: string, definitionId?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TaskInstance>>> {
             const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesGet($skip, $top, $inlinecount, $expand, $orderby, workflowInstanceId, workflowDefinitionId, processor, id, activityId, description, subject, createdAt, createdFrom, createdUpTo, claimedAt, claimedFrom, claimedUpTo, completedAt, completedFrom, completedUpTo, lastChangedAt, lastChangedFrom, lastChangedUpTo, dueDate, dueDateFrom, dueDateUpTo, priority, status, recipientUsers, recipientGroups, containsText, attributesExampleCustomAttribute, definitionId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -781,7 +794,7 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
         async v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentsContext>> {
             const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdAttachmentsGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -795,7 +808,7 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
         async v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomAttribute>>> {
             const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdAttributesGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -809,7 +822,7 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
         async v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdContextGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -823,7 +836,7 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
         async v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormMetadata>> {
             const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdFormGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -837,7 +850,7 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
         async v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FormModel>> {
             const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdFormModelGet(taskInstanceId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -852,7 +865,7 @@ export const UserTaskInstancesApiFp = function(configuration?: Configuration) {
         async v1TaskInstancesTaskInstanceIdPatch(taskInstanceId: string, updateTaskInstancePayload: UpdateTaskInstancePayload, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await UserTaskInstancesApiAxiosParamCreator(configuration).v1TaskInstancesTaskInstanceIdPatch(taskInstanceId, updateTaskInstancePayload, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },

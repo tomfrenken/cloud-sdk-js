@@ -97,7 +97,7 @@ var PurgeApiAxiosParamCreator = function (configuration) {
         v1PurgePost: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -139,14 +139,14 @@ var PurgeApiAxiosParamCreator = function (configuration) {
                             localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
                             _c.label = 10;
                         case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -183,7 +183,7 @@ var PurgeApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }

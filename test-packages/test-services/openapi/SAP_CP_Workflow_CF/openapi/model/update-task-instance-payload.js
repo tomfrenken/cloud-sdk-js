@@ -20,7 +20,7 @@ exports.UpdateTaskInstancePayloadPriorityEnum = exports.UpdateTaskInstancePayloa
     */
 var UpdateTaskInstancePayloadStatusEnum;
 (function (UpdateTaskInstancePayloadStatusEnum) {
-    UpdateTaskInstancePayloadStatusEnum["COMPLETED"] = "COMPLETED";
+    UpdateTaskInstancePayloadStatusEnum["Completed"] = "COMPLETED";
 })(UpdateTaskInstancePayloadStatusEnum = exports.UpdateTaskInstancePayloadStatusEnum || (exports.UpdateTaskInstancePayloadStatusEnum = {}));
 /**
     * @export
@@ -28,9 +28,9 @@ var UpdateTaskInstancePayloadStatusEnum;
     */
 var UpdateTaskInstancePayloadPriorityEnum;
 (function (UpdateTaskInstancePayloadPriorityEnum) {
-    UpdateTaskInstancePayloadPriorityEnum["VERYHIGH"] = "VERY_HIGH";
-    UpdateTaskInstancePayloadPriorityEnum["HIGH"] = "HIGH";
-    UpdateTaskInstancePayloadPriorityEnum["MEDIUM"] = "MEDIUM";
-    UpdateTaskInstancePayloadPriorityEnum["LOW"] = "LOW";
+    UpdateTaskInstancePayloadPriorityEnum["VeryHigh"] = "VERY_HIGH";
+    UpdateTaskInstancePayloadPriorityEnum["High"] = "HIGH";
+    UpdateTaskInstancePayloadPriorityEnum["Medium"] = "MEDIUM";
+    UpdateTaskInstancePayloadPriorityEnum["Low"] = "LOW";
 })(UpdateTaskInstancePayloadPriorityEnum = exports.UpdateTaskInstancePayloadPriorityEnum || (exports.UpdateTaskInstancePayloadPriorityEnum = {}));
 //# sourceMappingURL=update-task-instance-payload.js.map

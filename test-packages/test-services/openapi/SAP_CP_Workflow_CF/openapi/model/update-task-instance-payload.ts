@@ -88,17 +88,17 @@ export interface UpdateTaskInstancePayload {
     * @enum {string}
     */
 export enum UpdateTaskInstancePayloadStatusEnum {
-    COMPLETED = 'COMPLETED'
+    Completed = 'COMPLETED'
 }
 /**
     * @export
     * @enum {string}
     */
 export enum UpdateTaskInstancePayloadPriorityEnum {
-    VERYHIGH = 'VERY_HIGH',
-    HIGH = 'HIGH',
-    MEDIUM = 'MEDIUM',
-    LOW = 'LOW'
+    VeryHigh = 'VERY_HIGH',
+    High = 'HIGH',
+    Medium = 'MEDIUM',
+    Low = 'LOW'
 }
 
 

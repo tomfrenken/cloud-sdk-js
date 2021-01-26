@@ -142,19 +142,19 @@ export interface TaskInstance {
     * @enum {string}
     */
 export declare enum TaskInstancePriorityEnum {
-    VERYHIGH = "VERY_HIGH",
-    HIGH = "HIGH",
-    MEDIUM = "MEDIUM",
-    LOW = "LOW"
+    VeryHigh = "VERY_HIGH",
+    High = "HIGH",
+    Medium = "MEDIUM",
+    Low = "LOW"
 }
 /**
     * @export
     * @enum {string}
     */
 export declare enum TaskInstanceStatusEnum {
-    READY = "READY",
-    RESERVED = "RESERVED",
-    CANCELED = "CANCELED",
-    COMPLETED = "COMPLETED"
+    Ready = "READY",
+    Reserved = "RESERVED",
+    Canceled = "CANCELED",
+    Completed = "COMPLETED"
 }
 //# sourceMappingURL=task-instance.d.ts.map

@@ -100,10 +100,10 @@ export interface WorkflowInstance {
     * @enum {string}
     */
 export declare enum WorkflowInstanceStatusEnum {
-    RUNNING = "RUNNING",
-    ERRONEOUS = "ERRONEOUS",
-    SUSPENDED = "SUSPENDED",
-    CANCELED = "CANCELED",
-    COMPLETED = "COMPLETED"
+    Running = "RUNNING",
+    Erroneous = "ERRONEOUS",
+    Suspended = "SUSPENDED",
+    Canceled = "CANCELED",
+    Completed = "COMPLETED"
 }
 //# sourceMappingURL=workflow-instance.d.ts.map

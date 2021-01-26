@@ -20,10 +20,10 @@ exports.WorkflowInstanceStatusEnum = void 0;
     */
 var WorkflowInstanceStatusEnum;
 (function (WorkflowInstanceStatusEnum) {
-    WorkflowInstanceStatusEnum["RUNNING"] = "RUNNING";
-    WorkflowInstanceStatusEnum["ERRONEOUS"] = "ERRONEOUS";
-    WorkflowInstanceStatusEnum["SUSPENDED"] = "SUSPENDED";
-    WorkflowInstanceStatusEnum["CANCELED"] = "CANCELED";
-    WorkflowInstanceStatusEnum["COMPLETED"] = "COMPLETED";
+    WorkflowInstanceStatusEnum["Running"] = "RUNNING";
+    WorkflowInstanceStatusEnum["Erroneous"] = "ERRONEOUS";
+    WorkflowInstanceStatusEnum["Suspended"] = "SUSPENDED";
+    WorkflowInstanceStatusEnum["Canceled"] = "CANCELED";
+    WorkflowInstanceStatusEnum["Completed"] = "COMPLETED";
 })(WorkflowInstanceStatusEnum = exports.WorkflowInstanceStatusEnum || (exports.WorkflowInstanceStatusEnum = {}));
 //# sourceMappingURL=workflow-instance.js.map

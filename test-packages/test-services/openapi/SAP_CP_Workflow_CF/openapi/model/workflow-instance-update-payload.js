@@ -20,8 +20,8 @@ exports.WorkflowInstanceUpdatePayloadStatusEnum = void 0;
     */
 var WorkflowInstanceUpdatePayloadStatusEnum;
 (function (WorkflowInstanceUpdatePayloadStatusEnum) {
-    WorkflowInstanceUpdatePayloadStatusEnum["CANCELED"] = "CANCELED";
-    WorkflowInstanceUpdatePayloadStatusEnum["RUNNING"] = "RUNNING";
-    WorkflowInstanceUpdatePayloadStatusEnum["SUSPENDED"] = "SUSPENDED";
+    WorkflowInstanceUpdatePayloadStatusEnum["Canceled"] = "CANCELED";
+    WorkflowInstanceUpdatePayloadStatusEnum["Running"] = "RUNNING";
+    WorkflowInstanceUpdatePayloadStatusEnum["Suspended"] = "SUSPENDED";
 })(WorkflowInstanceUpdatePayloadStatusEnum = exports.WorkflowInstanceUpdatePayloadStatusEnum || (exports.WorkflowInstanceUpdatePayloadStatusEnum = {}));
 //# sourceMappingURL=workflow-instance-update-payload.js.map

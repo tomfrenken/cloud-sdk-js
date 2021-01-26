@@ -20,10 +20,10 @@ exports.TaskInstanceStatusEnum = exports.TaskInstancePriorityEnum = void 0;
     */
 var TaskInstancePriorityEnum;
 (function (TaskInstancePriorityEnum) {
-    TaskInstancePriorityEnum["VERYHIGH"] = "VERY_HIGH";
-    TaskInstancePriorityEnum["HIGH"] = "HIGH";
-    TaskInstancePriorityEnum["MEDIUM"] = "MEDIUM";
-    TaskInstancePriorityEnum["LOW"] = "LOW";
+    TaskInstancePriorityEnum["VeryHigh"] = "VERY_HIGH";
+    TaskInstancePriorityEnum["High"] = "HIGH";
+    TaskInstancePriorityEnum["Medium"] = "MEDIUM";
+    TaskInstancePriorityEnum["Low"] = "LOW";
 })(TaskInstancePriorityEnum = exports.TaskInstancePriorityEnum || (exports.TaskInstancePriorityEnum = {}));
 /**
     * @export
@@ -31,9 +31,9 @@ var TaskInstancePriorityEnum;
     */
 var TaskInstanceStatusEnum;
 (function (TaskInstanceStatusEnum) {
-    TaskInstanceStatusEnum["READY"] = "READY";
-    TaskInstanceStatusEnum["RESERVED"] = "RESERVED";
-    TaskInstanceStatusEnum["CANCELED"] = "CANCELED";
-    TaskInstanceStatusEnum["COMPLETED"] = "COMPLETED";
+    TaskInstanceStatusEnum["Ready"] = "READY";
+    TaskInstanceStatusEnum["Reserved"] = "RESERVED";
+    TaskInstanceStatusEnum["Canceled"] = "CANCELED";
+    TaskInstanceStatusEnum["Completed"] = "COMPLETED";
 })(TaskInstanceStatusEnum = exports.TaskInstanceStatusEnum || (exports.TaskInstanceStatusEnum = {}));
 //# sourceMappingURL=task-instance.js.map

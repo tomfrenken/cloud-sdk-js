@@ -40,7 +40,7 @@ export interface Job {
     * @enum {string}
     */
 export declare enum JobStatusEnum {
-    RUNNING = "RUNNING",
-    ERRONEOUS = "ERRONEOUS"
+    Running = "RUNNING",
+    Erroneous = "ERRONEOUS"
 }
 //# sourceMappingURL=job.d.ts.map

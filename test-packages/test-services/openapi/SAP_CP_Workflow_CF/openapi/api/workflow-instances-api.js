@@ -99,7 +99,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         getInstance: function (workflowInstanceId, $expand, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -149,14 +149,14 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             if ($expand !== undefined) {
                                 localVarQueryParameter['$expand'] = $expand;
                             }
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -198,7 +198,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesGet: function ($orderby, $skip, $top, $inlinecount, $expand, id, definitionId, definitionVersion, status, startedAt, startedFrom, startedUpTo, completedAt, completedFrom, completedUpTo, startedBy, subject, containsText, businessKey, rootInstanceId, parentInstanceId, attributesExampleCustomAttribute, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -306,14 +306,14 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             if (attributesExampleCustomAttribute !== undefined) {
                                 localVarQueryParameter['attributes.ExampleCustomAttribute'] = attributesExampleCustomAttribute;
                             }
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -334,7 +334,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesPatch: function (workflowInstancesUpdatePayload, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions, nonString, needsSerialization;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -381,18 +381,23 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             _c.label = 10;
                         case 10:
                             localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof workflowInstancesUpdatePayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(workflowInstancesUpdatePayload !== undefined ? workflowInstancesUpdatePayload : {}) : (workflowInstancesUpdatePayload || "");
+                            nonString = typeof workflowInstancesUpdatePayload !== 'string';
+                            needsSerialization = nonString && configuration && configuration.isJsonMime
+                                ? configuration.isJsonMime(localVarRequestOptions.headers['Content-Type'])
+                                : nonString;
+                            localVarRequestOptions.data = needsSerialization
+                                ? JSON.stringify(workflowInstancesUpdatePayload !== undefined ? workflowInstancesUpdatePayload : {})
+                                : (workflowInstancesUpdatePayload || "");
                             return [2 /*return*/, {
                                     url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                                     options: localVarRequestOptions,
@@ -411,7 +416,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesPost: function (workflowInstanceStartPayload, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions, nonString, needsSerialization;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -458,18 +463,23 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             _c.label = 10;
                         case 10:
                             localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof workflowInstanceStartPayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(workflowInstanceStartPayload !== undefined ? workflowInstanceStartPayload : {}) : (workflowInstanceStartPayload || "");
+                            nonString = typeof workflowInstanceStartPayload !== 'string';
+                            needsSerialization = nonString && configuration && configuration.isJsonMime
+                                ? configuration.isJsonMime(localVarRequestOptions.headers['Content-Type'])
+                                : nonString;
+                            localVarRequestOptions.data = needsSerialization
+                                ? JSON.stringify(workflowInstanceStartPayload !== undefined ? workflowInstanceStartPayload : {})
+                                : (workflowInstanceStartPayload || "");
                             return [2 /*return*/, {
                                     url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                                     options: localVarRequestOptions,
@@ -488,7 +498,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdAttachmentsGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -535,14 +545,14 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
                             _c.label = 10;
                         case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -564,7 +574,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdAttachmentsPut: function (workflowInstanceId, attachmentsContext, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions, nonString, needsSerialization;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -616,18 +626,23 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             _c.label = 10;
                         case 10:
                             localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof attachmentsContext !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(attachmentsContext !== undefined ? attachmentsContext : {}) : (attachmentsContext || "");
+                            nonString = typeof attachmentsContext !== 'string';
+                            needsSerialization = nonString && configuration && configuration.isJsonMime
+                                ? configuration.isJsonMime(localVarRequestOptions.headers['Content-Type'])
+                                : nonString;
+                            localVarRequestOptions.data = needsSerialization
+                                ? JSON.stringify(attachmentsContext !== undefined ? attachmentsContext : {})
+                                : (attachmentsContext || "");
                             return [2 /*return*/, {
                                     url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                                     options: localVarRequestOptions,
@@ -646,7 +661,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdAttributesGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -693,14 +708,14 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
                             _c.label = 10;
                         case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -721,7 +736,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdContextGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -768,14 +783,14 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
                             _c.label = 10;
                         case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -797,7 +812,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdContextPatch: function (workflowInstanceId, body, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions, nonString, needsSerialization;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -849,18 +864,23 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             _c.label = 10;
                         case 10:
                             localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            nonString = typeof body !== 'string';
+                            needsSerialization = nonString && configuration && configuration.isJsonMime
+                                ? configuration.isJsonMime(localVarRequestOptions.headers['Content-Type'])
+                                : nonString;
+                            localVarRequestOptions.data = needsSerialization
+                                ? JSON.stringify(body !== undefined ? body : {})
+                                : (body || "");
                             return [2 /*return*/, {
                                     url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                                     options: localVarRequestOptions,
@@ -880,7 +900,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdContextPut: function (workflowInstanceId, body, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions, nonString, needsSerialization;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -932,18 +952,23 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             _c.label = 10;
                         case 10:
                             localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            nonString = typeof body !== 'string';
+                            needsSerialization = nonString && configuration && configuration.isJsonMime
+                                ? configuration.isJsonMime(localVarRequestOptions.headers['Content-Type'])
+                                : nonString;
+                            localVarRequestOptions.data = needsSerialization
+                                ? JSON.stringify(body !== undefined ? body : {})
+                                : (body || "");
                             return [2 /*return*/, {
                                     url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                                     options: localVarRequestOptions,
@@ -962,7 +987,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdErrorMessagesGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -1009,14 +1034,14 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
                             _c.label = 10;
                         case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -1037,7 +1062,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdExecutionLogsGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -1084,14 +1109,14 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
                             _c.label = 10;
                         case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -1113,7 +1138,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdPatch: function (workflowInstanceId, workflowInstanceUpdatePayload, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions, nonString, needsSerialization;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -1165,18 +1190,23 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             _c.label = 10;
                         case 10:
                             localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof workflowInstanceUpdatePayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(workflowInstanceUpdatePayload !== undefined ? workflowInstanceUpdatePayload : {}) : (workflowInstanceUpdatePayload || "");
+                            nonString = typeof workflowInstanceUpdatePayload !== 'string';
+                            needsSerialization = nonString && configuration && configuration.isJsonMime
+                                ? configuration.isJsonMime(localVarRequestOptions.headers['Content-Type'])
+                                : nonString;
+                            localVarRequestOptions.data = needsSerialization
+                                ? JSON.stringify(workflowInstanceUpdatePayload !== undefined ? workflowInstanceUpdatePayload : {})
+                                : (workflowInstanceUpdatePayload || "");
                             return [2 /*return*/, {
                                     url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                                     options: localVarRequestOptions,
@@ -1195,7 +1225,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdRolesGet: function (workflowInstanceId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -1242,14 +1272,14 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
                             _c.label = 10;
                         case 10:
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                             return [2 /*return*/, {
@@ -1271,7 +1301,7 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
         v1WorkflowInstancesWorkflowInstanceIdRolesPatch: function (workflowInstanceId, workflowInstanceRolesUpdatePayload, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, localVarAccessTokenValue, _a, localVarAccessTokenValue, _b, queryParameters, key, key, headersFromBaseOptions, nonString, needsSerialization;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
@@ -1323,18 +1353,23 @@ var WorkflowInstancesApiAxiosParamCreator = function (configuration) {
                             _c.label = 10;
                         case 10:
                             localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
+                            queryParameters = new URLSearchParams(localVarUrlObj.search);
                             for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
+                                queryParameters.set(key, localVarQueryParameter[key]);
                             }
                             for (key in options.query) {
-                                query.set(key, options.query[key]);
+                                queryParameters.set(key, options.query[key]);
                             }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof workflowInstanceRolesUpdatePayload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(workflowInstanceRolesUpdatePayload !== undefined ? workflowInstanceRolesUpdatePayload : {}) : (workflowInstanceRolesUpdatePayload || "");
+                            nonString = typeof workflowInstanceRolesUpdatePayload !== 'string';
+                            needsSerialization = nonString && configuration && configuration.isJsonMime
+                                ? configuration.isJsonMime(localVarRequestOptions.headers['Content-Type'])
+                                : nonString;
+                            localVarRequestOptions.data = needsSerialization
+                                ? JSON.stringify(workflowInstanceRolesUpdatePayload !== undefined ? workflowInstanceRolesUpdatePayload : {})
+                                : (workflowInstanceRolesUpdatePayload || "");
                             return [2 /*return*/, {
                                     url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                                     options: localVarRequestOptions,
@@ -1371,7 +1406,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1417,7 +1452,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1442,7 +1477,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1467,7 +1502,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1492,7 +1527,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1518,7 +1553,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1543,7 +1578,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1568,7 +1603,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1594,7 +1629,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1620,7 +1655,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1645,7 +1680,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1670,7 +1705,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1696,7 +1731,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1721,7 +1756,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }
@@ -1747,7 +1782,7 @@ var WorkflowInstancesApiFp = function (configuration) {
                             return [2 /*return*/, function (axios, basePath) {
                                     if (axios === void 0) { axios = axios_1.default; }
                                     if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: ((configuration === null || configuration === void 0 ? void 0 : configuration.basePath) || basePath) + localVarAxiosArgs.url });
                                     return axios.request(axiosRequestArgs);
                                 }];
                     }

@@ -82,16 +82,16 @@ export interface UpdateTaskInstancePayload {
     * @enum {string}
     */
 export declare enum UpdateTaskInstancePayloadStatusEnum {
-    COMPLETED = "COMPLETED"
+    Completed = "COMPLETED"
 }
 /**
     * @export
     * @enum {string}
     */
 export declare enum UpdateTaskInstancePayloadPriorityEnum {
-    VERYHIGH = "VERY_HIGH",
-    HIGH = "HIGH",
-    MEDIUM = "MEDIUM",
-    LOW = "LOW"
+    VeryHigh = "VERY_HIGH",
+    High = "HIGH",
+    Medium = "MEDIUM",
+    Low = "LOW"
 }
 //# sourceMappingURL=update-task-instance-payload.d.ts.map

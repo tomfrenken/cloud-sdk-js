@@ -33,9 +33,9 @@ export interface WorkflowInstanceUpdatePayload {
     * @enum {string}
     */
 export enum WorkflowInstanceUpdatePayloadStatusEnum {
-    CANCELED = 'CANCELED',
-    RUNNING = 'RUNNING',
-    SUSPENDED = 'SUSPENDED'
+    Canceled = 'CANCELED',
+    Running = 'RUNNING',
+    Suspended = 'SUSPENDED'
 }
 
 
